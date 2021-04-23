@@ -13,11 +13,13 @@
     <?php
         require_once("src/orgile.php");
         require_once("src/get_zettel.php");
+        require_once("src/update_db.php");
         echo "<title>" . $title . "</title>";
 
         if (isset($_POST["submit"])) {
             file_put_contents("zettel/" . $filename . ".org", $_POST["code"]);
             $content = $_POST["code"];
+            update_db();
         }
         if ($namespace != ""){
             echo "<script>window.location.replace('index.php?link=". $file_id ."');</script>";
