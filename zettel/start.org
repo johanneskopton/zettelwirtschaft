@@ -1,0 +1,6 @@
+#+TITLE: Startseite
+
+Von hier aus gehts los!
+
+[[file:baum.org][Baum]]
+[[file:boeckenfoerde_diktum.org][Böckenförde-Diktum]]
