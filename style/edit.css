@@ -1,0 +1,48 @@
+div.edit_wrapper{
+    width: auto;
+    padding: 10px;
+    height: auto;
+}
+
+form {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+@media only screen and (min-width: 1500px) {
+    div.side{
+        max-width: 700px;
+
+        width: 100%;
+        min-height: 90%;
+        display: inline-block;
+        float: left;
+        margin: 20px;
+        text-align: left;
+    }
+    div.two_col{
+        text-align: center;
+        max-width: 1500px;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 1499px) {
+    div.side{
+        width: 100%;
+        text-align: left;
+        margin: 0px;
+        min-height: 90%;
+        height: auto;
+    }
+    div.two_col{
+        margin: 0px;
+    }
+}
+
+a.disabled{
+    color: #a5a1b1;
+    cursor: default;
+
+}

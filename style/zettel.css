@@ -1,0 +1,41 @@
+div.zettel_wrapper{
+    width: auto;
+    padding: 40px;
+    padding-bottom: 0px;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    font-weight: 300;
+}
+
+h1 {
+    font-family: Roboto Slab, PT Serif;
+    margin-top: -10px;
+    font-weight: 300;
+}
+
+div.alone{
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+}
+
+blockquote, pre{
+    background-color: #eeeeee;
+    padding: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+div.incoming{
+    border: none;
+    border-top: 0.1px solid #555555;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+
+div#new_name{
+    display: none;
+    padding-bottom: 10px;
+}
