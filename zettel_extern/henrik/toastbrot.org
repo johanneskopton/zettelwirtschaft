@@ -1,0 +1,4 @@
+#+TITLE: Toastbrot
+
+Besser als kein Brot auf jeden Fall.
+[[file:baum.org][Baum]]

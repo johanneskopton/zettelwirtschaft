@@ -13,7 +13,8 @@
     
         while (false !== ($name = readdir($handle))) {
             if ($name != "." && $name != ".."){
-                $content = get_content($name);
+                $name = explode(".org", $name)[0];
+                $content = get_content("", $name);
                 $title = get_title($content);
                 echo "Name: $name <br>";
                 echo "Title: $title <br>";
@@ -23,8 +24,17 @@
 
                 $connections = find_connections($content);
                 for ($i = 0; $i < sizeof($connections[0]); $i++){
-                    $sql = "INSERT INTO connections (`origin_name`, `target_name`, `linktext`) VALUES ('$name', '".$connections[1][$i]."','".$connections[2][$i]."')";
-                    $mysqli->query($sql);
+                    if ($connections[2][$i] != ""){
+                        $targetname = $connections[2][$i];
+                    } elseif ($connections[4][$i] != ""){
+                        $targetname = $connections[4][$i];
+                    }
+                    $sql = "INSERT INTO connections (`origin_name`, `target_name`) VALUES ('$name', '$targetname')";
+                    if ($mysqli->query($sql) === TRUE) {
+                        // echo "New record created successfully";
+                      } else {
+                        echo "Error: " . $sql . "<br>" . $mysqli->error;
+                      }
                 }
                 echo "<br>";
             }
@@ -40,6 +50,7 @@
         } else {
             echo "0 results";
         }
+        
         closedir($handle);
     }
     $mysqli->close();

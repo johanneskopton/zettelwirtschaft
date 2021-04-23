@@ -2,5 +2,11 @@
 
 Von hier aus gehts los!
 
-[[file:baum.org][Baum]]
+[[ext:henrik:baum][Baum]]
+
+[ext:henrik:toastbrot]
+
+
 [[file:boeckenfoerde_diktum.org][Böckenförde-Diktum]]
+[[ztl:boeckenfoerde_diktum][Böckenförde-Diktum]]
+[ztl:boeckenfoerde_diktum]

@@ -95,8 +95,10 @@
 class orgile {
 
   // ----------[ ORGILE ]----------
-  function orgileThis($text) {
-    $text = $this->orgilise($text);
+  function orgileThis($text, $namespace) {
+    $text = $this->orgilise($text, $namespace);
+    $text = $this->orgilise_links($text, $namespace);
+    $text = $this->orgilise_links_external($text);
     $text = $this->tidy_lists($text);
     $text = $this->codeReplace($text);
     $text = $this->footnotes($text);
@@ -107,7 +109,12 @@ class orgile {
   // ----------[ ORGALISE CONTENT ]----------
   // replace some general Org-mode markup with HTML.
   // NOTE: careful with changing order as links may be "glyphed"
-  function orgilise($text) {
+
+  function orgilise($text, $namespace) {
+    $script_name = $_SERVER['PHP_SELF'];
+    $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
+  
+
     $regex = array(
        // roam
        '/^\#\+title:{1}\s+?(.+)/i', # #+TITLE:
@@ -165,7 +172,9 @@ class orgile {
 		   '/#\+begin_src\s?(\S+?)\n([\s\S]*?)\s#\+end_src/mi',
 
 		   // links
-		   '/\[\[file\:(.+?)\]\[(.+?)\]\]/m', // intern
+       '/\[\[file\:(.+?).org\]\[(.+?)\]\]/m', // intern
+       '/\[\[ztl\:(.+?)\]\[(.+?)\]\]/m', // intern
+       '/\[\[ext\:(.+?)\]\[(.+?)\]\]/m', // other orgroam zettelkasten
        '/\[\[(.+?)\]\[(.+?)\]\]/m', // extern
 
 		   );
@@ -226,13 +235,45 @@ class orgile {
 		     // source
 		     '<pre><code class="$1">$2</code></pre>',
 
-		     // links
-         '<a href="' . $_SERVER['PHP_SELF'] . '?link=$1" name="zettelkasten_link" title="$2">$2</a>', // intern
+        //links
+         '<a href="' . $script_name . '?link='.$namespace_prefix.'$1" name="zettelkasten_link" title="$2">$2</a>', // intern
+         '<a href="' . $script_name . '?link='.$namespace_prefix.'$1" name="zettelkasten_link" title="$2">$2</a>', // intern
+         '<a href="' . $script_name . '?link='.$namespace_prefix.'$1" name="zettelkasten_link" title="$2">$2</a>', // intern
 		     '<a href="$1" title="$2" target="_blank">$2</a>', // extern
 		     );
 
     return preg_replace($regex,$replace,$text);
   }
+
+
+  function orgilise_links($text, $namespace) {
+    $script_name = $_SERVER['PHP_SELF'];
+    $regex = '/\[ztl\:(.+?)\]/m';
+
+    function callback($pattern){
+      global $namespace, $script_name;
+      $linktitle = get_title_from_name("", $pattern[1]);
+      $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
+
+      return '<a href="'.$script_name.'?link='.$namespace_prefix.$pattern[1].'" name="zettelkasten_link" title="'.$linktitle.'">'.$linktitle.'</a>';
+    }
+    return preg_replace_callback($regex,"callback",$text);
+  }
+
+  function orgilise_links_external($text) {
+    $script_name = $_SERVER['PHP_SELF'];
+    $regex = '/\[ext\:(.+?)\]/m';
+
+    function callback_ext($pattern){
+      global $script_name;
+      $filename = explode(":", $pattern[1])[1];
+      $namespace = explode(":", $pattern[1])[0];
+      $linktitle = get_title_from_name($namespace, $filename);
+      return '<a href="'.$script_name.'?link='.$pattern[1].'" name="zettelkasten_link" title="'.$linktitle.'">'.$linktitle.'</a>';
+    }
+    return preg_replace_callback($regex,"callback_ext",$text);
+  }
+
 
   // Tidy up lists
   function tidy_lists($text) {

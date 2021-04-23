@@ -11,21 +11,25 @@
     <link rel="stylesheet" type="text/css" href="style/edit.css"/>
 
     <?php
-        //echo phpinfo();
         require_once("src/orgile.php");
         require_once("src/get_zettel.php");
         echo "<title>" . $title . "</title>";
 
         if (isset($_POST["submit"])) {
-            file_put_contents("zettel/" . $filename, $_POST["code"]);
+            file_put_contents("zettel/" . $filename . ".org", $_POST["code"]);
             $content = $_POST["code"];
         }
+        if ($namespace != ""){
+            echo "<script>window.location.replace('index.php?link=". $file_id ."');</script>";
+        }
+
     ?>
     </head>
     <body>
         <div class="two_col">
             <div class="box side">
                 <form method="post">
+
                     <div class="edit_wrapper">
                             <textarea name="code" class="code"><?php
                                     echo $content;
@@ -49,11 +53,18 @@
                                     document.title = title + "*";
                                 });
                         
+                            document.addEventListener("keydown", function(e) {
+                            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
+                                e.preventDefault();
+                                document.getElementById("submit").click();
+                            }
+                            }, false);
                         </script>
 
                     </div>
+
                     <div class="buttonbox box">
-                        <input class="button" type="submit" name="submit" value="Save">
+                        <input class="button" type="submit" name="submit" id="submit" value="Save">
                     </div>
                 </form>
             </div>
