@@ -11,6 +11,7 @@
         }
         
     } else {
+        $file_id = "start";
         $filename = "start";
         $namespace = "";
     }

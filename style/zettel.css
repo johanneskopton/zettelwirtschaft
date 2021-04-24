@@ -2,6 +2,11 @@ div.zettel_wrapper{
     width: auto;
     padding: 40px;
     padding-bottom: 0px;
+    position: relative;
+}
+
+.side .zettel_wrapper{
+    padding-top: 4em;
 }
 
 h2, h3, h4, h5, h6 {
@@ -38,4 +43,30 @@ div.incoming{
 div#new_name{
     display: none;
     padding-bottom: 10px;
+}
+
+.roam_tags, .created, .last_modified{
+    position: absolute;
+    display: block;
+    top: 0px;
+    background-color: #eeeeee;
+    width: 33.33%;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+}
+
+.roam_tags{
+    left: 33.33%;
+}
+
+.created{
+    left: 0px;
+}
+
+.last_modified{
+    left: 66.66%
+}
+
+.alone div .roam_tags, .alone div .created, .alone div .last_modified{
+    display: none;
 }

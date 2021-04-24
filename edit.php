@@ -17,8 +17,11 @@
         echo "<title>" . $title . "</title>";
 
         if (isset($_POST["submit"])) {
-            file_put_contents("zettel/" . $filename . ".org", $_POST["code"]);
             $content = $_POST["code"];
+            $content = preg_replace('/^(\#\+last_modified:){1}\s+?(.+)/im', "$1 ". date("Y-m-d"), $content);
+
+
+            file_put_contents("zettel/" . $filename . ".org", $content);            
             update_db();
         }
         if ($namespace != ""){

@@ -117,7 +117,10 @@ class orgile {
 
     $regex = array(
        // roam
-       '/^\#\+title:{1}\s+?(.+)/i', # #+TITLE:
+       '/^\#\+title:{1}\s+?(.+)/i',         # #+TITLE:
+       '/^\#\+roam_tags:{1}\s+?(.+)/im',     # #+ROAM_TAGS:
+       '/^\#\+created:{1}\s+?(.+)/im',       # #+CREATED:
+       '/^\#\+last_modified:{1}\s+?(.+)/im', # #+LAST_MODIFIED:
 
 		   // headings
 		   '/^\*{1}\s+?(.+)/m', // * example
@@ -182,6 +185,9 @@ class orgile {
     $replace = array(
          // roam
          "<h1>$1</h1>\n", // #+TITLE:
+         "<div class=roam_tags>$1</div>",
+         "<div class=created>$1</div>",
+         "<div class=last_modified>$1</div>",
 
 
 		     // headings

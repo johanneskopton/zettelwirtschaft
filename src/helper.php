@@ -10,9 +10,14 @@
         if ($handle){
             $content = file_get_contents ($path);
         } else {
-            if (isset($_GET["create"])){
-                $content = "#+TITLE: " . explode(".", $filename)[0];
+            if (isset($_GET["create"]) || $_SERVER['SCRIPT_NAME'] == "/edit.php"){
+                $content  = "#+TITLE: " . explode(".", $filename)[0] . "\n";
+                $content .= "#+ROAM_TAGS: \n";
+                $content .= "#+CREATED: " . date("Y-m-d") . "\n";
+                $content .= "#+LAST_MODIFIED: " . date("Y-m-d") . "\n";
+
                 $file = fopen($path, "w");
+                fwrite($file, $content);
                 fclose($file);
             }else{
                 //echo "<div class='fatal'>Zettel not found</div></body></html>";
@@ -26,7 +31,7 @@
     function get_title($content){
         $sep1 = explode("#+TITLE: ", $content, 2);
         if (sizeof($sep1) > 1){
-            return explode(PHP_EOL, $sep1[1], 2)[0];
+            return trim(explode(PHP_EOL, $sep1[1], 2)[0]);
         } else {
             return "no Title";
         }
