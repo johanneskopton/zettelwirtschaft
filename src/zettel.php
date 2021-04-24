@@ -32,7 +32,8 @@
     
     <div class="buttonbox box">
         <?php
-            if ($_SERVER["PHP_SELF"] == "/edit.php"){
+            $filepath_bits = explode("/", $_SERVER["SCRIPT_NAME"]);
+            if (end($filepath_bits ) == "edit.php"){
                 echo "<a href='index.php?link=$filename' name='toview' class='button'>".$l["View"]."</a>";
             } else {
                 if ($namespace == ""){
