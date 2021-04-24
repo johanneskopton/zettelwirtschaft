@@ -11,7 +11,7 @@
 
         if ($result->num_rows > 0) {
             echo "<div class='incoming'>";
-            echo "Links to this zettel:";
+            echo $l["Links to this zettel"].":";
             echo "<ul>";
             while($row = $result->fetch_assoc()) {
                 $origin_name = $row['origin_name'];
@@ -33,18 +33,18 @@
     <div class="buttonbox box">
         <?php
             if ($_SERVER["PHP_SELF"] == "/edit.php"){
-                echo "<a href='index.php?link=$filename' name='toview' class='button'>View</a>";
+                echo "<a href='index.php?link=$filename' name='toview' class='button'>".$l["View"]."</a>";
             } else {
                 if ($namespace == ""){
-                    echo "<a href='edit.php?link=$filename' class='button'>Edit</a>";
+                    echo "<a href='edit.php?link=$filename' class='button'>".$l["Edit"]."</a>";
                 }
             }
         ?>
-        <a class='button' onclick="toggleForm()">New</a>
+        <a class='button' onclick="toggleForm()"><?php echo $l["New"];?></a>
         <div id="new_name">
             <form method="get" action="edit.php" target="_blank">
-                Filename: <input type="text" name="link" id="new_name_text" autofocus>
-                <input class="button" type="submit" name="create" value="Create">
+            <?php echo $l["Filename"];?>: <input type="text" name="link" id="new_name_text" autofocus>
+                <input class="button" type="submit" name="create" value="<?php echo $l["Create"];?>">
             </form>
         </div>
         <script>

@@ -8,6 +8,8 @@
     <?php
         require_once("src/orgile.php");
         require_once("src/get_zettel.php");
+        require_once("lang/language.php");
+
         echo "<title>" . $title . "</title>";
     ?>
     </head>

@@ -14,6 +14,8 @@
         require_once("src/orgile.php");
         require_once("src/get_zettel.php");
         require_once("src/update_db.php");
+        require_once("lang/language.php");
+
         echo "<title>" . $title . "</title>";
 
         if (isset($_POST["submit"])) {
@@ -69,7 +71,7 @@
                     </div>
 
                     <div class="buttonbox box">
-                        <input class="button" type="submit" name="submit" id="submit" value="Save">
+                        <input class="button" type="submit" name="submit" id="submit" value="<?php echo $l["Save"]; ?>">
                     </div>
                 </form>
             </div>
