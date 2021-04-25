@@ -1,0 +1,7 @@
+# Zettelwirtschaft
+## Installation
+  + Upload or clone repo onto a php server (at least php7)
+  + Create the SQL database tables using [file:database/schema.sql]
+  + Fill in the database credentials in [file:config/db_connect.php]
+  + Set possible external zettelkaesten in [file:config/external.php]
+  + You may want to set or add a language in [file:lang/language.php]
