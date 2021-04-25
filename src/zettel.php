@@ -4,7 +4,7 @@
             echo $orgile->orgileThis($content);
         ?>
     <?php
-        require_once("src/db_connect.php");
+        require_once(__DIR__."/../config/db_connect.php");
         $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
         $sql = "SELECT origin_name FROM connections WHERE target_name='$file_id'";
         $result = $mysqli->query($sql);

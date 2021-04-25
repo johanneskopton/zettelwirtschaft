@@ -1,5 +1,5 @@
 <?php
-    require_once("external.php");
+    require_once(__DIR__."/../config/external.php");
 
     function get_content($namespace, $filename){
         global $external_paths;
