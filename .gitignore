@@ -1,1 +1,4 @@
 phpmyadmin*
+local_scripts
+*.org
+*.svg
