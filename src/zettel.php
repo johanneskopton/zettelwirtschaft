@@ -1,7 +1,7 @@
     <div class="zettel_wrapper">
         <?php
             $orgile = new orgile();
-            echo $orgile->orgileThis($content, $namespace);
+            echo $orgile->orgileThis($content);
         ?>
     <?php
         require_once("src/db_connect.php");

@@ -20,6 +20,22 @@ h1 {
     font-weight: 300;
 }
 
+a, a:visited {
+    color: #552086;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #888888;
+}
+
+a.external_zettelkasten, a.external_internet {
+    background-image: url("external.png");
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+}
+
 div.alone{
     max-width: 700px;
     width: 100%;

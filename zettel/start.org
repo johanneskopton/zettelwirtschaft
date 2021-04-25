@@ -10,3 +10,5 @@ Von hier aus gehts los!
 [[file:boeckenfoerde_diktum.org][Böckenförde-Diktum]]
 [[ztl:boeckenfoerde_diktum][Böckenförde-Diktum]]
 [ztl:boeckenfoerde_diktum]
+
+[[http://wikipedia.org][Wikipedia]]
