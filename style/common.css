@@ -1,10 +1,10 @@
 body {
     color: #444444;
     /*background-color: #585560;*/
-    font-family:  Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-family:  Roboto, Nimbus Sans L, Helvetica, Arial, sans-serif;
+    font-weight: 400;
     margin: 0px;
-    font-size: 18px;
+    font-size: 17px;
     background-image: url("background_subtle.jpg");
 }
 
