@@ -1,6 +1,9 @@
-<?php // Time-stamp: <2011-11-27 Sun 16:21 classOrgile.php>
+<?php 
 
 /*
+  This class is based on classOrgile, but has been heavily changed to support
+  the special Zettelkasten syntax, not only standadrd Org-Mode.
+  
   ______________________
   C L A S S  O R G I L E
 
@@ -18,80 +21,8 @@
   NOTE: If you would like to help me develop this class properly rather then this
   amateur garden shed effort; please do contact me on the above address.
 
-  _____________
-  L I C E N S E
-
-  This file is part of Orgile.
-  Orgile: an Emacs Org-mode file parser and publishing tool.
-
-  Orgile is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  Orgile is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with Orgile.  If not, see <http://www.gnu.org/licenses/>.
-
-  _____________________
-  D E S C R I P T I O N
-
-  ClassOrgile converts "some" Org-mode markup into HTML. And yes you are right
-  to question why since Org-mode has a mature HTML export already. http://orgmode.org
-
-  require_once('classOrgile.php');
-  $orgile = new orgile();
-  return $orgile->orgileThis($content);
-
-
-  The following org-mode markup is converted to HTML.
-  Various glyphs are also replaced with their HTML entities.
-  i.e. " (opening double quote) -> &#8220;
-
-  * This is an example title.     -> <h1>This is an example title.</h1>
-  ** This is an example title.    -> <h2>This is an example title.</h2>
-  *** This is an example title.   -> <h3>This is an example title.</h3>
-  **** This is an example title.  -> <h4>This is an example title.</h4>
-  ***** This is an example title. -> <h5>This is an example title.</h5>
-
-  This is an example of a paragraph. -> <p>This is an example of a paragraph</p>
-
-  *example* -> <strong>example</strong>
-  /example/ -> <em>example</em>
-  +example+ -> <del>example</del>
-
-  ----- -> <hr>
-
-  #+begin_quote
-  This is an example quote. -- Some Author. Some publication, 1975.
-  #+end_quote
-
-  -> <blockquote cite="Some Author. Some publication, 1975."><p>&#8220;This is an example quote.#8221;</p></blockquote><p class="citeRef">Some Author. Some publication, 1975.</p>
-
-  #+begin_example
-  This is an example.
-  #+end_example
-
-  -> <pre>This is an example.</pre>
-
-  #+begin_src
-  <?php print "hello world!" ?>
-  #+end_src
-
-  -> <pre><code><?php print "hello world!" ?></code></pre>
-
-  [[http://www.link.com][example]] -> <a href="http://www.link.com" title="example">example</a>
-
-  This is an example sentence with footnote.[1] -> This is an example sentence with footnote.<sup class="fnote"><a href="#fn1">1</a></sup>
-  [1] This is an example footnote.              -> <p class="fnote"><sup id="fn1" class="fnote">1</sup>This is an example footnote.</p>',
-
 */
 
-// ------------------------------[ CLASS ORGILE ]------------------------------
 class orgile {
 
   // ----------[ ORGILE ]----------
