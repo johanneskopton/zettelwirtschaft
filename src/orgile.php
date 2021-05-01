@@ -23,6 +23,9 @@
 
 */
 
+$bib_item_i = 1;
+
+
 class orgile {
 
   // ----------[ ORGILE ]----------
@@ -33,6 +36,7 @@ class orgile {
     $text = $this->tidy_lists($text);
     $text = $this->codeReplace($text);
     $text = $this->footnotes($text);
+    $text = $this->citation($text);
     $text = $this->paragraph($text);
     return $text;
   }
@@ -216,12 +220,22 @@ class orgile {
     return preg_replace_callback($regex,"callback_ext",$text);
   }
 
-
   // Tidy up lists
   function tidy_lists($text) {
     $regex = '/\<\/[uo]l>\n?<[uo]l>/im';
     $replace = "";
     return preg_replace($regex,$replace,$text);
+  }
+
+  function citation($text) {
+    $regex = '/\[cite\:(.+?)\]/m';
+    $callback_citation = function ($pattern){
+        global $bib_item_i;
+        $res =  "<a href='#bib_$bib_item_i' class='bib_link'>[$bib_item_i]</a>";
+        $bib_item_i = $bib_item_i + 1;
+        return $res;
+    };
+    return preg_replace_callback($regex, $callback_citation, $text);
   }
 
   // ----------[ CREATE FOOTNOTES ]----------

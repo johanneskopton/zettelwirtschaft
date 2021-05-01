@@ -29,6 +29,10 @@ a:active {
     color: #888888;
 }
 
+a.bib_link{
+    text-decoration: none;
+}
+
 a.external_zettelkasten, a.external_internet {
     background-image: url("external.png");
     background-position: center right;
@@ -55,6 +59,25 @@ div.incoming{
     margin-top: 40px;
     padding-top: 10px;
 }
+
+div.bibliography ol li{
+    margin-bottom: 20px;
+    counter-increment: bibsection;
+}
+
+div.bibliography ol {
+    list-style-type: none;
+}
+
+div.bibliography ol li:before {
+    content: "[" counter(bibsection) "] ";
+    position: absolute;
+    --size: 1.2em;
+    left: calc(-1 * var(--size) + 70px);
+    line-height: var(--size);
+
+}
+
 
 div#new_name{
     display: none;

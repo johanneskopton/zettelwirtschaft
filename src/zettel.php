@@ -3,31 +3,35 @@
             $orgile = new orgile();
             echo $orgile->orgileThis($content);
         ?>
-    <?php
-        require_once(__DIR__."/../config/db_connect.php");
-        $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-        $sql = "SELECT origin_name FROM connections WHERE target_name='$file_id'";
-        $result = $mysqli->query($sql);
+        <?php
+            require_once("citations.php");
+            print_citations($content);
+        ?>
+        <?php
+            require_once(__DIR__."/../config/db_connect.php");
+            $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+            $sql = "SELECT origin_name FROM connections WHERE target_name='$file_id'";
+            $result = $mysqli->query($sql);
 
-        if ($result->num_rows > 0) {
-            echo "<div class='incoming'>";
-            echo $l["Links to this zettel"].":";
-            echo "<ul>";
-            while($row = $result->fetch_assoc()) {
-                $origin_name = $row['origin_name'];
-                $res = $mysqli->query("SELECT title FROM zettel WHERE `name`='$origin_name'");
-                if ($res) {
-                    $row = $res->fetch_row();
-                    $origin_title =  $row[0];
+            if ($result->num_rows > 0) {
+                echo "<div class='incoming'>";
+                echo $l["Links to this zettel"].":";
+                echo "<ul>";
+                while($row = $result->fetch_assoc()) {
+                    $origin_name = $row['origin_name'];
+                    $res = $mysqli->query("SELECT title FROM zettel WHERE `name`='$origin_name'");
+                    if ($res) {
+                        $row = $res->fetch_row();
+                        $origin_title =  $row[0];
+                    }
+                    echo "<li><a href='" . $_SERVER['PHP_SELF'] . "?link=$origin_name'>$origin_title</a></li>";
                 }
-                echo "<li><a href='" . $_SERVER['PHP_SELF'] . "?link=$origin_name'>$origin_title</a></li>";
+                echo "</ul></div>";
+            } else {
+                //echo "0 results";
             }
-            echo "</ul></div>";
-        } else {
-            //echo "0 results";
-        }
-    ?>
-          </div>
+        ?>
+    </div>
   
     
     <div class="buttonbox box">

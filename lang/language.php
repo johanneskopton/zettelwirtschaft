@@ -6,7 +6,8 @@
         "Create" => "Create",
         "Edit" => "Edit",
         "Filename" => "Filename",
-        "Links to this zettel" => "Links to this zettel"
+        "Links to this zettel" => "Links to this zettel",
+        "Bibliography" => "Bibliography"
     ];
 
     $german = [
@@ -16,7 +17,8 @@
         "Create" => "Erstellen",
         "Edit" => "Bearbeiten",
         "Filename" => "Dateiname",
-        "Links to this zettel" => "Verweise zu diesem Zettel"
+        "Links to this zettel" => "Verweise zu diesem Zettel",
+        "Bibliography" => "Bibliographie"
     ];
 
     $l = $german;
