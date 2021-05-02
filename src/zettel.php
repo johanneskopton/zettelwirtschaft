@@ -27,8 +27,6 @@
                     echo "<li><a href='" . $_SERVER['PHP_SELF'] . "?link=$origin_name'>$origin_title</a></li>";
                 }
                 echo "</ul></div>";
-            } else {
-                //echo "0 results";
             }
         ?>
     </div>
