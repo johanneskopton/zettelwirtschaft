@@ -8,7 +8,7 @@
 
     $bibtexparser = new BibtexParser();
 
-    if (isset($self_bib_location) && $self_bib_location != ""){
+    if (!empty($self_bib_location)){
         $bibitems = $bibtexparser->parse_file($self_bib_location);
     }
 
@@ -17,7 +17,7 @@
         preg_match_all('/\[cite\:(.+?)\]/m', $content, $citations);
         if (sizeof($citations[0]) > 0){
             echo "<div class='bibliography'><h2>".$l["Bibliography"]."</h2><ol>";
-            if (!isset($self_bib_location) || $self_bib_location == ""){
+            if (!empty($self_bib_location)){
                 echo "No .bib file!";
             }else{
                 for ($i = 0; $i < sizeof($citations[0]); $i++){
