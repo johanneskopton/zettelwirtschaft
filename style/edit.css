@@ -1,22 +1,21 @@
 div.edit_wrapper{
     width: auto;
     padding: 10px;
-    height: auto;
+    position: relative;
 }
 
 form {
     width: 100%;
     padding: 0px;
     margin: 0px;
+    position: relative;
 }
 
 @media only screen and (min-width: 1500px) {
     div.side{
         max-width: 700px;
-
+        position: relative;
         width: 100%;
-        min-height: 90%;
-        display: inline-block;
         float: left;
         margin: 20px;
         text-align: left;
@@ -45,4 +44,8 @@ a.disabled{
     color: #a5a1b1;
     cursor: default;
 
+}
+
+.CodeMirror, .CodeMirror-scroll{
+    height: auto!important;
 }
