@@ -1,7 +1,11 @@
 <html>
     <head>
     <script src="src/codemirror/lib/codemirror.js"></script>
+    <script src="src/codemirror/addon/hint/show-hint.js"></script>
+
     <link rel="stylesheet" href="src/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="src/codemirror/addon/hint/show-hint.css">
+
     <script src="src/codemirror/mode/markdown/markdown.js"></script>
 
     <link rel="shortcut icon" type="image/png" href="style/favicon.png">
@@ -38,36 +42,9 @@
                 <form method="post">
 
                     <div class="edit_wrapper">
-                            <textarea name="code" class="code"><?php
-                                    echo $content;
-                                ?></textarea>
-                            
-                        <script>
-                            var textBox = document.getElementsByName("code")[0];
-                            var title = document.title;
-                            var myCodeMirror = CodeMirror.fromTextArea(textBox, {
-                                lineWrapping: true,
-                                theme: "default",
-                                highlightFormatting: true
-                            });
-                            myCodeMirror.on("change", function(cm,change){
-                                    var viewlink = document.getElementsByName("toview")[0];
-                                    viewlink.classList.add('disabled');
-                                    viewlink.removeAttribute("href");
-                                    document.getElementsByName("zettelkasten_link").forEach(function(element, idx) {
-                                        element.removeAttribute("href");
-                                    });
-                                    document.title = title + "*";
-                                });
-                        
-                            document.addEventListener("keydown", function(e) {
-                            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
-                                e.preventDefault();
-                                document.getElementById("submit").click();
-                            }
-                            }, false);
-                        </script>
-
+                        <?php
+                            include("src/create_editor.php");
+                        ?>
                     </div>
 
                     <div class="buttonbox box">
@@ -78,9 +55,9 @@
                 
             
             <div class="box side">
-            <?php
-                require("src/zettel.php");
-            ?>
+                <?php
+                    include("src/zettel.php");
+                ?>
             </div>
         </div>
     </body>
