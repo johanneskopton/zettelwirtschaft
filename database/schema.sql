@@ -19,7 +19,9 @@ CREATE TABLE `connections` (
 CREATE TABLE `zettel` (
   `id` smallint(6) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
-  `title` varchar(200) DEFAULT NULL
+  `title` varchar(200) DEFAULT NULL,
+  `date_creation` date DEFAULT NULL,
+  `date_modified` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

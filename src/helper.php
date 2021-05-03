@@ -41,6 +41,28 @@
         return get_title(get_content($namespace, $filename));
     }
 
+    function get_creation_date($content){
+        $sep1 = explode("#+CREATED: ", $content, 2);
+        if (sizeof($sep1) > 1){
+            $datestr = trim(explode(PHP_EOL, $sep1[1], 2)[0]);
+            //return date_create_from_format ("Y-m-d", $datestr);
+            return $datestr;
+        } else {
+            return "no date";
+        }
+    }
+
+    function get_modified_date($content){
+        $sep1 = explode("#+LAST_MODIFIED: ", $content, 2);
+        if (sizeof($sep1) > 1){
+            $datestr = trim(explode(PHP_EOL, $sep1[1], 2)[0]);
+            //return date_create_from_format ("Y-m-d", $datestr);
+            return $datestr;
+        } else {
+            return "no date";
+        }
+    }
+
     function find_connections($content){
         preg_match_all('/(\[\[file\:(.+?).org\]\[(.+?)\]\]|\[(?:ztl|ext)\:(.+?)\])/m', $content, $result);
         return $result;

@@ -14,8 +14,9 @@
 
         $title = get_title($content);
 
-
-        $sql = "INSERT INTO zettel (`name`, `title`) VALUES ('$name','$title')";
+        $date_creation = get_creation_date($content);
+        $date_modified = get_modified_date($content);
+        $sql = "INSERT INTO zettel (`name`, `title`, `date_creation`, `date_modified`) VALUES ('$name','$title', '$date_creation', '$date_modified')";
         $mysqli->query($sql);
 
         $connections = find_connections($content);
@@ -34,5 +35,4 @@
         }
         $mysqli->close();
     }
-    //update_db();
 ?>
