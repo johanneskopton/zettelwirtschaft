@@ -5,6 +5,12 @@ div.zettel_wrapper{
     position: relative;
 }
 
+div.overview_wrapper{
+    width: auto;
+    padding: 40px;
+    position: relative;
+}
+
 .side .zettel_wrapper{
     padding-top: 4em;
 }
