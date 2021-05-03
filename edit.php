@@ -28,7 +28,7 @@
 
 
             file_put_contents("zettel/" . $filename . ".org", $content);            
-            update_db();
+            update_db($filename, $content);
         }
         if ($namespace != ""){
             echo "<script>window.location.replace('index.php?link=". $file_id ."');</script>";
