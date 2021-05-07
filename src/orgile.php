@@ -53,10 +53,11 @@ class orgile {
 
     $regex = array(
        // roam
-       '/^\#\+title:{1}\s+?(.+)/i',         # #+TITLE:
+       '/^\#\+title:{1}\s+?(.+)/im',         # #+TITLE:
        '/^\#\+roam_tags:{1}\s+?(.+)/im',     # #+ROAM_TAGS:
        '/^\#\+created:{1}\s+?(.+)/im',       # #+CREATED:
        '/^\#\+last_modified:{1}\s+?(.+)/im', # #+LAST_MODIFIED:
+       '/^:properties:[\s\S]*?:end:(.*)/im', # :PROPERTIES: id :END:
 
 		   // headings
 		   '/^\*{1}\s+?(.+)/m', // * example
@@ -125,7 +126,7 @@ class orgile {
          "<div class=roam_tags>$1</div>",
          "<div class=created>$1</div>",
          "<div class=last_modified>$1</div>",
-
+         "",
 
 		     // headings
 		     "<h2>$1</h2>\n", // * example
