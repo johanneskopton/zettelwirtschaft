@@ -2,15 +2,17 @@
     require_once(__DIR__."/../config/external.php");
 
     function get_content($namespace, $filename){
-        global $external_paths;
+        global $external_paths, $username;
         
-        $base_path = ($namespace=="")?"zettel/":$external_paths[$namespace];
+        $base_path = ($namespace=="")?"zettel/$username/":$external_paths[$namespace];
+
         $path = $base_path . $filename . ".org";
+
         $handle = @fopen($path,"r");
         if ($handle){
             $content = file_get_contents ($path);
         } else {
-            if (isset($_GET["create"]) || $_SERVER['SCRIPT_NAME'] == "/edit.php"){
+            if (isset($_GET["create"]) && $_SERVER['SCRIPT_NAME'] == "/edit.php"){
                 $content  = "#+TITLE: " . explode(".", $filename)[0] . "\n";
                 $content .= "#+ROAM_TAGS: \n";
                 $content .= "#+CREATED: " . date("Y-m-d") . "\n";

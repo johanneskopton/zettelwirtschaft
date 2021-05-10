@@ -13,13 +13,26 @@ div.box {
     margin-top: 0px;
 }
 
+div.wrapper{
+    width: auto;
+    padding: 40px;
+    position: relative;
+}
+
+div.alone{
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+}
+
+
 div.buttonbox{
     text-align: center;
     margin-top: -5;
     display: block;
 }
 
-input.button, a.button {
+button, input.button, a.button {
     border: none;
     width: 6em;
     color: #585560!important;
@@ -34,7 +47,7 @@ input.button, a.button {
     cursor: pointer;
 }
 
-input.button:active, input.button:hover, a.button:active:not(.disabled), a.button:hover:not(.disabled) {
+button:active, button:hover, input.button:active, input.button:hover, a.button:active:not(.disabled), a.button:hover:not(.disabled) {
     background-color: #888888;
 }
 

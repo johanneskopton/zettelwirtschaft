@@ -1,4 +1,3 @@
-<div class="overview_wrapper">
 <h1><?php echo $l["All Zettel"]; ?></h1>
 <?php
     echo "<a href='overview.php?type=creation' class='button'>".$l["Creation date"]."</a>";
@@ -24,7 +23,8 @@
 
     function print_by_date($type){
         global $mysqli;
-        $sql = "SELECT * FROM zettel ORDER BY $type DESC";
+        $username = $_SESSION["user"];
+        $sql = "SELECT * FROM zettel WHERE `user`='$username' ORDER BY $type DESC";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
@@ -37,23 +37,24 @@
                     $date = $row["$type"];
                     echo "$date <ul>";
                 }
-                echo "<li><a href='index.php?link=".$row["name"]."'>".$row["title"]."</a></li>";
+                echo "<li><a href='view.php?link=".$row["name"]."'>".$row["title"]."</a></li>";
             }
         }
     }
 
     function print_alphabetically(){
         global $mysqli;
-        $sql = "SELECT * FROM zettel ORDER BY title ASC";
+        $username = $_SESSION["user"];
+
+        $sql = "SELECT * FROM zettel WHERE `user`='$username' ORDER BY title ASC";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
             echo "<ul>";
             while($row = $result->fetch_assoc()) {
-                echo "<li><a href='index.php?link=".$row["name"]."'>".$row["title"]."</a></li>";
+                echo "<li><a href='view.php?link=".$row["name"]."'>".$row["title"]."</a></li>";
             }
             echo "</ul>";
         }
     }
 ?>
-</div>

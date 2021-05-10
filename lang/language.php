@@ -11,7 +11,13 @@
         "All Zettel" => "All Zettel",
         "Creation date" => "Creation date",
         "Last modified" => "Modified",
-        "Alphabetical" => "Alphabetical"
+        "Alphabetical" => "Alphabetical",
+        "Login" => "Login",
+        "Username" => "Username",
+        "Password" => "Password",
+        "Remember me" => "Remember me",
+        "Register" => "Create Zettelkasten",
+        "Email" => "Email"
     ];
 
     $german = [
@@ -26,7 +32,13 @@
         "All Zettel" => "Alle Zettel",
         "Creation date" => "Erstelldatum",
         "Last modified" => "Geändert",
-        "Alphabetical" => "Alphabetisch"
+        "Alphabetical" => "Alphabetisch",
+        "Login" => "Anmelden",
+        "Username" => "Nutzer*innenname",
+        "Password" => "Passwort",
+        "Remember me" => "Login merken",
+        "Register" => "Zettelkasten erstellen",
+        "Email" => "E-Mail-Adresse"
     ];
 
     $l = $german;

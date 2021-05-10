@@ -10,7 +10,7 @@
         <?php
             require_once(__DIR__."/../config/db_connect.php");
             $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-            $sql = "SELECT origin_name FROM connections WHERE target_name='$file_id'";
+            $sql = "SELECT origin_name FROM connections WHERE target_name='$file_id' AND target_user='$username'";
             $result = $mysqli->query($sql);
 
             if ($result->num_rows > 0) {
@@ -36,7 +36,7 @@
         <?php
             $filepath_bits = explode("/", $_SERVER["SCRIPT_NAME"]);
             if (end($filepath_bits ) == "edit.php"){
-                echo "<a href='index.php?link=$filename' name='toview' class='button'>".$l["View"]."</a>";
+                echo "<a href='view.php?link=$filename' name='toview' class='button'>".$l["View"]."</a>";
             } else {
                 if ($namespace == ""){
                     echo "<a href='edit.php?link=$filename' class='button'>".$l["Edit"]."</a>";

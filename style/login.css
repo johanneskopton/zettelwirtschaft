@@ -1,0 +1,22 @@
+.login_container label.textlabel{
+    display: inline-block;
+    width: 10em;
+}
+
+.login_container input{
+    margin-bottom: 10px;
+}
+
+.login_container button{
+    margin-left: 0px;
+}
+
+h1{
+    margin-top: 0px;
+}
+
+button.register{
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}

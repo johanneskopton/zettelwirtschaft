@@ -1,4 +1,5 @@
 <?php
+    $username = $_SESSION["user"];
     require_once("helper.php");
     if (isset($_GET["link"]) && $_GET["link"] != "") {
         $file_id = $_GET["link"];

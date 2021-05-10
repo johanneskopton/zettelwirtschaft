@@ -8,7 +8,6 @@
     <?php
         session_start();
         session_unset();
-
         require_once("lang/language.php");
     ?>
     <title>Zettelwirtschaft</title>
@@ -16,19 +15,19 @@
     <body>
     <div class="box alone">
         <div class="wrapper">
-        <h1><?php echo $l["Login"]; ?></h1>
-        <form action="overview.php?type=modified" method="post">
+        <h1><?php echo $l["Register"]; ?></h1>
+        <form action="view.php" method="post">
             <div class="login_container">
                 <label for="uname" class="textlabel"><?php echo $l["Username"]; ?></label>
                 <input type="text" name="uname" required>
                 <br>
+                <label for="mail" class="textlabel"><?php echo $l["Email"]; ?></label>
+                <input type="email" name="mail" required>
+                <br>
                 <label for="psw" class="textlabel"><?php echo $l["Password"]; ?></label>
                 <input type="password" name="psw" required>
                 <br>
-                <label>
-                <input type="checkbox" checked="checked" name="remember"> <?php echo $l["Remember me"]; ?>
-                </label><br>
-                <button type="submit" name="login"><?php echo $l["Login"]; ?></button>
+                <button type="submit" class="register" name="register"><?php echo $l["Register"]; ?></button>
 
             </div>
         </form> 

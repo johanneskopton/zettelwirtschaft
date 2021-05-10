@@ -6,16 +6,24 @@
     <link rel="stylesheet" type="text/css" href="style/zettel.css"/>
 
     <?php
+        session_start();
         require_once("lang/language.php");
-
     ?>
     </head>
     <body>
     <div class="box alone">
-        <?php
-            include("src/get_overview.php");
-        ?>
-    </div>
+        <div class="wrapper">
 
+            <?php
+                include_once("src/login_action.php");
+
+                if(isset($_SESSION["user"])){
+                    include("src/get_overview.php");
+                }else{
+                    echo "<a href='index.php'>Please log in first.</a>";
+                }
+        ?>
+        </div>
+    </div>
     </body>
 </html>

@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="style/edit.css"/>
 
     <?php
+        session_start();
+        if(isset($_SESSION["user"])){
         require_once("src/orgile.php");
         require_once("src/get_zettel.php");
         require_once("src/update_db.php");
@@ -27,11 +29,11 @@
             $content = preg_replace('/^(\#\+last_modified:){1}\s+?(.+)/im', "$1 ". date("Y-m-d"), $content);
 
 
-            file_put_contents("zettel/" . $filename . ".org", $content);            
+            file_put_contents("zettel/$username/$filename.org", $content);            
             update_db($filename, $content);
         }
         if ($namespace != ""){
-            echo "<script>window.location.replace('index.php?link=". $file_id ."');</script>";
+            echo "<script>window.location.replace('view.php?link=". $file_id ."');</script>";
         }
 
     ?>
@@ -60,5 +62,18 @@
                 ?>
             </div>
         </div>
+        <?php 
+            // if not logged in
+            }else{
+        ?>
+        <body>
+        <div class="box alone">
+        <div class="wrapper">
+            <a href="index.php">Please log in first.</a>
+        </div>
+            </div>
+        <?php
+            }
+        ?>
     </body>
 </html>

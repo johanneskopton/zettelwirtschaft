@@ -46,7 +46,7 @@ class orgile {
   // NOTE: careful with changing order as links may be "glyphed"
 
   function orgilise($text) {
-    global $namespace, $self_namespace;
+    global $namespace, $username;
     $script_name = $_SERVER['PHP_SELF'];
     $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
   
@@ -112,7 +112,7 @@ class orgile {
 		   '/#\+begin_src\s?(\S+?)\n([\s\S]*?)\s#\+end_src/mi',
 
 		   // links
-       '/\[\[ext\:'.$self_namespace.'\:(.+?)\]\[(.+?)\]\]/m', // backlink to this zettelkasten
+       '/\[\[ext\:'.$username.'\:(.+?)\]\[(.+?)\]\]/m', // link from external to this zettelkasten
        '/\[\[file\:(.+?).org\]\[(.+?)\]\]/m', // intern
        '/\[\[ztl\:(.+?)\]\[(.+?)\]\]/m', // intern
        '/\[\[ext\:(.+?)\]\[(.+?)\]\]/m', // other orgroam zettelkasten
@@ -210,10 +210,10 @@ class orgile {
     $regex = '/\[ext\:(.+?)\]/m';
 
     function callback_ext($pattern){
-      global $script_name, $self_namespace;
+      global $script_name, $username;
       $filename = explode(":", $pattern[1])[1];
       $namespace = explode(":", $pattern[1])[0];
-      $namespace = $namespace == $self_namespace?"":$namespace;
+      $namespace = $namespace == $username?"":$namespace;
       $linktitle = get_title_from_name($namespace, $filename);
       $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
       return '<a href="'.$script_name.'?link='.$namespace_prefix.$filename.'" name="zettelkasten_link" class="external_zettelkasten" title="'.$linktitle.'">'.$linktitle.'</a>';
