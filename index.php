@@ -13,7 +13,7 @@
     ?>
     <title>Zettelwirtschaft</title>
     </head>
-    <body>
+    <body class="home">
     <div class="box alone">
         <div class="wrapper">
         <h1><?php echo $l["Login"]; ?></h1>

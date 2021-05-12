@@ -1,3 +1,8 @@
+body.home{
+    background-image: url(kasten_background.jpg);
+    background-size: 100%;
+}
+
 .login_container label.textlabel{
     display: inline-block;
     width: 10em;
