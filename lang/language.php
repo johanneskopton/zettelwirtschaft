@@ -5,7 +5,7 @@
         "New" => "New",
         "Create" => "Create",
         "Edit" => "Edit",
-        "Filename" => "Filename",
+        "Filename" => "Filename for new Zettel",
         "Links to this zettel" => "Links to this zettel",
         "Bibliography" => "Bibliography",
         "All Zettel" => "All Zettel",
@@ -13,11 +13,15 @@
         "Last modified" => "Modified",
         "Alphabetical" => "Alphabetical",
         "Login" => "Login",
+        "Logout" => "Logout",
         "Username" => "Username",
         "Password" => "Password",
         "Remember me" => "Remember me",
         "Register" => "Create Zettelkasten",
-        "Email" => "Email"
+        "Email" => "Email",
+        "Menu" => "Menu",
+        "Delete" => "Delete",
+        "Delete zettel" => "Delete zettel"
     ];
 
     $german = [
@@ -26,7 +30,7 @@
         "New" => "Neu",
         "Create" => "Erstellen",
         "Edit" => "Bearbeiten",
-        "Filename" => "Dateiname",
+        "Filename" => "Dateiname für neuen Zettel",
         "Links to this zettel" => "Verweise zu diesem Zettel",
         "Bibliography" => "Bibliographie",
         "All Zettel" => "Alle Zettel",
@@ -34,11 +38,15 @@
         "Last modified" => "Geändert",
         "Alphabetical" => "Alphabetisch",
         "Login" => "Anmelden",
+        "Logout" => "Abmelden",
         "Username" => "Nutzer*innenname",
         "Password" => "Passwort",
         "Remember me" => "Login merken",
         "Register" => "Zettelkasten erstellen",
-        "Email" => "E-Mail-Adresse"
+        "Email" => "E-Mail-Adresse",
+        "Menu" => "Menü",
+        "Delete" => "Löschen",
+        "Delete zettel" => "Zettel löschen"
     ];
 
     $l = $german;

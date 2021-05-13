@@ -20,7 +20,7 @@ h1 {
     font-weight: 400;
 }
 
-a, a:visited {
+a:not(.button), a:not(.button):visited {
     color: #552086;
     text-decoration: underline;
 }
@@ -73,9 +73,14 @@ div.bibliography ol li:before {
 }
 
 
-div#new_name{
+div#menu{
     display: none;
     padding-bottom: 10px;
+    background-color: #dddddd;
+}
+
+div#menu form{
+    margin-bottom: 0px;
 }
 
 .roam_tags, .created, .last_modified{

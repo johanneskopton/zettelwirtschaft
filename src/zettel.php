@@ -43,31 +43,8 @@
                 }
             }
         ?>
-        <a class='button' onclick="toggleForm()"><?php echo $l["New"];?></a>
-        <div id="new_name">
-            <form method="get" action="edit.php" target="_blank">
-            <?php echo $l["Filename"];?>: <input type="text" name="link" id="new_name_text" autofocus>
-                <input class="button" type="submit" name="create" value="<?php echo $l["Create"];?>">
-            </form>
-        </div>
-        <script>
-            function setCursorPosition(ctrl, pos) {
-                if (ctrl.setSelectionRange) {
-                    ctrl.focus();
-                    ctrl.setSelectionRange(pos, pos);
-                }
-            }
-            function toggleForm(){
-                var new_name_box = document.getElementById("new_name");
-                var new_name_text = document.getElementById("new_name_text");
-                var display = new_name_box.style.display;
-                if (display == "block"){
-                    new_name_box.style.display = "none";
-                } else {
-                    new_name_box.style.display = "block";
-                    setCursorPosition(new_name_text, 0);
-                    new_name_text.focus();
-                }
-            }
-        </script>
+        <a class='button' onclick="toggleForm()"><?php echo $l["Menu"];?></a>
+        <?php
+            include("src/menu.php");
+        ?>
     </div>

@@ -15,7 +15,10 @@
         <div class="wrapper">
 
             <?php
+                $username = $_SESSION["user"];
                 include_once("src/login_action.php");
+                include_once("src/delete_action.php");
+
 
                 if(isset($_SESSION["user"])){
                     include("src/get_overview.php");

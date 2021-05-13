@@ -35,7 +35,7 @@ div.buttonbox{
 button, input.button, a.button {
     border: none;
     width: 6em;
-    color: #585560!important;
+    color: #585560;
     font-size: 1em;
     font-weight: 400;
     text-align: center;
@@ -47,8 +47,14 @@ button, input.button, a.button {
     cursor: pointer;
 }
 
-button:active, button:hover, input.button:active, input.button:hover, a.button:active:not(.disabled), a.button:hover:not(.disabled) {
+button:active, button:hover, .button:active:not(.disabled), .button:hover:not(.disabled) {
     background-color: #888888;
+}
+
+.disabled{
+    color: #a5a1b1!important;
+    cursor: default;
+
 }
 
 div.fatal{
