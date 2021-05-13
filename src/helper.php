@@ -2,7 +2,7 @@
     require_once(__DIR__."/../config/external.php");
 
     function get_content($namespace, $filename){
-        global $external_paths, $username;
+        global $external_paths, $username, $l;
         
         $base_path = ($namespace=="")?"zettel/$username/":$external_paths[$namespace];
 
@@ -22,20 +22,20 @@
                 fwrite($file, $content);
                 fclose($file);
             }else{
-                //echo "<div class='fatal'>Zettel not found</div></body></html>";
-                //exit();
-                return "Zettel not found!";
+                return $l["Zettel not found"] . "\n  [[overview.php][".$l["All Zettel"]."]]";
+
             }
         }
         
         return $content;
     }
     function get_title($content){
+        global $l;
         $sep1 = explode("#+TITLE: ", $content, 2);
         if (sizeof($sep1) > 1){
             return trim(explode(PHP_EOL, $sep1[1], 2)[0]);
         } else {
-            return "no Title";
+            return $l["no title"];
         }
     }
 

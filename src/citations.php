@@ -8,37 +8,41 @@
 
     $bibtexparser = new BibtexParser();
 
-    if (!empty($self_bib_location)){
-        $bibitems = $bibtexparser->parse_file($self_bib_location);
-    }
-
-    function print_citations($content){
-        global $l;
-        preg_match_all('/\[cite\:(.+?)\]/m', $content, $citations);
-        if (sizeof($citations[0]) > 0){
-            echo "<div class='bibliography'><h2>".$l["Bibliography"]."</h2><ol>";
-            if (!empty($self_bib_location)){
-                echo "No .bib file!";
-            }else{
-                for ($i = 0; $i < sizeof($citations[0]); $i++){
-                    if ($citations[1][$i] != ""){
-                        $key = $citations[1][$i];
-                        print_citation($key, $i);
+    $self_bib_location = "bibliography/$username.bib";
+        if (is_file($self_bib_location)){
+            $bibitems = $bibtexparser->parse_file($self_bib_location);
+        }
+    
+        function print_citations($content){
+            global $l, $self_bib_location;
+            preg_match_all('/\[cite\:(.+?)\]/m', $content, $citations);
+            if (sizeof($citations[0]) > 0){
+                echo "<div class='bibliography'><h2>".$l["Bibliography"]."</h2><ol>";
+                if (!is_file($self_bib_location)){
+                    echo $l["No bibliography file"];
+                }else{
+                    for ($i = 0; $i < sizeof($citations[0]); $i++){
+                        if ($citations[1][$i] != ""){
+                            $key = $citations[1][$i];
+                            print_citation($key, $i);
+                        }
                     }
                 }
+                echo "</ol></div>";
             }
-            echo "</ol></div>";
         }
-    }
 
-    function print_citation($key, $i){
-        global $bibitems;
-        foreach($bibitems as &$item) {
-            if ($item["reference"] == $key){
-                echo "<li id='bib_".($i+1)."'>";
-                echo BibtexFormatter::format($item);
-                echo "</li>";
+        function print_citation($key, $i){
+            global $bibitems;
+            foreach($bibitems as &$item) {
+                if ($item["reference"] == $key){
+                    echo "<li id='bib_".($i+1)."'>";
+                    echo BibtexFormatter::format($item);
+                    echo "</li>";
+                }
             }
+            
         }
-    }
+
+        print_citations($content);
 ?>

@@ -8,6 +8,13 @@
     <?php
         if ($namespace == ""){
     ?>
+    <form enctype="multipart/form-data" action="" method="POST">
+        <!-- MAX_FILE_SIZE muss vor dem Datei-Eingabefeld stehen -->
+        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+        <!-- Der Name des Eingabefelds bestimmt den Namen im $_FILES-Array -->
+        <input name="bibfile" type="file"><input class="button" type="submit" style="width: 12em;" name="bib_submit" value="<?php echo $l["Upload bibtex"];?>">
+    </form>
+
     <form method="post" action="overview.php">
         <label for="delete_check"><?php echo $l["Delete zettel"];?></label><input type="checkbox" id="delete_check" name="delete_check" onchange='deleteCheckChange(this);' value="yes">
         <input type="hidden" name="delete_name" value="<?php echo $filename; ?>">

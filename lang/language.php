@@ -21,7 +21,14 @@
         "Email" => "Email",
         "Menu" => "Menu",
         "Delete" => "Delete",
-        "Delete zettel" => "Delete zettel"
+        "Delete zettel" => "Delete zettel",
+        "Upload bibtex" => "Upload bibtex",
+        "No bibliography file" => "No bibliography file",
+        "Zettel not found" => "Zettel not found",
+        "no title" => "no title",
+        "Wrong password" => "Wrong password",
+        "No user with that username" => "No user with that username",
+        "Please log in first" => "Please log in first"
     ];
 
     $german = [
@@ -46,7 +53,14 @@
         "Email" => "E-Mail-Adresse",
         "Menu" => "Menü",
         "Delete" => "Löschen",
-        "Delete zettel" => "Zettel löschen"
+        "Delete zettel" => "Zettel löschen",
+        "Upload bibtex" => "Bibtex hochladen",
+        "No bibliography file" => "Keine Bibliographie-Datei",
+        "Zettel not found" => "Zettel nicht gefunden",
+        "no title" => "kein Titel",
+        "Wrong password" => "Falsches Passwort",
+        "No user with that username" => "Nutzer*innenname nicht gefunden",
+        "Please log in first" => "Bitte zuerst anmelden"
     ];
 
     $l = $german;

@@ -14,10 +14,10 @@
             if (password_verify($pass, $hash)){
                 $_SESSION['user'] = $name;
             } else {
-                echo "Wrong password!<br>";
+                echo $l["Wrong password"]."!<br>";
             }
         } else {
-            echo "No user with that username!<br>";
+            echo $l["No user with that username"]."!<br>";
         }
     }
 ?>
