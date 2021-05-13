@@ -25,9 +25,9 @@
                 <label for="psw" class="textlabel"><?php echo $l["Password"]; ?></label>
                 <input type="password" name="psw" required>
                 <br>
-                <label>
+                <!--<label>
                 <input type="checkbox" checked="checked" name="remember"> <?php echo $l["Remember me"]; ?>
-                </label><br>
+                </label><br>-->
                 <button type="submit" name="login"><?php echo $l["Login"]; ?></button>
 
             </div>
