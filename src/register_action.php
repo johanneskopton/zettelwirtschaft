@@ -18,10 +18,10 @@
 
             $sql = "INSERT INTO user (`name`, `email`, `password`) VALUES ('$name','$email', '$hash')";
             if ($mysqli->query($sql) === TRUE) {
-                //echo "New Zettelkasten created successfully!<br><br>";
-
-                $new_dir_path = __DIR__."/../zettel/$name";
-                mkdir($new_dir_path);
+                $new_dir_path = "zettel/$name";
+                if (!file_exists($new_dir_path)) {
+                    mkdir($new_dir_path, 0777, True);
+                }
 
                 $content  = "#+TITLE: Start\n";
                 $content .= "#+ROAM_TAGS: Start\n";
@@ -29,12 +29,18 @@
                 $content .= "#+LAST_MODIFIED: " . date("Y-m-d") . "\n";
                 $content .= file_get_contents(__DIR__."/startzettel_template.txt");
 
-                $file = fopen($new_dir_path ."/start.org", "w");
-                fwrite($file, $content);
-                fclose($file);
                 $_SESSION['user'] = $name;
-
                 $username = $name;
+                $new_start_path = $new_dir_path ."/start.org";
+                if (!file_exists($new_start_path )) {
+                    $file = fopen($new_start_path , "w");
+                    fwrite($file, $content);
+                    fclose($file);
+                }else{
+                    require_once("src/helper.php");
+                    $content = get_content("", "start");
+                }                
+
                 update_db("start", $content);
             } else {
                 echo "Error: " . $sql . "<br>" . $mysqli->error . "<br>";

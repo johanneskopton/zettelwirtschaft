@@ -15,15 +15,14 @@
         <div class="wrapper">
 
             <?php
-                $username = $_SESSION["user"];
                 include_once("src/login_action.php");
-                include_once("src/delete_action.php");
-
-
+                
                 if(isset($_SESSION["user"])){
+                    $username = $_SESSION["user"];
+                    include_once("src/delete_action.php");
                     include("src/get_overview.php");
                 }else{
-                    echo "<a href='index.php'>Please log in first.</a>";
+                    echo "<a href='index.php'>".$l["Please log in first"]."</a>";
                 }
         ?>
         </div>
