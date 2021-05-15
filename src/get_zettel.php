@@ -17,6 +17,7 @@
         $file_id = "start";
         $filename = "start";
         $namespace = "";
+        $zetteluser = $username;
     }
     //$path = $base_path . $filename;
 
