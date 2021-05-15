@@ -1,10 +1,25 @@
 <?php
     require_once(__DIR__."/../config/external.php");
+    require_once(__DIR__."/../config/db_connect.php");
+    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+    $access = True;
 
     function get_content($namespace, $filename){
-        global $external_paths, $username, $l;
-        
-        $base_path = ($namespace=="")?"zettel/$username/":$external_paths[$namespace];
+        global $external_paths, $username, $l, $mysqli, $access;
+        if ($namespace==""){
+            $base_path = "zettel/$username/";
+        } elseif (file_exists("zettel/$namespace/")){
+            $base_path = "zettel/$namespace/";
+            $sql = "SELECT * FROM zettel WHERE `user`='$namespace' AND `name`='$filename' AND `access`=1";
+            $result = $mysqli->query($sql);
+            $access = (mysqli_num_rows($result) == 1);
+        } elseif (array_key_exists($namespace, $external_paths)){
+            $base_path = $external_paths[$namespace];
+        } else {
+            echo "Namespace not found!<br>";
+        }
+        #$base_path = ($namespace=="")?"zettel/$username/":$external_paths[$namespace];
 
         $path = $base_path . $filename . ".org";
 
@@ -26,6 +41,7 @@
 
             }
         }
+        
         
         return $content;
     }

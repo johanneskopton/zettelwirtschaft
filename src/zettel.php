@@ -1,5 +1,6 @@
     <div class="zettel_wrapper">
         <?php
+            if ($access){
             $orgile = new orgile();
             echo $orgile->orgileThis($content);
         ?>
@@ -9,7 +10,7 @@
         <?php
             require_once(__DIR__."/../config/db_connect.php");
             $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-            $sql = "SELECT origin_name FROM connections WHERE target_name='$file_id' AND target_user='$username'";
+            $sql = "SELECT origin_name, origin_user FROM connections WHERE target_name='$filename' AND target_user='$zetteluser'";
             $result = $mysqli->query($sql);
 
             if ($result->num_rows > 0) {
@@ -18,14 +19,21 @@
                 echo "<ul>";
                 while($row = $result->fetch_assoc()) {
                     $origin_name = $row['origin_name'];
-                    $res = $mysqli->query("SELECT title FROM zettel WHERE `name`='$origin_name'");
+                    $origin_user = $row['origin_user'];
+
+                    $res = $mysqli->query("SELECT title FROM zettel WHERE `name`='$origin_name' AND `user`='$origin_user'");
                     if ($res) {
                         $row = $res->fetch_row();
                         $origin_title =  $row[0];
                     }
-                    echo "<li><a href='" . $_SERVER['PHP_SELF'] . "?link=$origin_name'>$origin_title</a></li>";
+
+                    $link_name = ($origin_user==$username)?$origin_name:$origin_user.":".$origin_name;
+                    echo "<li><a href='" . $_SERVER['PHP_SELF'] . "?link=$link_name'>$origin_title</a></li>";
                 }
                 echo "</ul></div>";
+            }
+            }else{
+                echo "Access denied!";
             }
         ?>
     </div>

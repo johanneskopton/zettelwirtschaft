@@ -24,7 +24,8 @@ CREATE TABLE `zettel` (
   `title` varchar(100) DEFAULT NULL,
   `user` varchar(100) DEFAULT NULL,
   `date_creation` date DEFAULT NULL,
-  `date_modified` date DEFAULT NULL
+  `date_modified` date DEFAULT NULL,
+  `access` smallint(6) UNSIGNED DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

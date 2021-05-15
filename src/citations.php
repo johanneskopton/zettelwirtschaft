@@ -8,7 +8,7 @@
 
     $bibtexparser = new BibtexParser();
 
-    $self_bib_location = "bibliography/$username.bib";
+    $self_bib_location = "bibliography/$zetteluser.bib";
         if (is_file($self_bib_location)){
             $bibitems = $bibtexparser->parse_file($self_bib_location);
         }

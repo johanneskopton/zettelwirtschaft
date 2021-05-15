@@ -6,9 +6,11 @@
         if (strpos($file_id, ":")) {
             $filename = explode(":", $file_id)[1];
             $namespace = explode(":", $file_id)[0];
+            $zetteluser = $namespace;
         } else {
             $filename = $file_id;
             $namespace = "";
+            $zetteluser = $username;
         }
         
     } else {

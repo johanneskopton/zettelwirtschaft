@@ -28,7 +28,10 @@
         "no title" => "no title",
         "Wrong password" => "Wrong password",
         "No user with that username" => "No user with that username",
-        "Please log in first" => "Please log in first"
+        "Please log in first" => "Please log in first",
+        "Manage access rights" => "Manage access rights",
+        "Make public" => "Make public",
+        "Toggle all" => "Toggle all"
     ];
 
     $german = [
@@ -60,7 +63,10 @@
         "no title" => "kein Titel",
         "Wrong password" => "Falsches Passwort",
         "No user with that username" => "Nutzer*innenname nicht gefunden",
-        "Please log in first" => "Bitte zuerst anmelden"
+        "Please log in first" => "Bitte zuerst anmelden",
+        "Manage access rights" => "Zugriffsrechte verwalten",
+        "Make public" => "Öffentlich machen",
+        "Toggle all" => "Alle umschalten"
     ];
 
     $l = $german;

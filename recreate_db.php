@@ -46,7 +46,7 @@
                             } elseif ($connections[4][$i] != ""){
                                 $targetname = $connections[4][$i];
                             }
-                            echo "$targetname<br>";
+                            // echo "$targetname<br>";
                             if (strpos($targetname, ":")){
                                 $target_zettel = explode(":", $targetname)[1];
                                 $target_user = explode(":", $targetname)[0];
