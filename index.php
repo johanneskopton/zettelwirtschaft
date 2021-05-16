@@ -17,7 +17,7 @@
     <div class="box alone">
         <div class="wrapper">
         <h1><?php echo $l["Login"]; ?></h1>
-        <form action="overview.php?type=modified" method="post">
+        <form action="view.php" method="post">
             <div class="login_container">
                 <label for="uname" class="textlabel"><?php echo $l["Username"]; ?></label>
                 <input type="text" name="uname" required>

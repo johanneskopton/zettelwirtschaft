@@ -11,6 +11,8 @@
 
 
         include_once("src/register_action.php");
+        include_once("src/login_action.php");
+
 
         if(isset($_SESSION["user"])){
         require_once("src/orgile.php");

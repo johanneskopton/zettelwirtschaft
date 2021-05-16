@@ -15,7 +15,7 @@
         <div class="wrapper">
 
             <?php
-                include_once("src/login_action.php");
+                //include_once("src/login_action.php");
                 
                 if(isset($_SESSION["user"])){
                     $username = $_SESSION["user"];
