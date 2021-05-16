@@ -29,7 +29,7 @@
         "Wrong password" => "Wrong password",
         "No user with that username" => "No user with that username",
         "Please log in first" => "Please log in first",
-        "Manage access rights" => "Manage access rights",
+        "Manage access rights" => "Access rights",
         "Make public" => "Make public",
         "Toggle all" => "Toggle all"
     ];
@@ -64,7 +64,7 @@
         "Wrong password" => "Falsches Passwort",
         "No user with that username" => "Nutzer*innenname nicht gefunden",
         "Please log in first" => "Bitte zuerst anmelden",
-        "Manage access rights" => "Zugriffsrechte verwalten",
+        "Manage access rights" => "Zugriffsrechte",
         "Make public" => "Öffentlich machen",
         "Toggle all" => "Alle umschalten"
     ];

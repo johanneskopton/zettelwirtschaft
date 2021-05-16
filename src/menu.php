@@ -3,8 +3,6 @@
     <?php echo $l["Filename"];?>: <input type="text" name="link" id="new_name_text" autofocus>
         <input class="button" type="submit" name="create" value="<?php echo $l["Create"];?>">
     </form>
-    <a class="button" href="overview.php"><?php echo $l["All Zettel"];?></a>
-    <a class="button" href="index.php"><?php echo $l["Logout"];?></a>
     <?php
         if ($namespace == ""){
     ?>
@@ -23,7 +21,11 @@
     <?php
         }
     ?>
+<a class="button" href="overview.php"><?php echo $l["All Zettel"];?></a>
+<a class="button" href="access_rights.php" style="width:10em;"><?php echo $l["Manage access rights"];?></a>
+<a class="button" href="index.php"><?php echo $l["Logout"];?></a>
 </div>
+
 <script>
     function setCursorPosition(ctrl, pos) {
         if (ctrl.setSelectionRange) {
