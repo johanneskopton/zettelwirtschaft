@@ -22,9 +22,7 @@
         }
     ?>
 <?php
-    if ($namespace != ""){
-        $overview_name_link = "?user=$namespace";
-    }
+    $overview_name_link = ($namespace != "")?"?user=$namespace":"";
 ?>
 <a class="button" href="overview.php<?php echo $overview_name_link;?>"><?php echo $l["All Zettel"];?></a>
 <a class="button" href="access_rights.php" style="width:10em;"><?php echo $l["Manage access rights"];?></a>
