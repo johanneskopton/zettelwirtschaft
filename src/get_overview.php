@@ -1,8 +1,25 @@
-<h1><?php echo $l["All Zettel"]; ?></h1>
 <?php
-    echo "<a href='overview.php?type=creation' class='button'>".$l["Creation date"]."</a>";
-    echo "<a href='overview.php?type=modified' class='button'>".$l["Last modified"]."</a>";
-    echo "<a href='overview.php?type=alphabetical' class='button'>".$l["Alphabetical"]."</a>";
+    $username = $_SESSION["user"];
+
+
+    if (isset($_GET["user"]) && $_GET["user"] != $username){
+        $overviewuser = $_GET["user"];
+        $extern = True;
+    }else{
+        $overviewuser = $username;
+        $extern = False;
+    }
+
+    echo "<h1>";
+    echo $l["All Zettel"];
+    if ($extern){
+        echo " (".$overviewuser.")";
+    }
+    echo "</h1>";
+
+    echo "<a href='overview.php?user=$overviewuser&type=creation' class='button'>".$l["Creation date"]."</a>";
+    echo "<a href='overview.php?user=$overviewuser&type=modified' class='button'>".$l["Last modified"]."</a>";
+    echo "<a href='overview.php?user=$overviewuser&type=alphabetical' class='button'>".$l["Alphabetical"]."</a>";
     echo "<br>";
 
     require_once(__DIR__."/../config/db_connect.php");
@@ -22,9 +39,9 @@
 
 
     function print_by_date($type){
-        global $mysqli;
-        $username = $_SESSION["user"];
-        $sql = "SELECT * FROM zettel WHERE `user`='$username' ORDER BY $type DESC";
+        global $mysqli, $overviewuser, $extern;
+        $public_filter = $extern?" AND `access`=1":"";
+        $sql = "SELECT * FROM zettel WHERE `user`='$overviewuser'$public_filter ORDER BY $type DESC";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
@@ -37,24 +54,29 @@
                     $date = $row["$type"];
                     echo "$date <ul>";
                 }
-                echo "<li><a href='view.php?link=".$row["name"]."'>".$row["title"]."</a></li>";
+                print_link($row["name"], $row["title"]);
             }
         }
     }
 
     function print_alphabetically(){
-        global $mysqli;
-        $username = $_SESSION["user"];
-
-        $sql = "SELECT * FROM zettel WHERE `user`='$username' ORDER BY title ASC";
+        global $mysqli, $overviewuser, $extern;
+        $public_filter = $extern?" AND `access`=1":"";
+        $sql = "SELECT * FROM zettel WHERE `user`='$overviewuser'$public_filter ORDER BY title ASC";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
             echo "<ul>";
             while($row = $result->fetch_assoc()) {
-                echo "<li><a href='view.php?link=".$row["name"]."'>".$row["title"]."</a></li>";
+                print_link($row["name"], $row["title"]);
             }
             echo "</ul>";
         }
+    }
+
+    function print_link($name, $title){
+        global $extern, $overviewuser;
+        $namespace_string = $extern?$overviewuser.":":"";
+        echo "<li><a href='view.php?link=$namespace_string$name'>$title</a></li>";
     }
 ?>

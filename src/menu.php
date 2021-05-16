@@ -21,7 +21,12 @@
     <?php
         }
     ?>
-<a class="button" href="overview.php"><?php echo $l["All Zettel"];?></a>
+<?php
+    if ($namespace != ""){
+        $overview_name_link = "?user=$namespace";
+    }
+?>
+<a class="button" href="overview.php<?php echo $overview_name_link;?>"><?php echo $l["All Zettel"];?></a>
 <a class="button" href="access_rights.php" style="width:10em;"><?php echo $l["Manage access rights"];?></a>
 <a class="button" href="index.php"><?php echo $l["Logout"];?></a>
 </div>
