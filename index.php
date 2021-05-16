@@ -31,7 +31,9 @@
                 <button type="submit" name="login"><?php echo $l["Login"]; ?></button>
 
             </div>
-        </form> 
+        </form>
+        <br>
+        <a href="register.php"><?php echo $l["Register"]; ?></a>
 
         </div>
     </div>
