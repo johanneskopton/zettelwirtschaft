@@ -30,7 +30,6 @@
         $file_id = $_GET["link"];
         $filename = explode(":", $file_id)[1];
         $namespace = explode(":", $file_id)[0];
-
         $sql = "SELECT * FROM zettel WHERE `user`='$namespace' AND `name`='$filename' AND `access`=1";
         $result = $mysqli->query($sql);
         if ($result->num_rows == 1) {
@@ -47,6 +46,16 @@
                     # TODO check public
                     echo "$name\n";
                 }
+            }
+        }
+    }elseif(isset($_GET["bib"]) && $_GET["bib"] != ""){
+        $name = $_GET["bib"];
+        $sql = "SELECT * FROM zettel WHERE `user`='$name' AND `access`=1";
+        $result = $mysqli->query($sql);
+        if ($result->num_rows >= 1) {
+            $bib_location = "bibliography/$name.bib";
+            if (is_file($bib_location)){
+                echo file_get_contents($bib_location);
             }
         }
     }else{
