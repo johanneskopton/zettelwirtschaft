@@ -33,7 +33,7 @@
                 echo "</ul></div>";
             }
             }else{
-                echo "Access denied!";
+                echo $l["Access denied"];
             }
         ?>
     </div>

@@ -13,6 +13,7 @@
             $hash = $res->fetch_row()[0];
             if (password_verify($pass, $hash)){
                 $_SESSION['user'] = $name;
+                $_SESSION['pass'] = $pass;
             } else {
                 echo $l["Wrong password"]."!<br>";
             }

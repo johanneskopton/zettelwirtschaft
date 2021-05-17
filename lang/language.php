@@ -31,7 +31,8 @@
         "Please log in first" => "Please log in first",
         "Manage access rights" => "Access rights",
         "Make public" => "Make public",
-        "Toggle all" => "Toggle all"
+        "Toggle all" => "Toggle all",
+        "Access denied" => "Access denied"
     ];
 
     $german = [
@@ -66,7 +67,8 @@
         "Please log in first" => "Bitte zuerst anmelden",
         "Manage access rights" => "Zugriffsrechte",
         "Make public" => "Öffentlich machen",
-        "Toggle all" => "Alle umschalten"
+        "Toggle all" => "Alle umschalten",
+        "Access denied" => "Zugriff verweigert"
     ];
 
     $l = $german;

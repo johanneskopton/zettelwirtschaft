@@ -1,11 +1,84 @@
 <?php
+    session_start();
+    $username = $_SESSION["user"];
+
+
     require_once("config/db_connect.php");
     require_once("src/helper.php");
     require_once("config/external.php");
+    require_once("lang/language.php");
+
+
+    function get_external_list($external_user){
+        global $external_paths, $username;
+
+        $base_path = $external_paths[$external_user];
+        $path = $base_path . "get_raw.php?list_all=$external_user";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $path);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        $credentials = array('name' => $username, 'pass' => $_SESSION['pass']);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($credentials));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $list = curl_exec($ch);
+        curl_close($ch);
+        return explode("\n", $list);
+    }
+
+    function update_db_zettel($user, $filename){
+        global $db_host, $db_user, $db_pass, $db_name, $username, $l;
+        $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+        $name = explode(".org", $filename)[0];
+        if ($name == ""){
+            return;
+        }
+
+        
+        echo "$name<br>";
+
+        $content = get_content($user, $name);
+        if ($content == $l["Access denied"]){
+            return;
+        }
+
+        $title = get_title($content);
+
+        $date_creation = get_creation_date($content);
+        $date_modified = get_modified_date($content);
+
+        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`) VALUES ('$name','$title', '$user', '$date_creation', '$date_modified')";
+        if (!$mysqli->query($sql) === TRUE) {
+            echo "Error: " . $sql . "<br>" . $mysqli->error;
+        }
+
+        $connections = find_connections($content);
+        for ($i = 0; $i < sizeof($connections[0]); $i++){
+            if ($connections[2][$i] != ""){
+                $targetname = $connections[2][$i];
+            } elseif ($connections[4][$i] != ""){
+                $targetname = $connections[4][$i];
+            }
+            // echo "$targetname<br>";
+            if (strpos($targetname, ":")){
+                $target_zettel = explode(":", $targetname)[1];
+                $target_user = explode(":", $targetname)[0];
+            }else{
+                $target_zettel = $targetname;
+                $target_user = $user;
+            }
+            $sql = "INSERT INTO connections (`origin_name`, `target_name`, `origin_user`, `target_user`) VALUES ('$name', '$target_zettel', '$user', '$target_user')";
+            if ($mysqli->query($sql) === TRUE) {
+                // echo "New record created successfully";
+            } else {
+                //echo "Error: " . $sql . "<br>" . $mysqli->error;
+            }
+        }
+    }
 
     
     function update_db(){
-        global $db_host, $db_user, $db_pass, $db_name, $username;
+        global $db_host, $db_user, $db_pass, $db_name, $external_paths;
         $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
         $sql = "DROP TABLE zettel";
@@ -21,47 +94,17 @@
         $sql = "SELECT * FROM user";
         $result = $mysqli->query($sql);
         while($row = $result->fetch_assoc()) {
-            $username = $row["name"];
-            echo "<h2>$username</h2>";
-            if ($handle = opendir("zettel/$username")) {
-                while (false !== ($name = readdir($handle))) {
-                    if ($name != "." && $name != ".."){
-                        $name = explode(".org", $name)[0];
-                        echo "$name<br>";
-
-                        $content = get_content("", $name);
-                        $title = get_title($content);
-
-                        $date_creation = get_creation_date($content);
-                        $date_modified = get_modified_date($content);
-                        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`) VALUES ('$name','$title', '$username', '$date_creation', '$date_modified')";
-                        if (!$mysqli->query($sql) === TRUE) {
-                            echo "Error: " . $sql . "<br>" . $mysqli->error;
-                        }
-
-                        $connections = find_connections($content);
-                        for ($i = 0; $i < sizeof($connections[0]); $i++){
-                            if ($connections[2][$i] != ""){
-                                $targetname = $connections[2][$i];
-                            } elseif ($connections[4][$i] != ""){
-                                $targetname = $connections[4][$i];
-                            }
-                            // echo "$targetname<br>";
-                            if (strpos($targetname, ":")){
-                                $target_zettel = explode(":", $targetname)[1];
-                                $target_user = explode(":", $targetname)[0];
-                            }else{
-                                $target_zettel = $targetname;
-                                $target_user = $username;
-                            }
-                            $sql = "INSERT INTO connections (`origin_name`, `target_name`, `origin_user`, `target_user`) VALUES ('$name', '$target_zettel', '$username', '$target_user')";
-                            if ($mysqli->query($sql) === TRUE) {
-                                // echo "New record created successfully";
-                            } else {
-                                //echo "Error: " . $sql . "<br>" . $mysqli->error;
-                            }
-                        }
-                        //echo "<br>";
+            $user = $row["name"];
+            echo "<h2>$user</h2>";
+            if (array_key_exists($user, $external_paths)){
+                $list = get_external_list($user);
+                foreach($list as $filename){
+                    update_db_zettel($user, $filename);
+                }
+            } elseif ($handle = opendir("zettel/$user")) {
+                while (false !== ($filename = readdir($handle))) {
+                    if (substr($filename, 0, 1) != "."){
+                        update_db_zettel($user, $filename);
                     }
                 }
                 closedir($handle);

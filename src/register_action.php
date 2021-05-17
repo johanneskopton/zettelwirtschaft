@@ -30,6 +30,8 @@
                 $content .= file_get_contents(__DIR__."/startzettel_template.txt");
 
                 $_SESSION['user'] = $name;
+                $_SESSION['pass'] = $pass;
+
                 $username = $name;
                 $new_start_path = $new_dir_path ."/start.org";
                 if (!file_exists($new_start_path )) {
