@@ -30,7 +30,8 @@
         $file_id = $_GET["link"];
         $filename = explode(":", $file_id)[1];
         $namespace = explode(":", $file_id)[0];
-        $sql = "SELECT * FROM zettel WHERE `user`='$namespace' AND `name`='$filename' AND `access`=1";
+        $access_filter = ($verified_name == $namespace)?"":" AND `access`=1";
+        $sql = "SELECT * FROM zettel WHERE `user`='$namespace' AND `name`='$filename'" . $access_filter;
         $result = $mysqli->query($sql);
         if ($result->num_rows == 1) {
             $content = get_content($namespace, $filename);
@@ -41,16 +42,22 @@
     }elseif(isset($_GET["list_all"]) && $_GET["list_all"] != ""){
         $username = $_GET["list_all"];
         if ($handle = opendir("zettel/$username")) {
-            while (false !== ($name = readdir($handle))) {
-                if (substr($name, 0, 1) != "."){
-                    # TODO check public
-                    echo "$name\n";
+            while (false !== ($filename = readdir($handle))) {
+                if (substr($filename, 0, 1) != "."){
+                    $access_filter = ($verified_name == $username)?"":" AND `access`=1";
+                    $file_id = explode(".org", $filename)[0];
+                    $sql = "SELECT * FROM zettel WHERE `user`='$username' AND `name`='$file_id'" . $access_filter;
+                    $result = $mysqli->query($sql);
+                    if ($result->num_rows == 1) {
+                        echo "$filename\n";
+                    }
                 }
             }
         }
     }elseif(isset($_GET["bib"]) && $_GET["bib"] != ""){
         $name = $_GET["bib"];
-        $sql = "SELECT * FROM zettel WHERE `user`='$name' AND `access`=1";
+        $access_filter = ($verified_name == $name)?"":" AND `access`=1";
+        $sql = "SELECT * FROM zettel WHERE `user`='$name'" . $access_filter;
         $result = $mysqli->query($sql);
         if ($result->num_rows >= 1) {
             $bib_location = "bibliography/$name.bib";

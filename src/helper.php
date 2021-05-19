@@ -7,8 +7,12 @@
 
     function get_content($namespace, $filename){
         global $external_paths, $username, $l, $mysqli, $access;
-        if ($namespace==""){
+        if ($namespace=="" && !array_key_exists($username, $external_paths)){
             $base_path = "zettel/$username/";
+        } elseif($namespace==""){
+            $base_path = $external_paths[$username];
+            $namespace = $username;
+            $is_url = True;
         } elseif (array_key_exists($namespace, $external_paths)){
             $base_path = $external_paths[$namespace];
             $is_url = True;

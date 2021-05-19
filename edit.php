@@ -28,12 +28,16 @@
         echo "<title>" . $title . "</title>";
 
         if (isset($_POST["submit"])) {
-            $content = $_POST["code"];
-            $content = preg_replace('/^(\#\+last_modified:){1}\s+?(.+)/im', "$1 ". date("Y-m-d"), $content);
+            if (!array_key_exists($username, $external_paths)){
+                $content = $_POST["code"];
+                $content = preg_replace('/^(\#\+last_modified:){1}\s+?(.+)/im', "$1 ". date("Y-m-d"), $content);
 
 
-            file_put_contents("zettel/$username/$filename.org", $content);            
-            update_db($filename, $content);
+                file_put_contents("zettel/$username/$filename.org", $content);            
+                update_db($filename, $content);
+            } else {
+                echo "Can not write on external zettelkasten!";
+            }
         }
         if ($namespace != ""){
             echo "<script>window.location.replace('view.php?link=". $file_id ."');</script>";

@@ -45,7 +45,7 @@
             if (end($filepath_bits ) == "edit.php"){
                 echo "<a href='view.php?link=$filename' name='toview' class='button'>".$l["View"]."</a>";
             } else {
-                if ($namespace == ""){
+                if ($namespace == "" && !array_key_exists($username, $external_paths)){
                     echo "<a href='edit.php?link=$filename' class='button'>".$l["Edit"]."</a>";
                 }
             }
