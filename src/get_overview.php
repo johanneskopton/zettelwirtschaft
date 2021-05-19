@@ -1,8 +1,9 @@
 <?php
+    require_once("config/external.php");
     $username = $_SESSION["user"];
 
 
-    if (isset($_GET["user"]) && $_GET["user"] != $username){
+    if (isset($_GET["user"]) && ($_GET["user"] != $username || array_key_exists($_GET["user"], $external_paths))){
         $overviewuser = $_GET["user"];
         $extern = True;
     }else{

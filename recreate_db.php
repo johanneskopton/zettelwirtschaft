@@ -25,7 +25,7 @@
         return explode("\n", $list);
     }
 
-    function update_db_zettel($user, $filename){
+    function update_db_zettel($user, $filename, $external){
         global $db_host, $db_user, $db_pass, $db_name, $username, $l;
         $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
@@ -47,7 +47,14 @@
         $date_creation = get_creation_date($content);
         $date_modified = get_modified_date($content);
 
-        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`) VALUES ('$name','$title', '$user', '$date_creation', '$date_modified')";
+        if ($external){
+            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$date_creation', '$date_modified', 1)";
+        } else {
+            $sql = "SELECT * FROM zettel_old WHERE `user`='$user' AND `name`='$name' AND `access`=1";
+            $result = $mysqli->query($sql);
+            $access = (mysqli_num_rows($result) == 1)?1:0;
+            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$date_creation', '$date_modified', $access)";
+        }
         if (!$mysqli->query($sql) === TRUE) {
             echo "Error: " . $sql . "<br>" . $mysqli->error;
         }
@@ -81,7 +88,10 @@
         global $db_host, $db_user, $db_pass, $db_name, $external_paths;
         $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
-        $sql = "DROP TABLE zettel";
+        $sql = "DROP TABLE zettel_old";
+        $mysqli->query($sql);
+
+        $sql = "ALTER TABLE zettel RENAME TO zettel_old";
         $mysqli->query($sql);
     
         $sql = "DROP TABLE connections";
@@ -99,12 +109,12 @@
             if (array_key_exists($user, $external_paths)){
                 $list = get_external_list($user);
                 foreach($list as $filename){
-                    update_db_zettel($user, $filename);
+                    update_db_zettel($user, $filename, True);
                 }
             } elseif ($handle = opendir("zettel/$user")) {
                 while (false !== ($filename = readdir($handle))) {
                     if (substr($filename, 0, 1) != "."){
-                        update_db_zettel($user, $filename);
+                        update_db_zettel($user, $filename, False);
                     }
                 }
                 closedir($handle);
