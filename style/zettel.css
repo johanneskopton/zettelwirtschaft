@@ -5,19 +5,18 @@ div.zettel_wrapper{
     position: relative;
 }
 
-div.overview_wrapper{
-    width: auto;
-    padding: 40px;
-    position: relative;
-}
-
 .side .zettel_wrapper{
     padding-top: 4em;
 }
 
+p{
+    margin-top: 0.5em;
+}
+
 h2, h3, h4, h5, h6 {
-    margin-top: 1.5em;
+    margin-top: 1em;
     font-weight: 500;
+    margin-bottom: 0.5em;
 }
 
 h1 {
@@ -26,7 +25,7 @@ h1 {
     font-weight: 400;
 }
 
-a, a:visited {
+a:not(.button), a:not(.button):visited {
     color: #552086;
     text-decoration: underline;
 }
@@ -44,12 +43,6 @@ a.external_zettelkasten, a.external_internet {
     background-position: center right;
     background-repeat: no-repeat;
     padding-right: 20px;
-}
-
-div.alone{
-    max-width: 700px;
-    width: 100%;
-    margin: auto;
 }
 
 blockquote, pre{
@@ -85,9 +78,14 @@ div.bibliography ol li:before {
 }
 
 
-div#new_name{
+div#menu{
     display: none;
     padding-bottom: 10px;
+    background-color: #dddddd;
+}
+
+div#menu form{
+    margin-bottom: 0px;
 }
 
 .roam_tags, .created, .last_modified{

@@ -40,11 +40,6 @@ form {
     }
 }
 
-a.disabled{
-    color: #a5a1b1;
-    cursor: default;
-
-}
 
 .CodeMirror, .CodeMirror-scroll{
     height: auto!important;

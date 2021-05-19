@@ -8,17 +8,34 @@
 
     $bibtexparser = new BibtexParser();
 
-    if (!empty($self_bib_location)){
-        $bibitems = $bibtexparser->parse_file($self_bib_location);
+    if (array_key_exists($zetteluser, $external_paths)){
+        $base_path = $external_paths[$zetteluser];
+        $path = $base_path . "get_raw.php?bib=$zetteluser";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $path);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        $credentials = array('name' => $username, 'pass' => $_SESSION['pass']);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($credentials));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $bib_content = curl_exec($ch);
+        curl_close($ch);
+        $bibitems = $bibtexparser->parse_string($bib_content);
+        $is_bib_file = True;
+    }else{
+        $self_bib_location = "bibliography/$zetteluser.bib";
+        if (is_file($self_bib_location)){
+            $bibitems = $bibtexparser->parse_file($self_bib_location);
+            $is_bib_file = True;
+        }
     }
 
     function print_citations($content){
-        global $l;
+        global $l, $is_bib_file;
         preg_match_all('/\[cite\:(.+?)\]/m', $content, $citations);
         if (sizeof($citations[0]) > 0){
             echo "<div class='bibliography'><h2>".$l["Bibliography"]."</h2><ol>";
-            if (!empty($self_bib_location)){
-                echo "No .bib file!";
+            if (!$is_bib_file){
+                echo $l["No bibliography file"];
             }else{
                 for ($i = 0; $i < sizeof($citations[0]); $i++){
                     if ($citations[1][$i] != ""){
@@ -40,5 +57,8 @@
                 echo "</li>";
             }
         }
+        
     }
+
+    print_citations($content);
 ?>
