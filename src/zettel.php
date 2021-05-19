@@ -1,4 +1,4 @@
-    <div class="zettel_wrapper">
+    <div class="zettel_wrapper<?php if ($namespace != ""){echo " with_banner";} ?>">
         <?php
             if ($access){
             if ($namespace != ""){
