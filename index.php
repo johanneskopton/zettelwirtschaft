@@ -3,7 +3,7 @@
     <meta meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="shortcut icon" type="image/png" href="style/favicon.png">
     <link rel="stylesheet" type="text/css" href="style/common.css"/>
-    <link rel="stylesheet" type="text/css" href="style/login.css"/>
+    <link rel="stylesheet" type="text/css" href="style/zettel.css"/>
 
     <?php
         session_start();
@@ -33,8 +33,8 @@
             </div>
         </form>
         <br>
-        <a href="register.php"><?php echo $l["Register"]; ?></a>
-
+        <a href="register.php"><?php echo $l["Register"]; ?></a><br>
+        <a href="manual.php" target="_blank"><?php echo $l["Manual"]; ?></a>
         </div>
     </div>
     </body>

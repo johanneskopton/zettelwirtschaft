@@ -33,7 +33,8 @@
         "Make public" => "Make public",
         "Toggle all" => "Toggle all",
         "Access denied" => "Access denied",
-        "Start" => "Start"
+        "Start" => "Start",
+        "Manual" => "Manual"
     ];
 
     $german = [
@@ -70,7 +71,8 @@
         "Make public" => "Öffentlich machen",
         "Toggle all" => "Alle umschalten",
         "Access denied" => "Zugriff verweigert",
-        "Start" => "Start"
+        "Start" => "Start",
+        "Manual" => "Anleitung"
     ];
 
     $l = $german;
