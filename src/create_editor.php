@@ -13,12 +13,12 @@
         var cur = editor.getCursor();
         var end = cur.ch, start = end;
         var list = [<?php 
-                        $res = $mysqli->query("SELECT name FROM zettel ORDER BY name ASC");
+                        $res = $mysqli->query("SELECT name FROM zettel WHERE `user`='$username' ORDER BY name ASC");
                         while($row = $res->fetch_assoc()) {
                             $name = $row["name"];
                             echo "'$name', ";
                         }
-                        echo "'test'";
+                        echo "";
                     ?>];
         return {list: list, from: CodeMirror.Pos(cur.line, start), to: CodeMirror.Pos(cur.line, end)};
     });
