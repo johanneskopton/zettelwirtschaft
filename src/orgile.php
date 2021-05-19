@@ -267,7 +267,7 @@ class orgile {
   // ----------[ PARAGRAPHS AND CLEANUP TAGS ]----------
   // create paragraphs and cleanup HTML tags.
   function paragraph($text) {
-    $paragraphs = explode("\n", $text);
+    $paragraphs = preg_split("/[\r]?\n[\r]?\n/m", $text);
     $out = null;
     foreach($paragraphs as $paragraph) {
       $out .= "\n<p>".$paragraph."</p>\n";
