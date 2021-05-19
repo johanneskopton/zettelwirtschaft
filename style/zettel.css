@@ -21,7 +21,6 @@ h2, h3, h4, h5, h6 {
 
 h1 {
     font-family: Roboto Slab, Nimbus Sans L, Helvetica, Arial, sans-serif;
-    margin-top: -10px;
     font-weight: 400;
 }
 
@@ -92,7 +91,7 @@ div#menu form{
     position: absolute;
     display: block;
     top: 0px;
-    background-color: #eeeeee;
+    background-color: #e0d9eb;
     width: 33.33%;
     text-align: center;
     padding: 5px 0px 5px 0px;
@@ -108,6 +107,19 @@ div#menu form{
 
 .last_modified{
     left: 66.66%
+}
+
+.external_banner{
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    position: absolute;
+    display: block;
+    top: 0px;
+    background-color: #e0d9eb;
+    width: 100%;
+    left: 0px;
+    padding: 5px 0px 5px 0px;
+
 }
 
 .alone div .roam_tags, .alone div .created, .alone div .last_modified{

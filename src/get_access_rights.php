@@ -41,7 +41,11 @@ function toggle(source) {
     } else {
         print_alphabetically();
     }
-    echo "<input type='submit' name='ztk_change_access' style='width:10em;' class='button' value='".$l["Make public"]."'>";
+    echo "<input type='submit' name='ztk_change_access' class='button' value='".$l["Save"]."'>";
+    ?>
+    <a class="button" href="view.php"><?php echo $l["Start"];?></a>
+    <a class="button" href="overview.php"><?php echo $l["All Zettel"];?></a>
+    <?php
     echo "</form>";
 
     function print_by_date($type){

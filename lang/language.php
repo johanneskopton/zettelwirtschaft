@@ -32,7 +32,8 @@
         "Manage access rights" => "Access rights",
         "Make public" => "Make public",
         "Toggle all" => "Toggle all",
-        "Access denied" => "Access denied"
+        "Access denied" => "Access denied",
+        "Start" => "Start"
     ];
 
     $german = [
@@ -68,7 +69,8 @@
         "Manage access rights" => "Zugriffsrechte",
         "Make public" => "Öffentlich machen",
         "Toggle all" => "Alle umschalten",
-        "Access denied" => "Zugriff verweigert"
+        "Access denied" => "Zugriff verweigert",
+        "Start" => "Start"
     ];
 
     $l = $german;

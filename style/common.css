@@ -40,7 +40,7 @@ button, input.button, a.button {
     font-weight: 400;
     text-align: center;
     margin: 15px;
-    background-color: #c3bfce;
+    background-color: #bdb4ce;
     text-decoration: none;
     padding: 5px;
     display: inline-block;
@@ -48,7 +48,7 @@ button, input.button, a.button {
 }
 
 button:active, button:hover, .button:active:not(.disabled), .button:hover:not(.disabled) {
-    background-color: #888888;
+    background-color: #877f8f;
 }
 
 .disabled{

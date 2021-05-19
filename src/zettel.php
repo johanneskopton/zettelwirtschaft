@@ -1,6 +1,10 @@
     <div class="zettel_wrapper">
         <?php
             if ($access){
+            if ($namespace != ""){
+                echo "<div class='external_banner'>$namespace</div>";
+            }
+
             $orgile = new orgile();
             echo $orgile->orgileThis($content);
         ?>
