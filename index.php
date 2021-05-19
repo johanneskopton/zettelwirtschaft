@@ -3,7 +3,7 @@
     <meta meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="shortcut icon" type="image/png" href="style/favicon.png">
     <link rel="stylesheet" type="text/css" href="style/common.css"/>
-    <link rel="stylesheet" type="text/css" href="style/zettel.css"/>
+    <link rel="stylesheet" type="text/css" href="style/login.css"/>
 
     <?php
         session_start();
