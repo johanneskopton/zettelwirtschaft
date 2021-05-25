@@ -6,6 +6,11 @@
         global $db_host, $db_user, $db_pass, $db_name, $username;
         $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
+
+        $sql = "SELECT * FROM zettel WHERE `name`='$name' AND `user`='$username' AND `access`=1";
+        $result = $mysqli->query($sql);
+        $access = (mysqli_num_rows($result) == 1)?1:0;
+
         $sql = "DELETE FROM zettel WHERE `name`='$name' AND `user`='$username'";
         $mysqli->query($sql);
     
@@ -16,7 +21,7 @@
 
         $date_creation = get_creation_date($content);
         $date_modified = get_modified_date($content);
-        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`) VALUES ('$name','$title', '$username', '$date_creation', '$date_modified')";
+        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$username', '$date_creation', '$date_modified', $access)";
         if ($mysqli->query($sql) === TRUE) {
             //echo "New record created successfully";
         } else {
