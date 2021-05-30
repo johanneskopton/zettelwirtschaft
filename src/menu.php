@@ -8,7 +8,7 @@
     ?>
     <form enctype="multipart/form-data" action="" method="POST">
         <!-- MAX_FILE_SIZE muss vor dem Datei-Eingabefeld stehen -->
-        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
         <!-- Der Name des Eingabefelds bestimmt den Namen im $_FILES-Array -->
         <input name="bibfile" type="file"><input class="button" type="submit" style="width: 12em;" name="bib_submit" value="<?php echo $l["Upload bibtex"];?>">
     </form>
