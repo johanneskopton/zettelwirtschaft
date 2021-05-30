@@ -100,10 +100,11 @@ class orgile {
 		   // horizontal rule
 		   '/-{5}/', // ----- (<hr/>)
 
-		   // citations
+		   // blockquotes
 		   //'/#\+begin_quote\s([\s\S]*?)\s--\s(.*?)\s#\+end_quote/mi',
        '/#\+begin_quote/m',
        '/#\+end_quote/m',
+       '/^>\s*(.*?\n)/m',
 
 		   // pre
 		   '/#\+begin_example\s([\s\S]*?)\s#\+end_example/mi',
@@ -168,10 +169,11 @@ class orgile {
 		     // horizontal rule
 		     "<hr>", // ----- (<hr>)
 
-		     // citations (because of the cite="$2" these fail W3M validation)
+		     // quotes (because of the cite="$2" these fail W3M validation)
 		     //'<blockquote cite="$2"><p>$1</p></blockquote><p class="citeRef">$2</p>',
          '<blockquote>',
          '</blockquote>',
+         '<blockquote>$1</blockquote>',
 
 		     // pre
 		     '<pre>$1</pre>',
