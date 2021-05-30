@@ -77,9 +77,9 @@ class orgile {
        '/^\s{6}[\+\-\*]\s?(.+)/m',   // 3st level
 
         // numbered list
-        '/^\s{2}[1-9][\)\.]\s?(.+)/m',   // 1st level
-        '/^\s{4}[1-9][\)\.]\s?(.+)/m',   // 2st level 
-        '/^\s{6}[1-9][\)\.]\s?(.+)/m',   // 3st level 
+        '/^\s{2}[0-9]+[\)\.]\s?(.+)/m',   // 1st level
+        '/^\s{4}[0-9]+[\)\.]\s?(.+)/m',   // 2st level 
+        '/^\s{6}[0-9]+[\)\.]\s?(.+)/m',   // 3st level 
 
 		   // glyphs
 		   // kudos: "Textile" http://textile.thresholdstate.com/.
