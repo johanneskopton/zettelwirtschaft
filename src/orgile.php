@@ -110,7 +110,7 @@ class orgile {
 		   '/#\+begin_example\s([\s\S]*?)\s#\+end_example/mi',
 
 		   // source
-		   '/#\+begin_src\s?(\S+?)\n([\s\S]*?)\s#\+end_src/mi',
+		   '/#\+begin_src[\s\n\r]*([\s\S]*?)\s#\+end_src/mi',
 
 		   // links
        '/\[\[ext\:'.$username.'\:(.+?)\]\[(.+?)\]\]/m', // link from external to this zettelkasten
@@ -179,7 +179,7 @@ class orgile {
 		     '<pre>$1</pre>',
 
 		     // source
-		     '<pre><code class="$1">$2</code></pre>',
+		     '<pre><code class="prettyprint">$1</code></pre>',
 
         //links
          '<a href="' . $script_name . '?link=$1" name="zettelkasten_link" class="external_zettelkasten" title="$2">$2</a>', // backlink to this zettelkasten
