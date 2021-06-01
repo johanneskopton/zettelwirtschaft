@@ -42,12 +42,12 @@ class BibtexFormatter
 
     static function buildBody($entry)
     {
-
+        include("config/external.php");
         $type = strtolower($entry['type']);
         if ($type == "article")
-            return "{author}<br/> <i>{title}</i><br/>{journal}[, {volume}][({number})][: {pages}], {year}. [<br>{dbslinks}]";
+            return "{author}<br/> <i>{title}</i><br/>{journal}[, {volume}][({number})][: {pages}], <a href='https://doi.org/{doi}' target='_blank'>doi:{doi}</a>, {year}. [<br>{dbslinks}]";
         elseif ($type == "book")
-            return "{author}<br/> <i>{title}</i><br/>{publisher}[, ISBN: {isbn}], {year}. [<br>{dbslinks}]";
+            return "{author}<br/> <i>{title}</i><br/>{publisher}[, ISBN: <a href='$library_pre{isbn}$library_post' target='_blank'>{isbn}</a>], {year}. [<br>{dbslinks}]";
         elseif ($type == "incollection")
             return "{author}<br/> <i>{title}</i><br/>In[ {editor} (ed.)]: {booktitle}, {publisher}[, {volume}][: {pages}], {year}. [<br>{dbslinks}]";
         elseif ($type == "proceedings")

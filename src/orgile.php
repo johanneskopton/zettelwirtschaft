@@ -22,6 +22,7 @@
   amateur garden shed effort; please do contact me on the above address.
 
 */
+require_once("citations.php");
 
 $bib_item_i = 1;
 
@@ -207,6 +208,7 @@ class orgile {
     return preg_replace_callback($regex,"callback",$text);
   }
 
+
   function orgilise_links_external($text) {
     $script_name = $_SERVER['PHP_SELF'];
     $regex = '/\[ext\:(.+?)\]/m';
@@ -231,14 +233,17 @@ class orgile {
   }
 
   function citation($text) {
-    $regex = '/\[cite\:(.+?)\]/m';
+    $regex = '/\[(cite|rcite)\:(.+?)\]/m';
     $callback_citation = function ($pattern){
         global $bib_item_i;
-        $res =  "<a href='#bib_$bib_item_i' class='bib_link'>[$bib_item_i]</a>";
+        $title = ($pattern[1] == "cite") ? get_citation_title($pattern[2]) . " ":"";
+        $res =  "<a href='#bib_$bib_item_i' class='bib_link'>$title [$bib_item_i]</a>";
         $bib_item_i = $bib_item_i + 1;
         return $res;
     };
-    return preg_replace_callback($regex, $callback_citation, $text);
+    $text = preg_replace_callback($regex, $callback_citation, $text);
+
+    return $text;
   }
 
   // ----------[ CREATE FOOTNOTES ]----------

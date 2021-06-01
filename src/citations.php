@@ -31,7 +31,7 @@
 
     function print_citations($content){
         global $l, $is_bib_file;
-        preg_match_all('/\[cite\:(.+?)\]/m', $content, $citations);
+        preg_match_all('/\[r?cite\:(.+?)\]/m', $content, $citations);
         if (sizeof($citations[0]) > 0){
             echo "<div class='bibliography'><h2>".$l["Bibliography"]."</h2><ol>";
             if (!$is_bib_file){
@@ -48,6 +48,21 @@
         }
     }
 
+    function get_citation_title($key){
+        global $bibitems;
+        foreach($bibitems as &$item) {
+            if ($item["reference"] == $key){
+                if (array_key_exists("shorttitle", $item)){
+                    return $item["shorttitle"];
+                } elseif (array_key_exists("title", $item)){
+                    return $item["title"];
+                } else {
+                    return $l["no title"];
+                }
+            }
+        }
+    }
+
     function print_citation($key, $i){
         global $bibitems;
         foreach($bibitems as &$item) {
@@ -60,5 +75,4 @@
         
     }
 
-    print_citations($content);
 ?>

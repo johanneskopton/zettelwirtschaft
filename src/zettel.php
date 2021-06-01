@@ -9,7 +9,8 @@
             echo $orgile->orgileThis($content);
         ?>
         <?php
-            include_once("citations.php");
+            require_once("citations.php");
+            print_citations($content);
         ?>
         <?php
             require_once(__DIR__."/../config/db_connect.php");
