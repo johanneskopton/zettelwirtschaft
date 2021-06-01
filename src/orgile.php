@@ -105,7 +105,7 @@ class orgile {
 		   //'/#\+begin_quote\s([\s\S]*?)\s--\s(.*?)\s#\+end_quote/mi',
        '/#\+begin_quote/m',
        '/#\+end_quote/m',
-       '/^>\s*(.*?\n)/m',
+       '/^>\s*(.+?)\n([^(,]+)([\(|\,].+)*$/m',
 
 		   // pre
 		   '/#\+begin_example\s([\s\S]*?)\s#\+end_example/mi',
@@ -174,7 +174,7 @@ class orgile {
 		     //'<blockquote cite="$2"><p>$1</p></blockquote><p class="citeRef">$2</p>',
          '<blockquote>',
          '</blockquote>',
-         '<blockquote>$1</blockquote>',
+         '<blockquote>$1</blockquote><p class="blockquote_ref"><span class="blockquote_name">$2</span>$3</p>',
 
 		     // pre
 		     '<pre>$1</pre>',

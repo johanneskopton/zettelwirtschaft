@@ -46,10 +46,23 @@ a.external_zettelkasten, a.external_internet {
 }
 
 blockquote, pre{
-    background-color: #eeeeee;
+    background-color: #e0d9eb;
     padding: 10px;
     margin-left: 0px;
     margin-right: 0px;
+}
+
+blockquote{
+    font-family: 'URW Palladio L Roman', 'Times New Roman', Times, serif;
+    margin-bottom: 0px;
+}
+
+.blockquote_ref{
+    text-align: right;
+}
+
+.blockquote_name{
+    font-variant: small-caps;
 }
 
 div.incoming{
