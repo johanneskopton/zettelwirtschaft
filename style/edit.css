@@ -44,3 +44,9 @@ form {
 .CodeMirror, .CodeMirror-scroll{
     height: auto!important;
 }
+
+div#vim div{
+    padding: 5px;
+    background-color: #e0d9eb;
+    font-family: monospace;
+}

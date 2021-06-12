@@ -2,6 +2,7 @@
     <head>
     <script src="src/codemirror/lib/codemirror.js"></script>
     <script src="src/codemirror/addon/hint/show-hint.js"></script>
+    <script src="src/codemirror/keymap/vim.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async
@@ -58,6 +59,9 @@
                         <?php
                             include("src/create_editor.php");
                         ?>
+                    <script>
+                        CodeMirror.signal(myCodeMirror, "vim-mode-change", {mode: "insert"});
+                    </script>
                     </div>
 
                     <div class="buttonbox box">
