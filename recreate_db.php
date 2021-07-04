@@ -2,12 +2,10 @@
     session_start();
     $username = $_SESSION["user"];
 
-
     require_once("config/db_connect.php");
     require_once("src/helper.php");
     require_once("config/external.php");
     require_once("lang/language.php");
-
 
     function get_external_list($external_user){
         global $external_paths, $username;
@@ -34,7 +32,6 @@
             return;
         }
 
-        
         echo "$name<br>";
 
         $content = get_content($user, $name);
@@ -47,13 +44,15 @@
         $date_creation = get_creation_date($content);
         $date_modified = get_modified_date($content);
 
+        $word_count = str_word_count($content);
+
         if ($external){
-            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$date_creation', '$date_modified', 1)";
+            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$word_count', '$date_creation', '$date_modified', 1)";
         } else {
             $sql = "SELECT * FROM zettel_old WHERE `user`='$user' AND `name`='$name' AND `access`=1";
             $result = $mysqli->query($sql);
             $access = (mysqli_num_rows($result) == 1)?1:0;
-            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$date_creation', '$date_modified', $access)";
+            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$word_count', '$date_creation', '$date_modified', $access)";
         }
         if (!$mysqli->query($sql) === TRUE) {
             echo "Error: " . $sql . "<br>" . $mysqli->error;

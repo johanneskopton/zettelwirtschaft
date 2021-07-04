@@ -1,7 +1,7 @@
 <?php
     require_once(__DIR__."/../config/db_connect.php");
     require_once("src/helper.php");
-    
+
     function update_db($name, $content){
         global $db_host, $db_user, $db_pass, $db_name, $username;
         $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -13,7 +13,7 @@
 
         $sql = "DELETE FROM zettel WHERE `name`='$name' AND `user`='$username'";
         $mysqli->query($sql);
-    
+
         $sql = "DELETE FROM connections WHERE `origin_name`='$name' AND `origin_user`='$username'";
         $mysqli->query($sql);
 
@@ -21,7 +21,10 @@
 
         $date_creation = get_creation_date($content);
         $date_modified = get_modified_date($content);
-        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$username', '$date_creation', '$date_modified', $access)";
+
+        $word_count = str_word_count($content);
+
+        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$username', '$word_count', '$date_creation', '$date_modified', $access)";
         if ($mysqli->query($sql) === TRUE) {
             //echo "New record created successfully";
         } else {
