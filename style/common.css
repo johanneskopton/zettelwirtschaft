@@ -1,11 +1,12 @@
 body {
     color: #444444;
     /*background-color: #585560;*/
-    font-family:  Roboto, Nimbus Sans L, Helvetica, Arial, sans-serif;
+    font-family:  Titillium Web, Nimbus Sans L, Helvetica, Arial, sans-serif;
     font-weight: 400;
     margin: 0px;
     font-size: 17px;
-    background-image: url("background_subtle.jpg");
+    /*background-image: url("background_subtle.jpg");*/
+    background-color: #ffffff;
 }
 
 div.box {
@@ -33,14 +34,14 @@ div.buttonbox{
 }
 
 button, input.button, a.button {
-    border: none;
+    border: 1px solid #444444;
+    color: #444444;
     width: 6em;
-    color: #585560;
     font-size: 1em;
     font-weight: 400;
     text-align: center;
     margin: 15px;
-    background-color: #bdb4ce;
+    background-color: #ffffff;
     text-decoration: none;
     padding: 5px;
     display: inline-block;
@@ -48,7 +49,7 @@ button, input.button, a.button {
 }
 
 button:active, button:hover, .button:active:not(.disabled), .button:hover:not(.disabled) {
-    background-color: #877f8f;
+    background-color: #eee7ee;
 }
 
 .disabled{

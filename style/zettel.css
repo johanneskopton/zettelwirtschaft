@@ -20,7 +20,8 @@ h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-family: Roboto Slab, Nimbus Sans L, Helvetica, Arial, sans-serif;
+    /*font-family: Titillium Web, Nimbus Sans L, Helvetica, Arial,
+     * sans-serif;*/
     margin-top: -10px;
     font-weight: 400;
 }
@@ -46,14 +47,14 @@ a.external_zettelkasten, a.external_internet {
 }
 
 blockquote, pre{
-    background-color: #e0d9eb;
+    background-color: #f0e9fb;
     padding: 10px;
     margin-left: 0px;
     margin-right: 0px;
 }
 
 blockquote{
-    font-family: 'URW Palladio L Roman', 'Times New Roman', Times, serif;
+    /*font-family: 'URW Palladio L Roman', 'Times New Roman', Times, serif;*/
     margin-bottom: 0px;
 }
 
@@ -94,7 +95,7 @@ div.bibliography ol li:before {
 div#menu{
     display: none;
     padding-bottom: 10px;
-    background-color: #dddddd;
+    background-color: #efe7ef;
 }
 
 div#menu form{
@@ -105,7 +106,8 @@ div#menu form{
     position: absolute;
     display: block;
     top: 0px;
-    background-color: #e0d9eb;
+    /*background-color: #e0d9eb;*/
+    border-bottom: 1px solid #444444;
     width: 33.33%;
     text-align: center;
     padding: 5px 0px 5px 0px;
@@ -129,7 +131,8 @@ div#menu form{
     position: absolute;
     display: block;
     top: 0px;
-    background-color: #e0d9eb;
+    /*background-color: #e0d9eb;*/
+    border-bottom: 1px solid #444444;
     width: 100%;
     left: 0px;
     padding: 5px 0px 5px 0px;

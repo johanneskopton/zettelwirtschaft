@@ -1,6 +1,11 @@
+body{
+    background-image: url("background_subtle.jpg");
+}
+
 div.edit_wrapper{
     width: auto;
     padding: 10px;
+    /*margin-top: 2em;*/
     position: relative;
 }
 
@@ -18,6 +23,7 @@ form {
         width: 100%;
         float: left;
         margin: 20px;
+        margin-top: 0px;
         text-align: left;
     }
     div.two_col{
