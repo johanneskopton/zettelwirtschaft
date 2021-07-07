@@ -68,7 +68,7 @@ blockquote{
 
 div.incoming{
     border: none;
-    border-top: 0.1px solid #555555;
+    border-top: 1px solid #444444;
     margin-top: 40px;
     padding-top: 10px;
 }
@@ -88,18 +88,30 @@ div.bibliography ol li:before {
     --size: 1.2em;
     left: calc(-1 * var(--size) + 70px);
     line-height: var(--size);
-
 }
 
 
 div#menu{
     display: none;
     padding-bottom: 10px;
-    background-color: #efe7ef;
+    /*background-color: #efe7ef;*/
+    border-top: 1px solid #444444;
+
 }
 
 div#menu form{
     margin-bottom: 0px;
+}
+
+input[type=text], textarea {
+  border:             1px solid #444444;
+  outline:            none;
+}
+
+input[type=text]:focus, textarea:focus {
+  box-shadow:         0 0 5px #552086;
+  margin:             5px 1px 3px 0px;
+  padding:            3px 0px 3px 3px;
 }
 
 .roam_tags, .created, .last_modified{
