@@ -13,10 +13,7 @@
     <body>
     <div class="box alone">
         <div class="wrapper">
-
-            <?php
-                //include_once("src/login_action.php");
-                
+        <?php
                 if(isset($_SESSION["user"])){
                     $username = $_SESSION["user"];
                     include_once("src/delete_action.php");
