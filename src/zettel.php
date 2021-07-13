@@ -42,8 +42,20 @@
             }
         ?>
     </div>
-  
-    
+    <script>
+        function copyclip(content){
+            navigator.clipboard.writeText("[ztl:" + content + "]");
+        }
+
+        var h1 = document.getElementsByTagName("H1")[0];
+        h1.setAttribute("onclick", "copyclip('<?php echo $filename;?>')");
+
+        var h2s = document.getElementsByTagName("H2");
+        for (let i=0; i<h2s.length; i++){
+            var h2 = h2s[i];
+            h2.setAttribute("onclick", "copyclip('<?php echo $filename;?>#" + h2.id + "')");
+        };
+    </script>
     <div class="buttonbox box">
         <?php
             $filepath_bits = explode("/", $_SERVER["SCRIPT_NAME"]);

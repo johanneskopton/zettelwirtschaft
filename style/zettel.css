@@ -26,6 +26,14 @@ h1 {
     font-weight: 400;
 }
 
+span.anchor{
+    display: none;
+}
+
+h1:hover span.anchor, h2:hover span.anchor {
+    display: inline;
+}
+
 a:not(.button), a:not(.button):visited {
     color: #552086;
     text-decoration: underline;

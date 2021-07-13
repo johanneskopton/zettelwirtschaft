@@ -124,20 +124,21 @@ class orgile {
 
 		   );
 
+    $heading_anchor = "<span class=anchor>&para;</span>";
     $replace = array(
          // roam
-         "<h1>$1</h1>\n", // #+TITLE:
+         "<h1>$1". $heading_anchor ."</h1>\n", // #+TITLE:
          "<div class=roam_tags>$1</div>",
          "<div class=created>$1</div>",
          "<div class=last_modified>$1</div>",
          "",
 
 		     // headings
-		     "<h2>$1</h2>\n", // * example
-		     "<h3>$1</h3>\n", // ** example
-		     "<h4>$1</h4>\n", // *** example
-		     "<h5>$1</h5>\n", // **** example
-		     "<h6>$1</h6>\n", // ***** example
+		     "<h2 id=$1>$1" . $heading_anchor . "</h2>\n", // * example
+		     "<h3 id=$1>$1</h3>\n", // ** example
+		     "<h4 id=$1>$1</h4>\n", // *** example
+		     "<h5 id=$1>$1</h5>\n", // **** example
+		     "<h6 id=$1>$1</h6>\n", // ***** example
 
 		     // typography
 		     "<strong>$1</strong>", // *example*
@@ -233,8 +234,9 @@ EOT;
     function callback($pattern){
       global $namespace, $script_name;
       $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
-      $linktitle = get_title_from_name($namespace, $pattern[1]);
-      return '<a href="'.$script_name.'?link='.$namespace_prefix.$pattern[1].'" name="zettelkasten_link" class="internal" title="'.$linktitle.'">'.$linktitle.'</a>';
+      $linktitle = get_title_from_name($namespace, explode("#",$pattern[1])[0]);
+      $section = mb_strpos($pattern[1], "#") !== false?"#".explode("#",$pattern[1])[1]:"";
+      return '<a href="'.$script_name.'?link='.$namespace_prefix.$pattern[1].'" name="zettelkasten_link" class="internal" title="'.$linktitle.'">'.$linktitle.$section.'</a>';
     }
     return preg_replace_callback($regex,"callback",$text);
   }
