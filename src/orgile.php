@@ -71,7 +71,7 @@ class orgile {
 
 		   // typography
 		   '/(?<!\S)\*(.+?)\*/m', // *example*
-		   '/(?<!\S)\/(.+?)\//m', // /example/
+		   '/(?<!\S)\/(\S.+?\S)\//m', // /example/
 		   '/(?<!\S)\+(.+?)\+/m', // +example+
 
        // list
