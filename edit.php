@@ -8,6 +8,7 @@
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
+    <script src="https://unpkg.com/vexflow/releases/vexflow-min.js"></script>
     <link rel="stylesheet" href="src/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="src/codemirror/addon/hint/show-hint.css">
 

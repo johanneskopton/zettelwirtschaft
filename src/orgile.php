@@ -25,6 +25,7 @@
 require_once("citations.php");
 
 $bib_item_i = 1;
+$music_item = 0;
 
 
 class orgile {
@@ -32,6 +33,7 @@ class orgile {
   // ----------[ ORGILE ]----------
   function orgileThis($text) {
     $text = $this->orgilise($text);
+    $text = $this->orgilise_music($text);
     $text = $this->orgilise_links($text);
     $text = $this->orgilise_links_external($text);
     $text = $this->tidy_lists($text);
@@ -84,10 +86,10 @@ class orgile {
 
 		   // glyphs
 		   // kudos: "Textile" http://textile.thresholdstate.com/.
-		   '/(\w)\'(\w)/',                   // apostrophe's
-		   '/(\s)\'(\d+\w?)\b(?!\')/',       // back in '88
-		   '/(\S)\'(?=\s|[[:punct:]]|<|$)/', // single closing
-		   '/\'/',                           // single opening
+//		   '/(\w)\'(\w)/',                   // apostrophe's
+//		   '/(\s)\'(\d+\w?)\b(?!\')/',       // back in '88
+//		   '/(\S)\'(?=\s|[[:punct:]]|<|$)/', // single closing
+//		   '/\'/',                           // single opening
 		   '/(\S)\"(?=\s|[[:punct:]]|<|$)/', // double closing
 		   '/"/',                            // double opening
 		   '/\b( )?\.{3}/',                  // ellipsis
@@ -153,10 +155,10 @@ class orgile {
         "<ol><ol><ol><li>$1</li></ol></ol></ol>",
 
 		     // glyphs
-		     "$1&#8217;$2",  // apostrophe's&#8220;
-		     "$1&#8217;$2",  // back in '88
-		     "$1&#8217;",    // single closing
-		     "&#8216;",      // single opening
+//		     "$1&#8217;$2",  // apostrophe's&#8220;
+//		     "$1&#8217;$2",  // back in '88
+//		     "$1&#8217;",    // single closing
+//		     "&#8216;",      // single opening
 		     "$1&#8221;",    // double closing
 		     "&#8220;",      // double opening
 		     "$1&#8230;",    // ellipsis
@@ -194,6 +196,35 @@ class orgile {
     return preg_replace($regex,$replace,$text);
   }
 
+  function orgilise_music($text){
+    $regex = '/#\+begin_music (\S+) (\S+)\s([\s\S]*?)\s#\+end_music/mi';
+    function callback_music($pattern){
+        global $music_item;
+        $notes = $pattern[3];
+        $clef = $pattern[1];
+        $time = $pattern[2];
+        $replace = <<<EOT
+<div id="music_$music_item" class="music"></div>
+<script>
+vf = new Vex.Flow.Factory({
+  renderer: {elementId: 'music_$music_item', width: 500, height: 160}
+});
+score = vf.EasyScore();
+system = vf.System();
+system.addStave({
+  voices: [
+    score.voice(score.notes($notes))
+  ]
+}).addClef('$clef').addTimeSignature('$time');
+vf.draw();
+delete vf, score, system;
+</script>
+EOT;
+        $music_item += 1;
+        return $replace;
+    }
+    return preg_replace_callback($regex,'callback_music',$text);
+  }
 
   function orgilise_links($text) {
     $script_name = $_SERVER['PHP_SELF'];
