@@ -4,4 +4,7 @@ local_scripts
 *.svg
 zettel
 bibliography
-
+*.swp
+.TODO.txt
+*.css.map
+.sass-cache
