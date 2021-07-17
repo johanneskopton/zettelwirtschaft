@@ -54,8 +54,7 @@ button:active, button:hover, .button:active:not(.disabled), .button:hover:not(.d
 
 .disabled{
     color: #a5a1b1!important;
-    cursor: default;
-
+    cursor: initial!important;
 }
 
 div.fatal{
@@ -64,3 +63,26 @@ div.fatal{
     margin: 50px;
     padding: 10px;
 }
+
+div#menu{
+    display: none;
+    padding-bottom: 10px;
+    /*background-color: #efe7ef;*/
+    border-top: 1px solid #444444;
+
+}
+
+div#menu form{
+    margin-bottom: 0px;
+}
+
+input[type=text], textarea {
+  border:             1px solid #444444;
+  outline:            none;
+}
+/*
+input[type=text]:focus, textarea:focus {
+  box-shadow:         0 0 5px #552086;
+  margin:             5px 1px 3px 0px;
+  padding:            3px 0px 3px 3px;
+}+

@@ -1,0 +1,90 @@
+// Solarized colors
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2: #eee8d5;
+$base3: #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+
+@mixin rebase($rebase03, $rebase02, $rebase01, $rebase00, $rebase0, $rebase1, $rebase2, $rebase3) {
+    color: $rebase0;
+    background-color: $rebase03;
+
+    &.boxed {
+        background-color: $rebase01;
+    }
+
+    div.box {
+        background-color: $rebase03;
+    }
+
+    blockquote, pre {
+        background-color: $rebase02;
+    }
+
+    .roam_tags, .created, .last_modified, .external_banner, .incoming {
+        border-color: $rebase1;
+    }
+
+    button, input.button, a.button {
+        background-color: $rebase02;
+        color: $rebase1;
+        border-color: $rebase0;
+    }
+
+    button:active, button:hover, .button:active:not(.disabled), .button:hover:not(.disabled) {
+        background-color: $rebase01;
+    }
+
+    .disabled {
+        color: $rebase01 !important;
+        border-color: $rebase01 !important;
+    }
+
+    input[type=text], textarea {
+        border-color: $rebase0;
+        background-color: $rebase02;
+    }
+
+    a.external_zettelkasten, a.external_internet {
+        background-image: url("external_solarized.png");
+    }
+}
+
+@mixin accentize($accent1, $accent2) {
+    a:not(.button), a:not(.button):visited {
+        color: $accent1;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $accent2;
+    }
+}
+
+body.light {
+    @include rebase($base3, $base2, $base1, $base0, $base00, $base01, $base02, $base03);
+}
+
+body.dark {
+    @include rebase($base03, $base02, $base01, $base00, $base0, $base1, $base2, $base3);
+}
+
+body.solarized {
+    @include accentize($violet, $cyan);
+}
+
+/*
+html * {
+    color-profile: sRGB;
+    rendering-intent: auto;
+}*/

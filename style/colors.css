@@ -1,0 +1,64 @@
+body.light {
+  color: #657b83;
+  background-color: #fdf6e3; }
+  body.light.boxed {
+    background-color: #93a1a1; }
+  body.light div.box {
+    background-color: #fdf6e3; }
+  body.light blockquote, body.light pre {
+    background-color: #eee8d5; }
+  body.light .roam_tags, body.light .created, body.light .last_modified, body.light .external_banner, body.light .incoming {
+    border-color: #586e75; }
+  body.light button, body.light input.button, body.light a.button {
+    background-color: #eee8d5;
+    color: #586e75;
+    border-color: #657b83; }
+  body.light button:active, body.light button:hover, body.light .button:active:not(.disabled), body.light .button:hover:not(.disabled) {
+    background-color: #93a1a1; }
+  body.light .disabled {
+    color: #93a1a1 !important;
+    border-color: #93a1a1 !important; }
+  body.light input[type=text], body.light textarea {
+    border-color: #657b83;
+    background-color: #eee8d5; }
+  body.light a.external_zettelkasten, body.light a.external_internet {
+    background-image: url("external_solarized.png"); }
+
+body.dark {
+  color: #839496;
+  background-color: #002b36; }
+  body.dark.boxed {
+    background-color: #586e75; }
+  body.dark div.box {
+    background-color: #002b36; }
+  body.dark blockquote, body.dark pre {
+    background-color: #073642; }
+  body.dark .roam_tags, body.dark .created, body.dark .last_modified, body.dark .external_banner, body.dark .incoming {
+    border-color: #93a1a1; }
+  body.dark button, body.dark input.button, body.dark a.button {
+    background-color: #073642;
+    color: #93a1a1;
+    border-color: #839496; }
+  body.dark button:active, body.dark button:hover, body.dark .button:active:not(.disabled), body.dark .button:hover:not(.disabled) {
+    background-color: #586e75; }
+  body.dark .disabled {
+    color: #586e75 !important;
+    border-color: #586e75 !important; }
+  body.dark input[type=text], body.dark textarea {
+    border-color: #839496;
+    background-color: #073642; }
+  body.dark a.external_zettelkasten, body.dark a.external_internet {
+    background-image: url("external_solarized.png"); }
+
+body.solarized a:not(.button), body.solarized a:not(.button):visited {
+  color: #6c71c4; }
+body.solarized h1, body.solarized h2, body.solarized h3, body.solarized h4, body.solarized h5, body.solarized h6 {
+  color: #2aa198; }
+
+/*
+html * {
+    color-profile: sRGB;
+    rendering-intent: auto;
+}*/
+
+/*# sourceMappingURL=colors.css.map */

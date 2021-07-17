@@ -33,8 +33,8 @@
 
     var myCodeMirror = CodeMirror.fromTextArea(textBox, {
         lineWrapping: true,
-	theme: "default",
-	keyMap: "vim",
+            theme: "<?php echo $theme;?>",
+	//keyMap: "vim",
         highlightFormatting: true,
         extraKeys: {
             "Ctrl-Space": "autocomplete"

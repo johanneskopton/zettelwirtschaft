@@ -1,16 +1,13 @@
 <html>
     <head>
-    <meta meta name="viewport" content="width=device-width, user-scalable=no" />
-    <link rel="shortcut icon" type="image/png" href="style/favicon.png">
-    <link rel="stylesheet" type="text/css" href="style/common.css"/>
-    <link rel="stylesheet" type="text/css" href="style/zettel.css"/>
-
     <?php
         session_start();
         require_once("lang/language.php");
+        include_once("src/header.php");
     ?>
+    <title><?php echo $l["All Zettel"]; ?></title>
     </head>
-    <body>
+    <body class="<?php echo $theme;?>">
     <div class="box alone">
         <div class="wrapper">
         <?php
