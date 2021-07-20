@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="57.659096"
-     inkscape:cy="69.573371"
+     inkscape:zoom="1.979899"
+     inkscape:cx="10.576637"
+     inkscape:cy="42.655417"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -62,19 +62,19 @@
      id="layer1"
      transform="translate(0,-263.13331)">
     <rect
-       style="opacity:1;fill:#93a1a1;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:1;fill:#2aa198;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect818"
        width="33.866665"
        height="33.866665"
        x="0"
        y="263.1333" />
     <path
-       style="fill:#586e75;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       style="fill:#002b36;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
        d="m 0,273.27981 h 6.3476512 c 0,0 1.8040691,9.22079 10.6907808,9.22079 l 0,14.49938 L 0,296.99997 Z"
        id="path824"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#586e75;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#002b36;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 33.866667,273.27982 h -6.347652 c 0,0 -1.804069,9.22079 -10.690781,9.22079 v 14.49938 l 17.038433,-1e-5 z"
        id="path824-3"
        inkscape:connector-curvature="0" />
