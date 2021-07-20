@@ -199,10 +199,11 @@ class orgile {
   function orgilise_music($text){
     $regex = '/#\+begin_music (\S+) (\S+)\s([\s\S]*?)\s#\+end_music/mi';
     function callback_music($pattern){
-        global $music_item;
+        global $music_item, $theme;
         $notes = $pattern[3];
         $clef = $pattern[1];
         $time = $pattern[2];
+        $note_color = ($theme == "default")?"#444444":"#839496";
         $replace = <<<EOT
 <div id="music_$music_item" class="music"></div>
 <script>
@@ -211,13 +212,20 @@ vf = new Vex.Flow.Factory({
 });
 score = vf.EasyScore();
 system = vf.System();
-system.addStave({
+notes = score.notes($notes);
+for (let i = 0; i < notes.length; i++) {
+    notes[i].setStyle({fillStyle: "$note_color", strokeStyle: "$note_color"});
+}
+stave = system.addStave({
   voices: [
-    score.voice(score.notes($notes))
+    score.voice(notes)
   ]
-}).addClef('$clef').addTimeSignature('$time');
+})
+clef = stave.addClef('$clef');
+clef.context.setFillStyle("$note_color");
+time = stave.addTimeSignature('$time');
 vf.draw();
-delete vf, score, system;
+delete vf, score, notes, clef, time, system;
 </script>
 EOT;
         $music_item += 1;
