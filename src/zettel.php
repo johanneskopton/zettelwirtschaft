@@ -67,7 +67,8 @@
                 }
             }
         ?>
-        <a class='button' onclick="toggleForm()"><?php echo $l["Menu"];?></a>
+        <a class='button' onclick="toggleForm()" accesskey="m"><?php echo $l["Menu"];?></a>
+
         <?php
             include("src/menu.php");
         ?>

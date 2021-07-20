@@ -51,16 +51,22 @@
     }
     function toggleForm(){
         var new_name_box = document.getElementById("menu");
-        var new_name_text = document.getElementById("new_name_text");
+        var focus_element = document.getElementById("openInput");
         var display = new_name_box.style.display;
         if (display == "block"){
             new_name_box.style.display = "none";
         } else {
             new_name_box.style.display = "block";
             setCursorPosition(new_name_text, 0);
-            new_name_text.focus();
+            focus_element.focus();
         }
     }
+    document.addEventListener ("keydown", function (zEvent) {
+        if (zEvent.altKey  &&  zEvent.key === "m") {  // case sensitive
+            toggleForm();
+        }
+    } );
+
 
     function deleteCheckChange(checkbox) {
         var delete_button = document.getElementById("delete_button");
