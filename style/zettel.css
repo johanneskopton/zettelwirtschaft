@@ -98,8 +98,8 @@ div.bibliography ol {
 div.bibliography ol li:before {
     content: "[" counter(bibsection) "] ";
     position: absolute;
-    --size: 1.2em;
-    left: calc(-1 * var(--size) + 70px);
+    --size: 1.4em;
+    left: calc(-1 * var(--size) + 75px);
     line-height: var(--size);
 }
 
