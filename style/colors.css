@@ -23,6 +23,15 @@ body.light {
     background-color: #eee8d5; }
   body.light a.external_zettelkasten, body.light a.external_internet {
     background-image: url("external_solarized.png"); }
+  body.light .autocomplete-items {
+    border-color: #657b83; }
+  body.light .autocomplete-items div {
+    color-color: #657b83;
+    background-color: #eee8d5; }
+    body.light .autocomplete-items div:hover {
+      background-color: #93a1a1; }
+  body.light .autocomplete-active {
+    background-color: #93a1a1 !important; }
 
 body.dark {
   color: #839496;
@@ -49,6 +58,15 @@ body.dark {
     background-color: #073642; }
   body.dark a.external_zettelkasten, body.dark a.external_internet {
     background-image: url("external_solarized.png"); }
+  body.dark .autocomplete-items {
+    border-color: #839496; }
+  body.dark .autocomplete-items div {
+    color-color: #839496;
+    background-color: #073642; }
+    body.dark .autocomplete-items div:hover {
+      background-color: #586e75; }
+  body.dark .autocomplete-active {
+    background-color: #586e75 !important; }
 
 body.solarized a:not(.button), body.solarized a:not(.button):visited {
   color: #6c71c4; }

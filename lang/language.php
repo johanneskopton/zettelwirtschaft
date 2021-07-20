@@ -34,7 +34,8 @@
         "Toggle all" => "Toggle all",
         "Access denied" => "Access denied",
         "Start" => "Start",
-        "Manual" => "Manual"
+        "Manual" => "Manual",
+        "Open" => "Open"
     ];
 
     $german = [
@@ -72,7 +73,8 @@
         "Toggle all" => "Alle umschalten",
         "Access denied" => "Zugriff verweigert",
         "Start" => "Start",
-        "Manual" => "Anleitung"
+        "Manual" => "Anleitung",
+        "Open" => "Öffnen"
     ];
 
     $l = $german;

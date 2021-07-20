@@ -85,4 +85,43 @@ input[type=text]:focus, textarea:focus {
   box-shadow:         0 0 5px #552086;
   margin:             5px 1px 3px 0px;
   padding:            3px 0px 3px 3px;
-}+
+}*/
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete input {
+    width: 32em;
+    max-width: 90vw;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #444444;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #444444;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #eee7ee;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #eee7ee !important;
+}

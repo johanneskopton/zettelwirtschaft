@@ -1,6 +1,18 @@
 <div id="menu">
+    <form method="get" autocomplete="off" action="<?php echo $_SERVER['SCRIPT_NAME'];?>">
+        <div class="autocomplete">
+            <input id="openInput" type="text" name="link" id="new_name_text" autofocus>
+        </div>
+        <input class="button" type="submit" name="open" value="<?php echo $l["Open"];?>">
+    </form>
+    <?php
+        include_once('src/autocomplete.php');
+    ?>
+    <script>
+        autocomplete(document.getElementById("openInput"), countries);
+    </script>
     <form method="get" action="edit.php" target="_blank">
-    <?php echo $l["Filename"];?>: <input type="text" name="link" id="new_name_text" autofocus>
+    <?php echo $l["Filename"];?>: <input type="text" name="link" id="new_name_text"> 
         <input class="button" type="submit" name="create" value="<?php echo $l["Create"];?>">
     </form>
     <?php

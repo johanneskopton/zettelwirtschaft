@@ -59,6 +59,23 @@ $green: #859900;
     a.external_zettelkasten, a.external_internet {
         background-image: url("external_solarized.png");
     }
+
+    .autocomplete-items {
+        border-color: $rebase0;
+    }
+
+    .autocomplete-items div {
+        color-color: $rebase0;
+        background-color: $rebase02;
+
+        &:hover {
+            background-color: $rebase01;
+        }
+    }
+
+    .autocomplete-active {
+        background-color: $rebase01 !important;
+    }
 }
 
 @mixin accentize($accent1, $accent2) {
