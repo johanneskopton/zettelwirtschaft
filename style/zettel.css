@@ -25,12 +25,12 @@ h1 {
     margin-top: -10px;
     font-weight: 600;
     font-family: PT Serif, Cambria, Serif;
-    height: 1.2em;
+    line-height: 1.2em;
 }
 
 h1 .anchor{
     font-family: Titillium Web;
-    font-size: 0.8em;
+    line-height: 1.1em;
 }
 
 span.anchor{

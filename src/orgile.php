@@ -126,14 +126,14 @@ class orgile {
     $heading_anchor = "<span class=anchor>&para;</span>";
     $replace = array(
          // roam
-         "<h1>$1". $heading_anchor ."</h1>\n", // #+TITLE:
-         "<div class=roam_tags>$1</div>",
+     "<h1>$1 ". $heading_anchor ."</h1>\n", // #+TITLE:
+     "<div class=roam_tags>$1</div>",
          "<div class=created>$1</div>",
          "<div class=last_modified>$1</div>",
          "",
 
 		     // headings
-		     "<h2 id=$1>$1" . $heading_anchor . "</h2>\n", // * example
+		     "<h2 id=$1>$1 " . $heading_anchor . "</h2>\n", // * example
 		     "<h3 id=$1>$1</h3>\n", // ** example
 		     "<h4 id=$1>$1</h4>\n", // *** example
 		     "<h5 id=$1>$1</h5>\n", // **** example
