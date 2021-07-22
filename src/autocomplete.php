@@ -100,7 +100,7 @@ function autocomplete(inp, arr) {
 var countries = [<?php
     require_once(__DIR__."/../config/db_connect.php");
     $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-    $public_filter = ($namespace=="")?" AND `access`=1":"";
+    $public_filter = ($namespace!="")?" AND `access`=1":"";
     $sql = "SELECT * FROM zettel WHERE `user`='$zetteluser'$public_filter";
     $result = $mysqli->query($sql);
 
