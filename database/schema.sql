@@ -24,6 +24,7 @@ CREATE TABLE `zettel` (
   `title` varchar(100) DEFAULT NULL,
   `user` varchar(100) DEFAULT NULL,
   `words` mediumint(8) UNSIGNED DEFAULT NULL,
+  `tag` varchar(100) DEFAULT NULL,
   `date_creation` date DEFAULT NULL,
   `date_modified` date DEFAULT NULL,
   `access` smallint(6) UNSIGNED DEFAULT 0

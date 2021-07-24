@@ -21,10 +21,11 @@
 
         $date_creation = get_creation_date($content);
         $date_modified = get_modified_date($content);
+        $tag = get_tag($content);
 
         $word_count = str_word_count($content);
 
-        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$username', '$word_count', '$date_creation', '$date_modified', $access)";
+        $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `tag`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$username', '$word_count', '$tag', '$date_creation', '$date_modified', $access)";
         if ($mysqli->query($sql) === TRUE) {
             //echo "New record created successfully";
         } else {

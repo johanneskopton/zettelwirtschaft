@@ -127,7 +127,7 @@ class orgile {
     $replace = array(
          // roam
      "<h1>$1 ". $heading_anchor ."</h1>\n", // #+TITLE:
-     "<div class=roam_tags>$1</div>",
+     "<div class=roam_tags><a href='overview.php?type=tag#$1' class='tag_link'>$1</a></div>",
          "<div class=created>$1</div>",
          "<div class=last_modified>$1</div>",
          "",

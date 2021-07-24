@@ -21,6 +21,7 @@
     echo "<a href='overview.php?user=$overviewuser&type=creation' class='button'>".$l["Creation date"]."</a>";
     echo "<a href='overview.php?user=$overviewuser&type=modified' class='button'>".$l["Last modified"]."</a>";
     echo "<a href='overview.php?user=$overviewuser&type=alphabetical' class='button'>".$l["Alphabetical"]."</a>";
+    echo "<a href='overview.php?user=$overviewuser&type=tag' class='button'>".$l["By Tag"]."</a>";
     echo "<br>";
 
     require_once(__DIR__."/../config/db_connect.php");
@@ -31,6 +32,8 @@
             print_by_date("date_creation");
         } elseif ($_GET["type"] == "modified"){
             print_by_date("date_modified");
+        } elseif ($_GET["type"] == "tag"){
+            print_by_tag();
         } else {
             print_alphabetically();
         }
@@ -54,6 +57,27 @@
                     }
                     $date = $row["$type"];
                     echo "$date <ul>";
+                }
+                print_link($row["name"], $row["title"]);
+            }
+        }
+    }
+
+    function print_by_tag(){
+        global $mysqli, $overviewuser, $extern;
+        $public_filter = $extern?" AND `access`=1":"";
+        $sql = "SELECT * FROM zettel WHERE `user`='$overviewuser'$public_filter ORDER BY tag, title ASC";
+        $result = $mysqli->query($sql);
+
+        if ($result->num_rows > 0) {
+            $tag = NULL;
+            while($row = $result->fetch_assoc()) {
+                if ($tag != $row["tag"]){
+                    if ($tag){
+                        echo "</ul>";
+                    }
+                    $tag = $row["tag"];
+                    echo "<span id='$tag'>$tag</span> <ul>";
                 }
                 print_link($row["name"], $row["title"]);
             }

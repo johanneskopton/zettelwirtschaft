@@ -94,6 +94,17 @@
         }
     }
 
+    function get_tag($content){
+        $sep1 = explode("#+ROAM_TAGS: ", $content, 2);
+        if (sizeof($sep1) > 1){
+            $tagstr = trim(explode(PHP_EOL, $sep1[1], 2)[0]);
+            return $tagstr;
+        } else {
+            return "no tag";
+        }
+
+    }
+
     function find_connections($content){
         preg_match_all('/(\[\[file\:(.+?).org\]\[(.+?)\]\]|\[(?:ztl|ext)\:(.+?)\])/m', $content, $result);
         return $result;

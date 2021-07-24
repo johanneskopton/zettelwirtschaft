@@ -43,16 +43,17 @@
 
         $date_creation = get_creation_date($content);
         $date_modified = get_modified_date($content);
+        $tag = get_tag($content);
 
         $word_count = str_word_count($content);
 
         if ($external){
-            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$word_count', '$date_creation', '$date_modified', 1)";
+            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `tag`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$word_count', '$tag', '$date_creation', '$date_modified', 1)";
         } else {
             $sql = "SELECT * FROM zettel_old WHERE `user`='$user' AND `name`='$name' AND `access`=1";
             $result = $mysqli->query($sql);
             $access = (mysqli_num_rows($result) == 1)?1:0;
-            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$word_count', '$date_creation', '$date_modified', $access)";
+            $sql = "INSERT INTO zettel (`name`, `title`, `user`, `words`, `tag`, `date_creation`, `date_modified`, `access`) VALUES ('$name','$title', '$user', '$word_count', '$tag', '$date_creation', '$date_modified', $access)";
         }
         if (!$mysqli->query($sql) === TRUE) {
             echo "Error: " . $sql . "<br>" . $mysqli->error;
