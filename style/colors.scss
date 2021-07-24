@@ -56,7 +56,11 @@ $green: #859900;
         background-color: $rebase02;
     }
 
-    a.external_zettelkasten, a.external_internet {
+    a.external_zettelkasten {
+        background-image: url("external_solarized_zettel.png");
+    }
+
+    a.external_internet {
         background-image: url("external_solarized.png");
     }
 

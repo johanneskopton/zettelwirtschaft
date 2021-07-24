@@ -21,7 +21,9 @@ body.light {
   body.light input[type=text], body.light textarea {
     border-color: #657b83;
     background-color: #eee8d5; }
-  body.light a.external_zettelkasten, body.light a.external_internet {
+  body.light a.external_zettelkasten {
+    background-image: url("external_solarized_zettel.png"); }
+  body.light a.external_internet {
     background-image: url("external_solarized.png"); }
   body.light .autocomplete-items {
     border-color: #657b83; }
@@ -56,7 +58,9 @@ body.dark {
   body.dark input[type=text], body.dark textarea {
     border-color: #839496;
     background-color: #073642; }
-  body.dark a.external_zettelkasten, body.dark a.external_internet {
+  body.dark a.external_zettelkasten {
+    background-image: url("external_solarized_zettel.png"); }
+  body.dark a.external_internet {
     background-image: url("external_solarized.png"); }
   body.dark .autocomplete-items {
     border-color: #839496; }

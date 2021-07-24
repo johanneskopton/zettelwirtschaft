@@ -55,10 +55,22 @@ a.bib_link{
 }
 
 a.external_zettelkasten, a.external_internet {
-    background-image: url("external.png");
     background-position: center right;
     background-repeat: no-repeat;
     padding-right: 20px;
+}
+
+a.external_zettelkasten{
+    background-image: url("external_zettel.png");
+}
+
+a.external_internet{
+    background-image: url("external.png");
+}
+
+a.tag_link{
+    color: inherit!important;
+    text-decoration: none!important;
 }
 
 blockquote, pre{
