@@ -35,6 +35,7 @@
         <br>
         <a href="register.php"><?php echo $l["Register"]; ?></a><br>
         <a href="manual.php" target="_blank"><?php echo $l["Manual"]; ?></a>
+        <a href="example.html" target="_blank"><?php echo $l["Example"]; ?></a>
         </div>
     </div>
     </body>

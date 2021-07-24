@@ -36,7 +36,8 @@
         "Access denied" => "Access denied",
         "Start" => "Start",
         "Manual" => "Manual",
-        "Open" => "Open"
+        "Open" => "Open",
+        "Example" => "Example (German)"
     ];
 
     $german = [
@@ -76,7 +77,8 @@
         "Access denied" => "Zugriff verweigert",
         "Start" => "Start",
         "Manual" => "Anleitung",
-        "Open" => "Öffnen"
+        "Open" => "Öffnen",
+        "Example" => "Beispiel"
     ];
 
     $l = $german;

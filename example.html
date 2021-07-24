@@ -1,0 +1,1342 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="src/codemirror/lib/codemirror.js"></script>
+    <script src="src/codemirror/addon/hint/show-hint.js"></script>
+<!--    <script src="src/codemirror/keymap/vim.js"></script> -->
+    <link rel="stylesheet" href="src/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="src/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="src/codemirror/theme/solarized.css">
+
+    <script src="src/codemirror/mode/markdown/markdown.js"></script>
+
+    <title>Format Beispiel</title>
+<link rel="stylesheet" type="text/css" href="style/prettify-solarized/light.css">
+<script src="manual_2-Dateien/polyfill.js"></script>
+<script id="MathJax-script" async="" src="manual_2-Dateien/tex-mml-chtml.js">
+</script>
+<script src="manual_2-Dateien/vexflow-min.js"></script><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style>
+
+<link rel="shortcut icon" type="image/png" href="https://kopton.org/zettel/style/favicon.png">
+<meta meta="" name="viewport" content="width=device-width, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="style/common.css">
+<link rel="stylesheet" type="text/css" href="style/zettel.css">
+<link rel="stylesheet" type="text/css" href="style/colors.css">
+<link rel="stylesheet" type="text/css" href="style/light.css">
+
+
+    <link rel="stylesheet" type="text/css" href="style/edit.css">
+    <style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-math {
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  text-indent: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  padding: 1px 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  padding: 0;
+}
+
+mjx-container[jax="CHTML"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="CHTML"][justify="right"] {
+  text-align: right;
+}
+
+mjx-msubsup {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-script {
+  display: inline-block;
+  padding-right: .05em;
+  padding-left: .033em;
+}
+
+mjx-script > * {
+  display: block;
+}
+
+mjx-mo {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-stretchy-h {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-stretchy-h > * {
+  display: table-cell;
+  width: 0;
+}
+
+mjx-stretchy-h > * > mjx-c {
+  display: inline-block;
+  transform: scalex(1.0000001);
+}
+
+mjx-stretchy-h > * > mjx-c::before {
+  display: inline-block;
+  width: initial;
+}
+
+mjx-stretchy-h > mjx-ext {
+  /* IE */ overflow: hidden;
+  /* others */ overflow: clip visible;
+  width: 100%;
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c::before {
+  transform: scalex(500);
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c {
+  width: 0;
+}
+
+mjx-stretchy-h > mjx-beg > mjx-c {
+  margin-right: -.1em;
+}
+
+mjx-stretchy-h > mjx-end > mjx-c {
+  margin-left: -.1em;
+}
+
+mjx-stretchy-v {
+  display: inline-block;
+}
+
+mjx-stretchy-v > * {
+  display: block;
+}
+
+mjx-stretchy-v > mjx-beg {
+  height: 0;
+}
+
+mjx-stretchy-v > mjx-end > mjx-c {
+  display: block;
+}
+
+mjx-stretchy-v > * > mjx-c {
+  transform: scaley(1.0000001);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+mjx-stretchy-v > mjx-ext {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  /* IE */ overflow: hidden;
+  /* others */ overflow: visible clip;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c::before {
+  width: initial;
+  box-sizing: border-box;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c {
+  transform: scaleY(500) translateY(.075em);
+  overflow: visible;
+}
+
+mjx-mark {
+  display: inline-block;
+  height: 0px;
+}
+
+mjx-c {
+  display: inline-block;
+}
+
+mjx-utext {
+  display: inline-block;
+  padding: .75em 0 .2em 0;
+}
+
+mjx-TeXAtom {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mi {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mn {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mfrac {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-frac {
+  display: inline-block;
+  vertical-align: 0.17em;
+  padding: 0 .22em;
+}
+
+mjx-frac[type="d"] {
+  vertical-align: .04em;
+}
+
+mjx-frac[delims] {
+  padding: 0 .1em;
+}
+
+mjx-frac[atop] {
+  padding: 0 .12em;
+}
+
+mjx-frac[atop][delims] {
+  padding: 0;
+}
+
+mjx-dtable {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-dtable > * {
+  font-size: 2000%;
+}
+
+mjx-dbox {
+  display: block;
+  font-size: 5%;
+}
+
+mjx-num {
+  display: block;
+  text-align: center;
+}
+
+mjx-den {
+  display: block;
+  text-align: center;
+}
+
+mjx-mfrac[bevelled] > mjx-num {
+  display: inline-block;
+}
+
+mjx-mfrac[bevelled] > mjx-den {
+  display: inline-block;
+}
+
+mjx-den[align="right"], mjx-num[align="right"] {
+  text-align: right;
+}
+
+mjx-den[align="left"], mjx-num[align="left"] {
+  text-align: left;
+}
+
+mjx-nstrut {
+  display: inline-block;
+  height: .054em;
+  width: 0;
+  vertical-align: -.054em;
+}
+
+mjx-nstrut[type="d"] {
+  height: .217em;
+  vertical-align: -.217em;
+}
+
+mjx-dstrut {
+  display: inline-block;
+  height: .505em;
+  width: 0;
+}
+
+mjx-dstrut[type="d"] {
+  height: .726em;
+}
+
+mjx-line {
+  display: block;
+  box-sizing: border-box;
+  min-height: 1px;
+  height: .06em;
+  border-top: .06em solid;
+  margin: .06em -.1em;
+  overflow: hidden;
+}
+
+mjx-line[type="d"] {
+  margin: .18em -.1em;
+}
+
+mjx-mrow {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-msqrt {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-root {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+mjx-surd {
+  display: inline-block;
+  vertical-align: top;
+}
+
+mjx-sqrt {
+  display: inline-block;
+  padding-top: .07em;
+}
+
+mjx-sqrt > mjx-box {
+  border-top: .07em solid;
+}
+
+mjx-sqrt.mjx-tall > mjx-box {
+  padding-left: .3em;
+  margin-left: -.3em;
+}
+
+mjx-mtable {
+  display: inline-block;
+  text-align: center;
+  vertical-align: .25em;
+  position: relative;
+  box-sizing: border-box;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+mjx-mstyle[size="s"] mjx-mtable {
+  vertical-align: .354em;
+}
+
+mjx-labels {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+mjx-table {
+  display: inline-block;
+  vertical-align: -.5ex;
+  box-sizing: border-box;
+}
+
+mjx-table > mjx-itable {
+  vertical-align: middle;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+mjx-labels > mjx-itable {
+  position: absolute;
+  top: 0;
+}
+
+mjx-mtable[justify="left"] {
+  text-align: left;
+}
+
+mjx-mtable[justify="right"] {
+  text-align: right;
+}
+
+mjx-mtable[justify="left"][side="left"] {
+  padding-right: 0 ! important;
+}
+
+mjx-mtable[justify="left"][side="right"] {
+  padding-left: 0 ! important;
+}
+
+mjx-mtable[justify="right"][side="left"] {
+  padding-right: 0 ! important;
+}
+
+mjx-mtable[justify="right"][side="right"] {
+  padding-left: 0 ! important;
+}
+
+mjx-mtable[align] {
+  vertical-align: baseline;
+}
+
+mjx-mtable[align="top"] > mjx-table {
+  vertical-align: top;
+}
+
+mjx-mtable[align="bottom"] > mjx-table {
+  vertical-align: bottom;
+}
+
+mjx-mtable[side="right"] mjx-labels {
+  min-width: 100%;
+}
+
+mjx-mtr {
+  display: table-row;
+  text-align: left;
+}
+
+mjx-mtr[rowalign="top"] > mjx-mtd {
+  vertical-align: top;
+}
+
+mjx-mtr[rowalign="center"] > mjx-mtd {
+  vertical-align: middle;
+}
+
+mjx-mtr[rowalign="bottom"] > mjx-mtd {
+  vertical-align: bottom;
+}
+
+mjx-mtr[rowalign="baseline"] > mjx-mtd {
+  vertical-align: baseline;
+}
+
+mjx-mtr[rowalign="axis"] > mjx-mtd {
+  vertical-align: .25em;
+}
+
+mjx-mtd {
+  display: table-cell;
+  text-align: center;
+  padding: .215em .4em;
+}
+
+mjx-mtd:first-child {
+  padding-left: 0;
+}
+
+mjx-mtd:last-child {
+  padding-right: 0;
+}
+
+mjx-mtable > * > mjx-itable > *:first-child > mjx-mtd {
+  padding-top: 0;
+}
+
+mjx-mtable > * > mjx-itable > *:last-child > mjx-mtd {
+  padding-bottom: 0;
+}
+
+mjx-tstrut {
+  display: inline-block;
+  height: 1em;
+  vertical-align: -.25em;
+}
+
+mjx-labels[align="left"] > mjx-mtr > mjx-mtd {
+  text-align: left;
+}
+
+mjx-labels[align="right"] > mjx-mtr > mjx-mtd {
+  text-align: right;
+}
+
+mjx-mtd[extra] {
+  padding: 0;
+}
+
+mjx-mtd[rowalign="top"] {
+  vertical-align: top;
+}
+
+mjx-mtd[rowalign="center"] {
+  vertical-align: middle;
+}
+
+mjx-mtd[rowalign="bottom"] {
+  vertical-align: bottom;
+}
+
+mjx-mtd[rowalign="baseline"] {
+  vertical-align: baseline;
+}
+
+mjx-mtd[rowalign="axis"] {
+  vertical-align: .25em;
+}
+
+mjx-munderover {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-munderover:not([limits="false"]) {
+  padding-top: .1em;
+}
+
+mjx-munderover:not([limits="false"]) > * {
+  display: block;
+}
+
+mjx-msup {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+mjx-c.mjx-c222B.TEX-S2::before {
+  padding: 1.36em 0.944em 0.862em 0;
+  content: "\222B";
+}
+
+mjx-c.mjx-c221E::before {
+  padding: 0.442em 1em 0.011em 0;
+  content: "\221E";
+}
+
+mjx-c.mjx-c30::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "0";
+}
+
+mjx-c.mjx-c1D715::before {
+  padding: 0.715em 0.566em 0.022em 0;
+  content: "\2202";
+}
+
+mjx-c.mjx-c1D711.TEX-I::before {
+  padding: 0.442em 0.654em 0.218em 0;
+  content: "\3C6";
+}
+
+mjx-c.mjx-c221A::before {
+  padding: 0.8em 0.853em 0.2em 0;
+  content: "\221A";
+}
+
+mjx-c.mjx-c1D460.TEX-I::before {
+  padding: 0.442em 0.469em 0.01em 0;
+  content: "s";
+}
+
+mjx-c.mjx-c1D461.TEX-I::before {
+  padding: 0.626em 0.361em 0.011em 0;
+  content: "t";
+}
+
+mjx-c.mjx-c1D451.TEX-I::before {
+  padding: 0.694em 0.52em 0.01em 0;
+  content: "d";
+}
+
+mjx-c.mjx-c5B.TEX-S3::before {
+  padding: 1.45em 0.528em 0.949em 0;
+  content: "[";
+}
+
+mjx-c.mjx-c1D6FC.TEX-I::before {
+  padding: 0.442em 0.64em 0.011em 0;
+  content: "\3B1";
+}
+
+mjx-c.mjx-c1D6FD.TEX-I::before {
+  padding: 0.705em 0.566em 0.194em 0;
+  content: "\3B2";
+}
+
+mjx-c.mjx-c5D.TEX-S3::before {
+  padding: 1.45em 0.528em 0.949em 0;
+  content: "]";
+}
+
+mjx-c.mjx-c3D::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "=";
+}
+
+mjx-c.mjx-c1D441.TEX-I::before {
+  padding: 0.683em 0.888em 0 0;
+  content: "N";
+}
+
+mjx-c.mjx-c2211.TEX-S2::before {
+  padding: 0.95em 1.444em 0.45em 0;
+  content: "\2211";
+}
+
+mjx-c.mjx-c1D456.TEX-I::before {
+  padding: 0.661em 0.345em 0.011em 0;
+  content: "i";
+}
+
+mjx-c.mjx-c31::before {
+  padding: 0.666em 0.5em 0 0;
+  content: "1";
+}
+
+mjx-c.mjx-c32::before {
+  padding: 0.666em 0.5em 0 0;
+  content: "2";
+}
+
+mjx-c.mjx-c1D44E.TEX-I::before {
+  padding: 0.441em 0.529em 0.01em 0;
+  content: "a";
+}
+
+mjx-c.mjx-c1D44F.TEX-I::before {
+  padding: 0.694em 0.429em 0.011em 0;
+  content: "b";
+}
+
+mjx-c.mjx-c33::before {
+  padding: 0.665em 0.5em 0.022em 0;
+  content: "3";
+}
+</style></head>
+    <body class="boxed solarized light">
+        <div class="two_col">
+            <div class="box side">
+                <form method="post">
+
+                    <div class="edit_wrapper">
+                        
+<textarea name="code" class="code" style="display: none;">#+TITLE: Format Beispiel
+#+ROAM_TAGS: Beispielzettel
+#+CREATED: 2021-04-27
+#+LAST_MODIFIED: 2021-07-25
+
+* Links
+Diese Arten von Links sind erlaubt:
+
+Intern
+  + [[file:boeckenfoerde_diktum.org][Böckenförde-Diktum]]
+  + [[ztl:social_construction_of_technology][SCOT]]
+  + [ztl:rhetorik]
+
+Extern (anderer Zettelkasten)
+  + [[ext:henrik:kaffee][Kaffee]]
+  + [ext:henrik:klimawandel]
+
+Zitierung
+  + [cite:grefe2016]
+
+Extern (Internet)
+  + [[http://wikipedia.org][Wikipedia]]
+
+* Anderes
+** Überschrift zweites Level
+#+begin_quote
+Zitate nach orgmode-Syntax
+#+end_quote
+
+oder nach Markdown-Syntax mit Quellenangabe:
+&gt; Du kannst etwas verändern – jeden Tag und zu jeder Zeit!
+Jane Goodall, britische Verhaltensforscherin
+
+  + Aufzählungen
+    + mit mehreren
+    + Ebenen
+  
+  1) nummerierte
+  2) Aufzählungen
+
+  
+/kursiver Text/
+*fetter Text*
+
+#+begin_src
+import numpy as np
+from helper import *
+class ProcessModel:
+    def __init__(self):
+        self.n_params_float = 0
+        self.n_params_bool = 0
+    def run(self, input, p_float, p_bool):
+        return input
+class CultureMedium(ProcessModel):
+    def run(self, input, p_float, p_bool):
+        output = input
+        makeup = get_zero_dict(True)
+        emission = get_zero_dict(True)
+#+end_src
+
+$$\int_0^{\infty} \dfrac{\partial \varphi \sqrt{s}}{\partial t} ds 
+\begin{bmatrix} \alpha \\ \beta \end{bmatrix} = \sum_{i=0}^N 
+\begin{bmatrix} 1 &amp; 2 \\ a &amp; b  \end{bmatrix} \begin{bmatrix}i^2
+ \\ i^3 \end{bmatrix}$$
+
+#+begin_music treble 4/4
+'(Eb3 Bb3 C4 G4 C5)/4, (Eb3 A3 C4 G4 C5)/4, (Eb3 Ab3 C4 F4 C5)/4, (Eb3 
+G3 Bb3 F4 Bb4)/4'
+#+end_music
+</textarea>
+<div id="vim" style="display: none;">
+    <div>Key buffer: <span id="command-display"></span></div>
+    <div>Vim mode: <span id="vim-mode">{"mode":"insert"}</span></div>
+</div>
+
+<script>
+    var textBox = document.getElementsByName("code")[0];
+    var title = document.title;
+
+    CodeMirror.registerHelper("hint", "zettel", function(editor, options) {
+        var cur = editor.getCursor();
+        var end = cur.ch, start = end;
+        var list = ['ablenkung', 'agraroekologie', 'agrowth', 'akteur_netzwerk_theorie', 'alex_steffen', 'alles_ist_eine_webseite', 'analyse_zu_synthese', 'anarcho_primitivismus', 'anfangen', 'anthropogener_metabolismus', 'anthropologie', 'antifragil', 'astroturfing', 'atomkraft', 'automatisierung', 'beim_ziel_anfangen', 'beschuetzerpopulismus', 'betrunken_reiten', 'biodiversitaet', 'biologisches_geschlecht', 'biooekonomie', 'biooekonomierevier', 'blog', 'boeckenfoerde_diktum', 'bright_green_environmentalism', 'bruttoinlandsprodukt', 'chemiewende', 'coase_theorem', 'complex_systems_design', 'cultural_lag', 'dark_green_environmentalism', 'das_ende_der_neuzeit', 'decoupling_debunked', 'dedomestikation', 'degrowth', 'dematerialisation', 'derek_sivers', 'desinformation', 'discordant_harmonies', 'eigene_ideen', 'einfaches_leben', 'emergenz', 'emissions_importe', 'emotionales_thema', 'emotionally_durable_design', 'entkopplung_lebenszufriedenheit_naturverbrauch', 'entkopplung_lebenszufriedenheit_wirtschaft', 'entkopplung_wohlstand_naturverbrauch', 'epiktet', 'epistemischer_status', 'evolutionaerer_zweck_des_gehirns', 'externalitaet', 'first_follower', 'fixed_vs_growth_mindset', 'flugzeuge_schlagen_nicht_mit_den_fluegeln', 'fokus', 'follower', 'format_beispiel', 'forschungswende', 'fridays_for_future', 'frugal_innovation', 'gedanken_entlassen', 'generalismus_oder_spezialismus', 'generationengerechtigkeit', 'gentechnik', 'gewinne_privatisieren_verluste_sozialisieren', 'goodharts_gesetz', 'grand_strategy', 'green_growth', 'grenzen_des_wachstums', 'grenzkosten', 'grosses_im_kleinen_oder_kleines_im_grossen', 'halbwertszeit', 'happy_planet_index', 'happy_smart_and_useful', 'harald_welzer', 'harmonie', 'heimatschutzbewegung', 'hell_yeah_or_no', 'higher_superstition', 'holismus', 'human_development_index', 'impact', 'impact_categories', 'individualismus', 'intelligent_wachsen', 'jacob_collier', 'jonathan_haidt', 'kaya_identitaet', 'klimagerechtigkeit', 'klimagerechtigkeit_und_entkopplung', 'klimaklage', 'klimakrise', 'kollektivismus', 'kommunikation_mit_zettelkaesten', 'komplexitaet', 'komplexitaetsoekonomik', 'konzepterweiterung', 'kreislaufwirtschaft', 'kybernetik', 'landnutzung', 'land_sparing', 'lebensreformbewegung', 'lebenstipps', 'lebenszufriedenheit', 'lesen', 'lexikographische_ordnung', 'life_cycle_assessment', 'life_cycle_optimization', 'light_green_environmentalism', 'maja_goepel', 'mark_lynas', 'mediation', 'meditation', 'megaherbivorenhypothese', 'melodie', 'messbare_nachhaltigkeit', 'minimalismus', 'moderne', 'moralische_lizenz', 'moral_foundations_theory', 'multi_objective_optimization', 'nachhaltiges_design', 'nachhaltigkeit', 'nachhaltigkeit_ist_unnatuerlich', 'nachhaltigkeit_regional', 'naturalistischer_fehlschluss', 'negative_oeffentliche_aufmerksamkeit', 'niklas_luhmann', 'oekologischer_fussabdruck', 'oekologische_effizienz', 'oekologische_oekonomie', 'oekomodernismus', 'oekonomik', 'oekoprog', 'oekosoziale_marktwirtschaft', 'oeko_kolonialismus', 'oeko_progressivismus', 'pareto-aktivismus', 'pareto_effizienz', 'pareto_optimum', 'pariser_klimaabkommen', 'permakultur', 'peter_breunig', 'petrie_multiplier', 'planen', 'plurv', 'postfaktisches_zeitalter', 'postmoderne', 'post_work_society', 'potenziell_natuerliche_vegetation', 'preiswahrheit', 'radikaler_konstruktivismus', 'rationalisierung', 'rebound_effekt', 'resistance_fantasie', 'reveal_js', 'rewilding', 'rhetorik', 'risiken_als_rationalisierung', 'rueckkopplung', 'schreiben', 'science_and_complexity', 'science_fiction', 'sdgs', 'sealioning', 'seeds_of_science', 'selbstdomestikation', 'selbstueberschaetzung', 'semiotik', 'socialist_calculation_debate', 'social_construction_of_technology', 'sozialdarwinismus', 'soziale_marktwirtschaft', 'sozialkonstruktivismus', 'start', 'state_story_strategy', 'stellenergie', 'storytelling', 'strukturelle_kopplung', 'suffizienz', 'sukzessionsvorteil', 'super_ultra_hyper_mega_meta_lydian', 'survivorship_bias', 'sustainable_development_index', 'synthetische_biologie', 'systemisches_denken', 'systemismus', 'technikdeterminismus', 'technik_oder_politik', 'the_art_of_learning', 'the_rebound_effect_is_overplayed', 'the_righteous_mind', 'thinking_fast_and_slow', 'tiefes_oder_vernetztes_denken', 'two_hand_comping_voicing', 'unsere_welt_neu_denken', 'vim_shortcuts', 'wale_oder_fliegen_fangen', 'wiederholung', 'wirtschaftswachstum', 'wissenschaftlicher_realismus', 'world_happiness_report', 'zettelkasten', 'zettel_100', 'ziele', 'zukunftsvisionen', ];
+        return {list: list, from: CodeMirror.Pos(cur.line, start), to: CodeMirror.Pos(cur.line, end)};
+    });
+
+    CodeMirror.commands.autocomplete = function(cm) {
+        cm.showHint({hint: CodeMirror.hint.zettel});
+    }
+
+    var myCodeMirror = CodeMirror.fromTextArea(textBox, {
+        lineWrapping: true,
+            theme: "solarized light",
+	//keyMap: "vim",
+        highlightFormatting: true,
+        extraKeys: {
+            "Ctrl-Space": "autocomplete"
+        }
+    });
+    var commandDisplay = document.getElementById('command-display');
+    var keys = '';
+    CodeMirror.on(myCodeMirror, 'vim-keypress', function(key) {
+      keys = keys + key;
+      commandDisplay.innerText = keys;
+    });
+    CodeMirror.on(myCodeMirror, 'vim-command-done', function(e) {
+      keys = '';
+      commandDisplay.innerHTML = keys;
+    });
+    var vimMode = document.getElementById('vim-mode');
+    var vimBox = document.getElementById('vim');
+    CodeMirror.on(myCodeMirror, 'vim-mode-change', function(e) {
+      vimMode.innerText = JSON.stringify(e);
+      if (JSON.stringify(e) == '{"mode":"insert"}'){
+        vimBox.style.display = "none";
+      } else {
+        vimBox.style.display = "block";
+      }
+    });
+    //var vim_insert_event = new CustomEvent("vim-mode-change", {"mode":"insert"});
+    //myCodeMirror.dispatchEvent(vim_insert_event);
+    myCodeMirror.focus();
+    //CodeMirror.Vim.enterInsertMode(myCodeMirror, {}, myCodeMirror.state.vim);
+    //CodeMirror.Vim().leaveVimMode(myCodeMirror);
+    //myCodeMirror.toggleOverwrite(false);
+    //myCodeMirror.setOption('keyMap', 'vim-insert');
+    //CodeMirror.signal(myCodeMirror, "vim-mode-change", {mode: "insert"});
+    //CodeMirror.signal(myCodeMirror, "vim-mode-change", {mode: "normal"});
+    //CodeMirror.signal(myCodeMirror, "vim-mode-change", {mode: "insert"});
+    myCodeMirror.on("change", function(cm,change){
+            var viewlink = document.getElementsByName("toview")[0];
+            viewlink.classList.add('disabled');
+            viewlink.removeAttribute("href");
+            document.getElementsByName("zettelkasten_link").forEach(function(element, idx) {
+                element.removeAttribute("href");
+            });
+            document.title = title + "*";
+        });
+
+    document.addEventListener("keydown", function(e) {
+    if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
+        e.preventDefault();
+        document.getElementById("submit").click();
+    }
+    }, false);
+</script>
+                    <script>
+                        CodeMirror.signal(myCodeMirror, "vim-mode-change", {mode: "insert"});
+                    </script>
+                    </div>
+
+                </form>
+            </div>
+            <div class="box side">
+                    <div class="zettel_wrapper">
+        
+<h1 onclick="copyclip('format_beispiel')">Format Beispiel
+ <span class="anchor">¶</span></h1>
+
+<p></p><div class="roam_tags">Beispielzettel
+</div>
+<div class="created">2021-04-27
+</div>
+<div class="last_modified">2021-07-25</div><p></p>
+
+<p></p><h2 id="Links" onclick="copyclip('format_beispiel#Links')">Links
+ <span class="anchor">¶</span></h2><p></p>
+
+<p>Diese Arten von Links sind erlaubt:</p>
+
+<p>Intern
+</p><ul><li><a href="https://kopton.org/zettel/edit.php?link=boeckenfoerde_diktum" name="zettelkasten_link" class="internal" title="Böckenförde-Diktum">Böckenförde-Diktum</a>
+</li><li><a href="https://kopton.org/zettel/edit.php?link=social_construction_of_technology" name="zettelkasten_link" class="internal" title="SCOT">SCOT</a>
+</li><li><a href="https://kopton.org/zettel/edit.php?link=rhetorik" name="zettelkasten_link" class="internal" title="Rhetorik">Rhetorik</a>
+</li></ul><p></p>
+
+<p>Extern (anderer Zettelkasten)
+</p><ul><li><a href="https://kopton.org/zettel/edit.php?link=henrik:kaffee" name="zettelkasten_link" class="external_zettelkasten" title="Kaffee">Kaffee</a>
+</li><li><a href="https://kopton.org/zettel/edit.php?link=henrik:klimawandel"
+        name="zettelkasten_link" class="external_zettelkasten"
+        title="Klimawandel">Klimawandel</a>
+</li></ul><p></p>
+
+<p>Zitierung
+</p><ul><li><a href="#bib_1" class="bib_link">Global Gardening  [1]</a>
+</li></ul><p></p>
+
+<p>Extern (Internet)
+</p><ul><li><a href="http://wikipedia.org/" title="Wikipedia" class="external_internet" target="_blank">Wikipedia</a>
+</li></ul><p></p>
+
+<p></p><h2 id="Anderes" onclick="copyclip('format_beispiel#Anderes')">Anderes
+ <span class="anchor">¶</span></h2><p></p>
+
+<p></p><h3 id="Überschrift" zweites="" level="">Überschrift zweites Level
+</h3><p></p>
+
+<blockquote>
+Zitate nach orgmode-Syntax
+</blockquote>
+
+<p>oder nach Markdown-Syntax mit Quellenangabe:
+</p><blockquote>Du kannst etwas verändern – jeden Tag und zu jeder Zeit!
+</blockquote><p class="blockquote_ref"><span class="blockquote_name">Jane Goodall</span>, britische Verhaltensforscherin
+</p>
+<ul><li>Aufzählungen
+</li><ul><li>mit mehreren
+</li></ul><ul><li>Ebenen
+</li></ul></ul>
+  
+<ol><li>nummerierte
+</li><li>Aufzählungen
+</li></ol><p></p>
+
+<p>  
+<em>kursiver Text</em>
+<strong>fetter Text</strong></p>
+
+<pre><code class="prettyprint prettyprinted" style=""><span class="kwd">import</span><span class="pln"> numpy </span><span class="kwd">as</span><span class="pln"> np
+</span><span class="kwd">from</span><span class="pln"> helper </span><span class="kwd">import</span><span class="pln"> </span><span class="pun">*</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProcessModel</span><span class="pun">:</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> __init__</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">n_params_float </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+        </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">n_params_bool </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> run</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> input</span><span class="pun">,</span><span class="pln"> p_float</span><span class="pun">,</span><span class="pln"> p_bool</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> input
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">CultureMedium</span><span class="pun">(</span><span class="typ">ProcessModel</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> run</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">,</span><span class="pln"> input</span><span class="pun">,</span><span class="pln"> p_float</span><span class="pun">,</span><span class="pln"> p_bool</span><span class="pun">):</span><span class="pln">
+        output </span><span class="pun">=</span><span class="pln"> input
+        makeup </span><span class="pun">=</span><span class="pln"> get_zero_dict</span><span class="pun">(</span><span class="kwd">True</span><span class="pun">)</span><span class="pln">
+        emission </span><span class="pun">=</span><span class="pln"> get_zero_dict</span><span class="pun">(</span><span class="kwd">True</span><span class="pun">)</span></code></pre>
+
+<p><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" style="font-size: 119.8%; position: relative;" display="true" tabindex="0" ctxtmenu_counter="0"><mjx-math display="true" style="margin-left: 0px; margin-right: 0px;" class="MJX-TEX" aria-hidden="true"><mjx-msubsup><mjx-mo class="mjx-lop"><mjx-c class="mjx-c222B TEX-S2"></mjx-c></mjx-mo><mjx-script style="vertical-align: -0.896em; margin-left: -0.388em;"><mjx-texatom size="s" texclass="ORD" style="margin-left: 0.647em;"><mjx-mi class="mjx-n"><mjx-c class="mjx-c221E"></mjx-c></mjx-mi></mjx-texatom><mjx-spacer style="margin-top: 1.506em;"></mjx-spacer><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-script></mjx-msubsup><mjx-mstyle space="2"><mjx-mfrac><mjx-frac type="d"><mjx-num><mjx-nstrut type="d"></mjx-nstrut><mjx-mrow><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D715"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D711 TEX-I"></mjx-c></mjx-mi><mjx-msqrt><mjx-sqrt><mjx-surd><mjx-mo class="mjx-n"><mjx-c class="mjx-c221A"></mjx-c></mjx-mo></mjx-surd><mjx-box style="padding-top: 0.281em;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D460 TEX-I"></mjx-c></mjx-mi></mjx-box></mjx-sqrt></mjx-msqrt></mjx-mrow></mjx-num><mjx-dbox><mjx-dtable><mjx-line type="d"></mjx-line><mjx-row><mjx-den><mjx-dstrut type="d"></mjx-dstrut><mjx-mrow><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D715"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi></mjx-mrow></mjx-den></mjx-row></mjx-dtable></mjx-dbox></mjx-frac></mjx-mfrac></mjx-mstyle><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D460 TEX-I"></mjx-c></mjx-mi><mjx-mrow space="2"><mjx-mo class="mjx-s3"><mjx-c class="mjx-c5B TEX-S3"></mjx-c></mjx-mo><mjx-mtable style="min-width: 0.64em;"><mjx-table><mjx-itable><mjx-mtr><mjx-mtd style="padding-bottom: 0.2em;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr><mjx-mtr><mjx-mtd style="padding-top: 0.2em;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FD TEX-I"></mjx-c></mjx-mi><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-table></mjx-mtable><mjx-mo class="mjx-s3"><mjx-c class="mjx-c5D TEX-S3"></mjx-c></mjx-mo></mjx-mrow><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-munderover space="4"><mjx-over style="padding-bottom: 0.2em; padding-left: 0.408em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D441 TEX-I"></mjx-c></mjx-mi></mjx-over><mjx-box><mjx-munder><mjx-row><mjx-base><mjx-mo class="mjx-lop"><mjx-c class="mjx-c2211 TEX-S2"></mjx-c></mjx-mo></mjx-base></mjx-row><mjx-row><mjx-under style="padding-top: 0.167em; padding-left: 0.148em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-under></mjx-row></mjx-munder></mjx-box></mjx-munderover><mjx-mrow space="2"><mjx-mo class="mjx-s3"><mjx-c class="mjx-c5B TEX-S3"></mjx-c></mjx-mo><mjx-mtable style="min-width: 2.029em;"><mjx-table><mjx-itable><mjx-mtr><mjx-mtd style="padding-right: 0.5em; padding-bottom: 0.2em;"><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn><mjx-tstrut></mjx-tstrut></mjx-mtd><mjx-mtd style="padding-left: 0.5em; padding-bottom: 0.2em;"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr><mjx-mtr><mjx-mtd style="padding-right: 0.5em; padding-top: 0.2em;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-tstrut></mjx-tstrut></mjx-mtd><mjx-mtd style="padding-left: 0.5em; padding-top: 0.2em;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44F TEX-I"></mjx-c></mjx-mi><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-table></mjx-mtable><mjx-mo class="mjx-s3"><mjx-c class="mjx-c5D TEX-S3"></mjx-c></mjx-mo></mjx-mrow><mjx-mrow space="2"><mjx-mo class="mjx-s3"><mjx-c class="mjx-c5B TEX-S3"></mjx-c></mjx-mo><mjx-mtable style="min-width: 0.782em;"><mjx-table><mjx-itable><mjx-mtr><mjx-mtd style="padding-bottom: 0.2em;"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr><mjx-mtr><mjx-mtd style="padding-top: 0.2em;"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c33"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-table></mjx-mtable><mjx-mo class="mjx-s3"><mjx-c class="mjx-c5D TEX-S3"></mjx-c></mjx-mo></mjx-mrow></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mo data-mjx-texclass="OP">∫</mo><mn>0</mn><mrow data-mjx-texclass="ORD"><mi mathvariant="normal">∞</mi></mrow></msubsup><mstyle scriptlevel="0" displaystyle="true"><mfrac><mrow><mi>∂</mi><mi>φ</mi><msqrt><mi>s</mi></msqrt></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac></mstyle><mi>d</mi><mi>s</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>α</mi></mtd></mtr><mtr><mtd><mi>β</mi></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>=</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow data-mjx-texclass="ORD"><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>N</mi></munderover><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><msup><mi>i</mi><mn>2</mn></msup></mtd></mtr><mtr><mtd><msup><mi>i</mi><mn>3</mn></msup></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></mjx-assistive-mml></mjx-container></p>
+
+<p></p><div id="music_0" class="music" style="width: 500px;"><svg style="width: 500px; height: 160px;" width="500" height="160" viewBox="0 0 500 160"><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M10 50L510 50"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M10 60L510 60"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M10 70L510 70"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M10 80L510 80"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M10 90L510 90"></path><rect stroke-width="0.3" fill="#839496" stroke="black" stroke-dasharray="none" x="510" y="49.5" width="1" height="41"></rect><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M15 81M28.280256 90.199872C29.116608 90.199872,30.079680000000003 90.12384,30.814656 89.971776C31.194816000000003 89.89574400000001,31.270848 89.8704,31.346880000000002 90.301248C31.777728 92.759616,32.335296 95.927616,32.335296 97.651008C32.335296 103.04928000000001,28.685760000000002 103.708224,26.53152 103.708224C24.554688 103.708224,23.61696 103.12531200000001,23.61696 102.643776C23.61696 102.390336,23.946432 102.28896,24.782784 102.010176C25.923264000000003 101.680704,27.215808000000003 100.71763200000001,27.215808000000003 98.588736C27.215808000000003 96.58656,25.948608 94.863168,23.718336 94.863168C21.285312 94.863168,19.81536 96.814656,19.81536 99.070272C19.81536 101.42726400000001,21.234624 105.026112,26.759616 105.026112C29.19264 105.026112,33.931968 103.910976,33.931968 97.72704C33.931968 95.62348800000001,33.27302400000001 92.176704,32.892864 89.89574400000001C32.816832000000005 89.464896,32.842176 89.515584,33.349056000000004 89.287488C37.04928 87.817536,39.482304 84.725568,39.482304 80.594496C39.482304 75.9312,36.060864 71.800128,30.687936 71.800128C29.750208 71.800128,29.750208 71.800128,29.623488000000002 71.141184L28.711104 65.844288C28.660416 65.41344,28.711104 65.388096,28.9392 65.16C32.892864 61.485119999999995,35.883456 56.847167999999996,35.883456 51.246144C35.883456 48.078143999999995,34.996415999999996 44.935488,33.50112 42.755903999999994C32.943552 41.944896,32.005824000000004 40.931135999999995,31.60032 40.931135999999995C31.09344 40.931135999999995,29.95296 41.868863999999995,29.243328 42.679871999999996C26.53152 45.670463999999996,25.64448 50.232383999999996,25.64448 54.033984C25.64448 56.137536,25.923264000000003 58.519872,26.176704 60.015168C26.252736 60.446016,26.278080000000003 60.522048,25.847231999999998 60.902208C20.57568 65.236032,15 70.456896,15 77.832C15 84.168,19.333824 90.199872,28.280256 90.199872M17.91456 80.265024C17.91456 78.110784,18.29472 75.221568,21.310656 71.800128C23.515584 69.367104,25.188288 67.998528,26.886336 66.629952C27.266496 66.325824,27.342528 66.37651199999999,27.41856 66.756672L28.17888 71.445312C28.280256 72.1296,28.280256 72.10425599999999,27.621312000000003 72.307008C24.427968 73.3968,22.324416 76.286016,22.324416 79.403328C22.324416 82.672704,24.047808 85.004352,26.53152 85.866048C26.835648 85.967424,27.266496 86.0688,27.519936 86.0688C27.798720000000003 86.0688,27.950784 85.891392,27.950784 85.663296C27.950784 85.409856,27.672 85.30848,27.41856 85.207104C25.872576000000002 84.54816,24.782784 82.976832,24.782784 81.304128C24.782784 79.200576,26.202048 77.654592,28.43232 77.020992C29.015232 76.868928,29.091264000000002 76.919616,29.167296 77.32512L30.992064 88.19769600000001C31.068096 88.6032,31.017408 88.6032,30.485184000000004 88.704576C29.902272000000004 88.805952,29.167296 88.881984,28.43232 88.881984C22.045632 88.881984,17.91456 85.33382399999999,17.91456 80.265024M32.157888 46.582848C33.349056000000004 46.582848,34.337472000000005 47.571264,34.337472000000005 49.57344C34.337472000000005 53.628479999999996,30.865344 56.923199999999994,28.001472 59.432255999999995C27.748032000000002 59.660352,27.595968 59.609663999999995,27.519936 59.128128C27.367872 58.1904,27.29184 56.948544,27.29184 55.78272C27.29184 50.08032,29.927616 46.582848,32.157888 46.582848M31.09344 76.742208C34.058688000000004 76.995648,36.49171200000001 79.47936,36.49171200000001 82.672704C36.49171200000001 84.979008,35.097792 86.82912,33.070272 87.868224C32.639424000000005 88.070976,32.563392 88.070976,32.48736 87.640128L30.687936 77.249088C30.611904000000003 76.792896,30.662592000000004 76.69152,31.09344 76.742208"></path><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M56 60M57.41984 63.94128L63.956 63.94128L63.956 66.16896C63.956 67.12368,63.19712 67.39296,62.56064 67.39296C61.9976 67.39296,61.7528 67.7112,61.7528 68.0784C61.7528 68.42112,61.8752 68.8128,62.413759999999996 68.8128L69.92912 68.8128C70.27184 68.8128,70.63904 68.568,70.63904 68.0784C70.63904 67.58879999999999,70.19839999999999 67.36848,69.85568 67.36848C69.51295999999999 67.36848,68.75408 67.14816,68.75408 66.02208L68.75408 63.94128L71.32448 63.94128C71.69167999999999 63.94128,71.86304 63.69648,71.86304 63.28032C71.86304 62.86416,71.71616 62.61936,71.32448 62.61936L68.75408 62.61936L68.75408 55.05504C68.75408 54.78576,68.7296 54.46752,68.33792 54.46752C68.01968 54.46752,67.84832 54.54096,67.628 54.78576L64.27423999999999 58.82496C64.15183999999999 59.0208,63.956 59.21664,63.956 59.65728L63.956 62.61936L59.20688 62.61936C62.02208 60.22032,67.67696 52.215360000000004,67.77488 51.82368C67.77488 51.75024,67.79936 51.72576,67.79936 51.65232C67.79936 51.35856,67.55456 51.16272,67.28528 51.16272C66.96704 51.16272,65.52271999999999 51.21168,64.88624 51.21168C64.24976 51.21168,62.65856 51.16272,62.38928 51.16272C62.071039999999996 51.16272,61.58144 51.26064,61.58144 51.82368C61.58144 56.18112,58.10528 61.1016,57.05264 62.5704L56.8568 62.86416C56.8568 62.88864,56.80784 62.9376,56.80784 62.96208C56.7344 63.108959999999996,56.70992 63.23136,56.70992 63.35376C56.70992 63.69648,56.9792 63.94128,57.41984 63.94128"></path><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M56 80M57.41984 83.94128L63.956 83.94128L63.956 86.16896C63.956 87.12368,63.19712 87.39296,62.56064 87.39296C61.9976 87.39296,61.7528 87.7112,61.7528 88.0784C61.7528 88.42112,61.8752 88.8128,62.413759999999996 88.8128L69.92912 88.8128C70.27184 88.8128,70.63904 88.568,70.63904 88.0784C70.63904 87.58879999999999,70.19839999999999 87.36848,69.85568 87.36848C69.51295999999999 87.36848,68.75408 87.14816,68.75408 86.02208L68.75408 83.94128L71.32448 83.94128C71.69167999999999 83.94128,71.86304 83.69648,71.86304 83.28032C71.86304 82.86416,71.71616 82.61936,71.32448 82.61936L68.75408 82.61936L68.75408 75.05504C68.75408 74.78576,68.7296 74.46752000000001,68.33792 74.46752000000001C68.01968 74.46752000000001,67.84832 74.54096,67.628 74.78576L64.27423999999999 78.82496C64.15183999999999 79.0208,63.956 79.21664,63.956 79.65728L63.956 82.61936L59.20688 82.61936C62.02208 80.22032,67.67696 72.21536,67.77488 71.82368C67.77488 71.75024,67.79936 71.72576000000001,67.79936 71.65232C67.79936 71.35856,67.55456 71.16272000000001,67.28528 71.16272000000001C66.96704 71.16272000000001,65.52271999999999 71.21168,64.88624 71.21168C64.24976 71.21168,62.65856 71.16272000000001,62.38928 71.16272000000001C62.071039999999996 71.16272000000001,61.58144 71.26064,61.58144 71.82368C61.58144 76.18112,58.10528 81.1016,57.05264 82.5704L56.8568 82.86416C56.8568 82.88864,56.80784 82.9376,56.80784 82.96208C56.7344 83.10896,56.70992 83.23136,56.70992 83.35376C56.70992 83.69648,56.9792 83.94128,57.41984 83.94128"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M104.93712 100L134.05512 100"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M104.93712 110L122.87111999999999 110"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M104.93712 120L122.87111999999999 120"></path><g class="vf-stavenote" id="vf-auto1001"><g class="vf-note" pointer-events="bounding-box"><g class="vf-stem" pointer-events="bounding-box"><path stroke-width="1.5" fill="none" stroke="#839496" stroke-dasharray="none" d="M119.12111999999999 125L119.12111999999999 30"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M107.93712 125M107.93712 126.6848C107.93712 128.7908,109.67808 130.0544,111.86832 130.0544C115.46256 130.0544,119.87111999999999 126.74096,119.87111999999999 123.3152C119.87111999999999 121.23728,118.24248 119.9456,115.93992 119.9456C111.50327999999999 119.9456,107.93712 123.23096,107.93712 126.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M107.93712 105M107.93712 106.6848C107.93712 108.7908,109.67808 110.0544,111.86832 110.0544C115.46256 110.0544,119.87111999999999 106.74096,119.87111999999999 103.3152C119.87111999999999 101.23728,118.24248 99.9456,115.93992 99.9456C111.50327999999999 99.9456,107.93712 103.23096,107.93712 106.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M119.12111999999999 100M119.12111999999999 101.6848C119.12111999999999 103.7908,120.86207999999999 105.0544,123.05232 105.0544C126.64656 105.0544,131.05512 101.74096,131.05512 98.3152C131.05512 96.23728,129.42648 94.9456,127.12392 94.9456C122.68727999999999 94.9456,119.12111999999999 98.23096,119.12111999999999 101.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M107.93712 80M107.93712 81.6848C107.93712 83.7908,109.67808 85.0544,111.86832 85.0544C115.46256 85.0544,119.87111999999999 81.74096,119.87111999999999 78.3152C119.87111999999999 76.23728,118.24248 74.9456,115.93992 74.9456C111.50327999999999 74.9456,107.93712 78.23096,107.93712 81.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M107.93712 65M107.93712 66.6848C107.93712 68.7908,109.67808 70.0544,111.86832 70.0544C115.46256 70.0544,119.87111999999999 66.74096,119.87111999999999 63.3152C119.87111999999999 61.23728,118.24248 59.9456,115.93992 59.9456C111.50327999999999 59.9456,107.93712 63.23096,107.93712 66.6848"></path></g></g><g class="vf-modifiers"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M84.15312 125M84.61824 131.7032C84.75504000000001 131.86736,84.86448 131.89472,84.97392 131.89472C85.11072 131.89472,85.22016 131.81264,85.22016 131.81264C86.39664 131.156,87.35424 130.08896,88.3392 129.40496C91.84128 126.96992,93.04512 124.56224,93.04512 122.75648C93.04512 120.51296,91.32144 119.09024,89.51568 118.9808C88.83168 118.9808,87.90144000000001 119.28176,87.35424 119.63744C87.108 119.82896,86.67024 120.18464,86.47872 120.18464C86.39664 120.18464,86.36928 120.18464,86.2872 120.15728C86.0136 120.04784,85.84944 119.74688,85.84944 119.47328C85.8768 118.62512,86.12304 109.15856,86.12304 108.36512C86.12304 107.92736,85.76736 107.70848000000001,85.38432 107.70848000000001C84.80976 107.70848000000001,84.18048 108.09152,84.15312 108.80288C84.15312 108.80288,84.31728 131.2928,84.61824 131.7032M85.95888000000001 123.00272C86.23248 122.20928,87.81936 121.06016,88.72224 121.06016C89.87136 121.06016,90.33648 122.37344,90.33648 123.3584C90.33648 125.46512,88.53072 127.5992,86.8344 128.66624C86.67024 128.74832,86.5608 128.77568,86.45136 128.77568C86.09568 128.77568,86.0136 128.39264,86.0136 128.20112C86.0136 128.20112,85.8768 125.8208,85.8768 124.26128C85.8768 123.632,85.93152 123.13952,85.95888000000001 123.00272"></path><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M96.04512 105M96.51024 111.7032C96.64704 111.86736,96.75648 111.89472,96.86592 111.89472C97.00272 111.89472,97.11216 111.81264,97.11216 111.81264C98.28864 111.156,99.24624 110.08896,100.2312 109.40496C103.73328 106.96992,104.93712 104.56224,104.93712 102.75648C104.93712 100.51296,103.21343999999999 99.09024,101.40768 98.9808C100.72368 98.9808,99.79344 99.28176,99.24624 99.63744C99 99.82896,98.56224 100.18464,98.37071999999999 100.18464C98.28864 100.18464,98.26128 100.18464,98.1792 100.15728C97.90559999999999 100.04784,97.74144 99.74688,97.74144 99.47328C97.7688 98.62512,98.01504 89.15856,98.01504 88.36512C98.01504 87.92736,97.65935999999999 87.70848000000001,97.27632 87.70848000000001C96.70176 87.70848000000001,96.07248 88.09152,96.04512 88.80288C96.04512 88.80288,96.20927999999999 111.2928,96.51024 111.7032M97.85088 103.00272C98.12447999999999 102.20928,99.71136 101.06016,100.61424 101.06016C101.76335999999999 101.06016,102.22847999999999 102.37344,102.22847999999999 103.3584C102.22847999999999 105.46512,100.42272 107.5992,98.7264 108.66624C98.56224 108.74832,98.4528 108.77568,98.34335999999999 108.77568C97.98768 108.77568,97.90559999999999 108.39264,97.90559999999999 108.20112C97.90559999999999 108.20112,97.7688 105.8208,97.7688 104.26128C97.7688 103.632,97.82352 103.13952,97.85088 103.00272"></path></g></g><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M202.46934 100L220.40334 100"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M202.46934 110L220.40334 110"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M202.46934 120L220.40334 120"></path><g class="vf-stavenote" id="vf-auto1029"><g class="vf-note" pointer-events="bounding-box"><g class="vf-stem" pointer-events="bounding-box"><path stroke-width="1.5" fill="none" stroke="#839496" stroke-dasharray="none" d="M216.65334 125L216.65334 30"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M205.46934 125M205.46934 126.6848C205.46934 128.7908,207.2103 130.0544,209.40053999999998 130.0544C212.99478 130.0544,217.40334 126.74096,217.40334 123.3152C217.40334 121.23728,215.7747 119.9456,213.47214 119.9456C209.03549999999998 119.9456,205.46934 123.23096,205.46934 126.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M205.46934 110M205.46934 111.6848C205.46934 113.7908,207.2103 115.0544,209.40053999999998 115.0544C212.99478 115.0544,217.40334 111.74096,217.40334 108.3152C217.40334 106.23728,215.7747 104.9456,213.47214 104.9456C209.03549999999998 104.9456,205.46934 108.23096,205.46934 111.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M205.46934 100M205.46934 101.6848C205.46934 103.7908,207.2103 105.0544,209.40053999999998 105.0544C212.99478 105.0544,217.40334 101.74096,217.40334 98.3152C217.40334 96.23728,215.7747 94.9456,213.47214 94.9456C209.03549999999998 94.9456,205.46934 98.23096,205.46934 101.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M205.46934 80M205.46934 81.6848C205.46934 83.7908,207.2103 85.0544,209.40053999999998 85.0544C212.99478 85.0544,217.40334 81.74096,217.40334 78.3152C217.40334 76.23728,215.7747 74.9456,213.47214 74.9456C209.03549999999998 74.9456,205.46934 78.23096,205.46934 81.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M205.46934 65M205.46934 66.6848C205.46934 68.7908,207.2103 70.0544,209.40053999999998 70.0544C212.99478 70.0544,217.40334 66.74096,217.40334 63.3152C217.40334 61.23728,215.7747 59.9456,213.47214 59.9456C209.03549999999998 59.9456,205.46934 63.23096,205.46934 66.6848"></path></g></g><g class="vf-modifiers"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M193.57734 125M194.04246 131.7032C194.17926 131.86736,194.2887 131.89472,194.39813999999998 131.89472C194.53494 131.89472,194.64437999999998 131.81264,194.64437999999998 131.81264C195.82085999999998 131.156,196.77846 130.08896,197.76342 129.40496C201.2655 126.96992,202.46934 124.56224,202.46934 122.75648C202.46934 120.51296,200.74566 119.09024,198.9399 118.9808C198.2559 118.9808,197.32566 119.28176,196.77846 119.63744C196.53222 119.82896,196.09446 120.18464,195.90294 120.18464C195.82085999999998 120.18464,195.7935 120.18464,195.71142 120.15728C195.43782 120.04784,195.27365999999998 119.74688,195.27365999999998 119.47328C195.30102 118.62512,195.54726 109.15856,195.54726 108.36512C195.54726 107.92736,195.19158 107.70848000000001,194.80854 107.70848000000001C194.23398 107.70848000000001,193.60469999999998 108.09152,193.57734 108.80288C193.57734 108.80288,193.7415 131.2928,194.04246 131.7032M195.38309999999998 123.00272C195.6567 122.20928,197.24357999999998 121.06016,198.14646 121.06016C199.29558 121.06016,199.76069999999999 122.37344,199.76069999999999 123.3584C199.76069999999999 125.46512,197.95494 127.5992,196.25861999999998 128.66624C196.09446 128.74832,195.98502 128.77568,195.87557999999999 128.77568C195.51989999999998 128.77568,195.43782 128.39264,195.43782 128.20112C195.43782 128.20112,195.30102 125.8208,195.30102 124.26128C195.30102 123.632,195.35574 123.13952,195.38309999999998 123.00272"></path></g></g><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M300.00156 100L317.93556 100"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M300.00156 110L317.93556 110"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M300.00156 120L317.93556 120"></path><g class="vf-stavenote" id="vf-auto1053"><g class="vf-note" pointer-events="bounding-box"><g class="vf-stem" pointer-events="bounding-box"><path stroke-width="1.5" fill="none" stroke="#839496" stroke-dasharray="none" d="M314.18556 125L314.18556 30"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M303.00156 125M303.00156 126.6848C303.00156 128.7908,304.74251999999996 130.0544,306.93276 130.0544C310.527 130.0544,314.93556 126.74096,314.93556 123.3152C314.93556 121.23728,313.30692 119.9456,311.00435999999996 119.9456C306.56772 119.9456,303.00156 123.23096,303.00156 126.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M303.00156 110M303.00156 111.6848C303.00156 113.7908,304.74251999999996 115.0544,306.93276 115.0544C310.527 115.0544,314.93556 111.74096,314.93556 108.3152C314.93556 106.23728,313.30692 104.9456,311.00435999999996 104.9456C306.56772 104.9456,303.00156 108.23096,303.00156 111.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M303.00156 100M303.00156 101.6848C303.00156 103.7908,304.74251999999996 105.0544,306.93276 105.0544C310.527 105.0544,314.93556 101.74096,314.93556 98.3152C314.93556 96.23728,313.30692 94.9456,311.00435999999996 94.9456C306.56772 94.9456,303.00156 98.23096,303.00156 101.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M303.00156 85M303.00156 86.6848C303.00156 88.7908,304.74251999999996 90.0544,306.93276 90.0544C310.527 90.0544,314.93556 86.74096,314.93556 83.3152C314.93556 81.23728,313.30692 79.9456,311.00435999999996 79.9456C306.56772 79.9456,303.00156 83.23096,303.00156 86.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M303.00156 65M303.00156 66.6848C303.00156 68.7908,304.74251999999996 70.0544,306.93276 70.0544C310.527 70.0544,314.93556 66.74096,314.93556 63.3152C314.93556 61.23728,313.30692 59.9456,311.00435999999996 59.9456C306.56772 59.9456,303.00156 63.23096,303.00156 66.6848"></path></g></g><g class="vf-modifiers"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M279.21756 125M279.68268 131.7032C279.81948 131.86736,279.92892 131.89472,280.03836 131.89472C280.17516 131.89472,280.2846 131.81264,280.2846 131.81264C281.46108 131.156,282.41868 130.08896,283.40364 129.40496C286.90572 126.96992,288.10956 124.56224,288.10956 122.75648C288.10956 120.51296,286.38588 119.09024,284.58011999999997 118.9808C283.89612 118.9808,282.96587999999997 119.28176,282.41868 119.63744C282.17244 119.82896,281.73467999999997 120.18464,281.54316 120.18464C281.46108 120.18464,281.43372 120.18464,281.35164 120.15728C281.07804 120.04784,280.91388 119.74688,280.91388 119.47328C280.94124 118.62512,281.18748 109.15856,281.18748 108.36512C281.18748 107.92736,280.8318 107.70848000000001,280.44876 107.70848000000001C279.8742 107.70848000000001,279.24492 108.09152,279.21756 108.80288C279.21756 108.80288,279.38172 131.2928,279.68268 131.7032M281.02332 123.00272C281.29692 122.20928,282.8838 121.06016,283.78668 121.06016C284.9358 121.06016,285.40092 122.37344,285.40092 123.3584C285.40092 125.46512,283.59515999999996 127.5992,281.89884 128.66624C281.73467999999997 128.74832,281.62524 128.77568,281.5158 128.77568C281.16012 128.77568,281.07804 128.39264,281.07804 128.20112C281.07804 128.20112,280.94124 125.8208,280.94124 124.26128C280.94124 123.632,280.99595999999997 123.13952,281.02332 123.00272"></path><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M291.10956 110M291.57468 116.7032C291.71148 116.86736,291.82092 116.89472,291.93036 116.89472C292.06716 116.89472,292.1766 116.81264,292.1766 116.81264C293.35308 116.156,294.31068 115.08896,295.29564 114.40496C298.79771999999997 111.96992,300.00156 109.56224,300.00156 107.75648C300.00156 105.51296,298.27788 104.09024,296.47211999999996 103.9808C295.78812 103.9808,294.85787999999997 104.28176,294.31068 104.63744C294.06444 104.82896,293.62667999999996 105.18464,293.43516 105.18464C293.35308 105.18464,293.32572 105.18464,293.24363999999997 105.15728C292.97004 105.04784,292.80588 104.74688,292.80588 104.47328C292.83324 103.62512,293.07948 94.15856,293.07948 93.36512C293.07948 92.92736,292.7238 92.70848000000001,292.34076 92.70848000000001C291.76619999999997 92.70848000000001,291.13692 93.09152,291.10956 93.80288C291.10956 93.80288,291.27371999999997 116.2928,291.57468 116.7032M292.91532 108.00272C293.18892 107.20928,294.7758 106.06016,295.67868 106.06016C296.82779999999997 106.06016,297.29292 107.37344,297.29292 108.3584C297.29292 110.46512,295.48715999999996 112.5992,293.79084 113.66624C293.62667999999996 113.74832,293.51724 113.77568,293.4078 113.77568C293.05212 113.77568,292.97004 113.39264,292.97004 113.20112C292.97004 113.20112,292.83324 110.8208,292.83324 109.26128C292.83324 108.632,292.88795999999996 108.13952,292.91532 108.00272"></path></g></g><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M397.53378000000004 100L415.46778000000006 100"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M397.53378000000004 110L415.46778000000006 110"></path><path stroke-width="1" fill="none" stroke="#999999" stroke-dasharray="none" d="M397.53378000000004 120L415.46778000000006 120"></path><g class="vf-stavenote" id="vf-auto1079"><g class="vf-note" pointer-events="bounding-box"><g class="vf-stem" pointer-events="bounding-box"><path stroke-width="1.5" fill="none" stroke="#839496" stroke-dasharray="none" d="M411.71778000000006 125L411.71778000000006 35"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M400.53378000000004 125M400.53378000000004 126.6848C400.53378000000004 128.7908,402.27474 130.0544,404.46498 130.0544C408.05922000000004 130.0544,412.46778000000006 126.74096,412.46778000000006 123.3152C412.46778000000006 121.23728,410.83914000000004 119.9456,408.53658 119.9456C404.09994000000006 119.9456,400.53378000000004 123.23096,400.53378000000004 126.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M400.53378000000004 115M400.53378000000004 116.6848C400.53378000000004 118.7908,402.27474 120.0544,404.46498 120.0544C408.05922000000004 120.0544,412.46778000000006 116.74096,412.46778000000006 113.3152C412.46778000000006 111.23728,410.83914000000004 109.9456,408.53658 109.9456C404.09994000000006 109.9456,400.53378000000004 113.23096,400.53378000000004 116.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M400.53378000000004 105M400.53378000000004 106.6848C400.53378000000004 108.7908,402.27474 110.0544,404.46498 110.0544C408.05922000000004 110.0544,412.46778000000006 106.74096,412.46778000000006 103.3152C412.46778000000006 101.23728,410.83914000000004 99.9456,408.53658 99.9456C404.09994000000006 99.9456,400.53378000000004 103.23096,400.53378000000004 106.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M400.53378000000004 85M400.53378000000004 86.6848C400.53378000000004 88.7908,402.27474 90.0544,404.46498 90.0544C408.05922000000004 90.0544,412.46778000000006 86.74096,412.46778000000006 83.3152C412.46778000000006 81.23728,410.83914000000004 79.9456,408.53658 79.9456C404.09994000000006 79.9456,400.53378000000004 83.23096,400.53378000000004 86.6848"></path></g><g class="vf-notehead" pointer-events="bounding-box"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M400.53378000000004 70M400.53378000000004 71.6848C400.53378000000004 73.7908,402.27474 75.0544,404.46498 75.0544C408.05922000000004 75.0544,412.46778000000006 71.74096,412.46778000000006 68.3152C412.46778000000006 66.23728,410.83914000000004 64.9456,408.53658 64.9456C404.09994000000006 64.9456,400.53378000000004 68.23096,400.53378000000004 71.6848"></path></g></g><g class="vf-modifiers"><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M376.74978000000004 125M377.21490000000006 131.7032C377.35170000000005 131.86736,377.46114000000006 131.89472,377.57058000000006 131.89472C377.70738000000006 131.89472,377.81682000000006 131.81264,377.81682000000006 131.81264C378.99330000000003 131.156,379.95090000000005 130.08896,380.93586000000005 129.40496C384.43794 126.96992,385.64178000000004 124.56224,385.64178000000004 122.75648C385.64178000000004 120.51296,383.91810000000004 119.09024,382.11234 118.9808C381.42834000000005 118.9808,380.4981 119.28176,379.95090000000005 119.63744C379.70466000000005 119.82896,379.2669 120.18464,379.07538000000005 120.18464C378.99330000000003 120.18464,378.96594000000005 120.18464,378.88386 120.15728C378.61026000000004 120.04784,378.44610000000006 119.74688,378.44610000000006 119.47328C378.47346000000005 118.62512,378.71970000000005 109.15856,378.71970000000005 108.36512C378.71970000000005 107.92736,378.36402000000004 107.70848000000001,377.98098000000005 107.70848000000001C377.40642 107.70848000000001,376.77714000000003 108.09152,376.74978000000004 108.80288C376.74978000000004 108.80288,376.91394 131.2928,377.21490000000006 131.7032M378.55554000000006 123.00272C378.82914000000005 122.20928,380.41602000000006 121.06016,381.31890000000004 121.06016C382.46802 121.06016,382.93314000000004 122.37344,382.93314000000004 123.3584C382.93314000000004 125.46512,381.12738 127.5992,379.43106000000006 128.66624C379.2669 128.74832,379.15746000000007 128.77568,379.04802000000007 128.77568C378.69234000000006 128.77568,378.61026000000004 128.39264,378.61026000000004 128.20112C378.61026000000004 128.20112,378.47346000000005 125.8208,378.47346000000005 124.26128C378.47346000000005 123.632,378.52818 123.13952,378.55554000000006 123.00272"></path><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M388.64178000000004 105M389.10690000000005 111.7032C389.24370000000005 111.86736,389.35314000000005 111.89472,389.46258000000006 111.89472C389.59938000000005 111.89472,389.70882000000006 111.81264,389.70882000000006 111.81264C390.88530000000003 111.156,391.84290000000004 110.08896,392.82786000000004 109.40496C396.32994 106.96992,397.53378000000004 104.56224,397.53378000000004 102.75648C397.53378000000004 100.51296,395.81010000000003 99.09024,394.00434 98.9808C393.32034000000004 98.9808,392.3901 99.28176,391.84290000000004 99.63744C391.59666000000004 99.82896,391.1589 100.18464,390.96738000000005 100.18464C390.88530000000003 100.18464,390.85794000000004 100.18464,390.77586 100.15728C390.50226000000004 100.04784,390.33810000000005 99.74688,390.33810000000005 99.47328C390.36546000000004 98.62512,390.61170000000004 89.15856,390.61170000000004 88.36512C390.61170000000004 87.92736,390.25602000000003 87.70848000000001,389.87298000000004 87.70848000000001C389.29842 87.70848000000001,388.66914 88.09152,388.64178000000004 88.80288C388.64178000000004 88.80288,388.80594 111.2928,389.10690000000005 111.7032M390.44754000000006 103.00272C390.72114000000005 102.20928,392.30802000000006 101.06016,393.21090000000004 101.06016C394.36002 101.06016,394.82514000000003 102.37344,394.82514000000003 103.3584C394.82514000000003 105.46512,393.01938 107.5992,391.32306000000005 108.66624C391.1589 108.74832,391.04946000000007 108.77568,390.94002000000006 108.77568C390.58434000000005 108.77568,390.50226000000004 108.39264,390.50226000000004 108.20112C390.50226000000004 108.20112,390.36546000000004 105.8208,390.36546000000004 104.26128C390.36546000000004 103.632,390.42018 103.13952,390.44754000000006 103.00272"></path><path stroke-width="0.3" fill="#839496" stroke="none" stroke-dasharray="none" d="M388.64178000000004 70M389.10690000000005 76.7032C389.24370000000005 76.86736,389.35314000000005 76.89472,389.46258000000006 76.89472C389.59938000000005 76.89472,389.70882000000006 76.81264,389.70882000000006 76.81264C390.88530000000003 76.156,391.84290000000004 75.08896,392.82786000000004 74.40496C396.32994 71.96992,397.53378000000004 69.56224,397.53378000000004 67.75648C397.53378000000004 65.51296,395.81010000000003 64.09024,394.00434 63.9808C393.32034000000004 63.9808,392.3901 64.28176,391.84290000000004 64.63744C391.59666000000004 64.82896,391.1589 65.18464,390.96738000000005 65.18464C390.88530000000003 65.18464,390.85794000000004 65.18464,390.77586 65.15728C390.50226000000004 65.04784,390.33810000000005 64.74688,390.33810000000005 64.47328C390.36546000000004 63.62512,390.61170000000004 54.15856,390.61170000000004 53.365120000000005C390.61170000000004 52.92736,390.25602000000003 52.70848,389.87298000000004 52.70848C389.29842 52.70848,388.66914 53.09152,388.64178000000004 53.80288C388.64178000000004 53.80288,388.80594 76.2928,389.10690000000005 76.7032M390.44754000000006 68.00272C390.72114000000005 67.20928,392.30802000000006 66.06016,393.21090000000004 66.06016C394.36002 66.06016,394.82514000000003 67.37344,394.82514000000003 68.3584C394.82514000000003 70.46512,393.01938 72.5992,391.32306000000005 73.66624C391.1589 73.74832,391.04946000000007 73.77568,390.94002000000006 73.77568C390.58434000000005 73.77568,390.50226000000004 73.39264,390.50226000000004 73.20112C390.50226000000004 73.20112,390.36546000000004 70.8208,390.36546000000004 69.26128C390.36546000000004 68.632,390.42018 68.13952,390.44754000000006 68.00272"></path></g></g></svg></div>
+<script>
+vf = new Vex.Flow.Factory({
+  renderer: {elementId: 'music_0', width: 500, height: 160}
+});
+score = vf.EasyScore();
+system = vf.System();
+notes = score.notes(
+'(Eb3 Bb3 C4 G4 C5)/4, (Eb3 A3 C4 G4 C5)/4, (Eb3 Ab3 C4 F4 C5)/4, (Eb3 G3 Bb3 F4 Bb4)/4'
+);
+for (let i = 0; i < notes.length; i++) {
+    notes[i].setStyle({fillStyle: "#839496", strokeStyle: "#839496"});
+}
+stave = system.addStave({
+  voices: [
+    score.voice(notes)
+  ]
+})
+clef = stave.addClef('treble');
+clef.context.setFillStyle("#839496");
+time = stave.addTimeSignature('4/4');
+vf.draw();
+delete vf, score, notes, clef, time, system;
+</script>
+<p></p>
+        <div class="bibliography"><h2 onclick="copyclip('format_beispiel#')">Bibliographie</h2><ol><li id="bib_1">Grefe, Christiane<br> <i>Global Gardening: Bioökonomie, Neuer Raubbau Oder Wirtschaftsform Der Zukunft?</i><br>Verlag Antje Kunstmann, ISBN: <a href="https://ubfind.ovgu.de/978-3-95614-060-0/fd=global" target="_blank">978-3-95614-060-0</a>, 2016. </li></ol></div><div class="incoming">Verweise zu diesem Zettel:<ul><li><a href="https://kopton.org/zettel/edit.php?link=start">Startseite</a></li></ul></div>    </div>
+    <script>
+        function copyclip(content){
+            navigator.clipboard.writeText("[ztl:" + content + "]");
+        }
+
+        var h1 = document.getElementsByTagName("H1")[0];
+        h1.setAttribute("onclick", "copyclip('format_beispiel')");
+
+        var h2s = document.getElementsByTagName("H2");
+        for (let i=0; i<h2s.length; i++){
+            var h2 = h2s[i];
+            h2.setAttribute("onclick", "copyclip('format_beispiel#" + h2.id + "')");
+        };
+    </script>
+</div>
+
+<script>
+    function setCursorPosition(ctrl, pos) {
+        if (ctrl.setSelectionRange) {
+            ctrl.focus();
+            ctrl.setSelectionRange(pos, pos);
+        }
+    }
+    function toggleForm(){
+        var new_name_box = document.getElementById("menu");
+        var focus_element = document.getElementById("openInput");
+        var display = new_name_box.style.display;
+        if (display == "block"){
+            new_name_box.style.display = "none";
+        } else {
+            new_name_box.style.display = "block";
+            setCursorPosition(new_name_text, 0);
+            focus_element.focus();
+        }
+    }
+    document.addEventListener ("keydown", function (zEvent) {
+        if (zEvent.altKey  &&  zEvent.key === "m") {  // case sensitive
+            toggleForm();
+        }
+    } );
+
+
+    function deleteCheckChange(checkbox) {
+        var delete_button = document.getElementById("delete_button");
+        if(checkbox.checked == true){
+            delete_button.removeAttribute("disabled");
+            delete_button.classList.remove('disabled');
+        }else{
+            delete_button.setAttribute("disabled", "disabled");
+            delete_button.classList.add('disabled');
+        }
+    }
+    deleteCheckChange(document.getElementById("delete_check"));
+</script>
+    </div>
+            </div>
+        </div>
+            
+
+</body></html>
