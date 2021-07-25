@@ -164,3 +164,28 @@ div.bibliography ol li:before {
 div.music{
     margin: auto;
 }
+
+.card {
+    background-color: #f0e9fb;
+    padding: 10px;
+    min-height: 100px;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit!important;
+}
+
+.card img {
+    width: 150px;
+    float: left;
+    margin-right: 15px;
+}
+
+.card h3 {
+    margin-top: 0px;
+}
+
+.card a span.page {
+    float: right;
+}

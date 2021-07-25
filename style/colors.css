@@ -5,7 +5,7 @@ body.light {
     background-color: #93a1a1; }
   body.light div.box {
     background-color: #fdf6e3; }
-  body.light blockquote, body.light pre {
+  body.light blockquote, body.light pre, body.light .card {
     background-color: #eee8d5; }
   body.light .roam_tags, body.light .created, body.light .last_modified, body.light .external_banner, body.light .incoming {
     border-color: #586e75; }
@@ -42,7 +42,7 @@ body.dark {
     background-color: #586e75; }
   body.dark div.box {
     background-color: #002b36; }
-  body.dark blockquote, body.dark pre {
+  body.dark blockquote, body.dark pre, body.dark .card {
     background-color: #073642; }
   body.dark .roam_tags, body.dark .created, body.dark .last_modified, body.dark .external_banner, body.dark .incoming {
     border-color: #93a1a1; }

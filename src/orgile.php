@@ -23,6 +23,7 @@
 
 */
 require_once("citations.php");
+require_once("card.php");
 
 $bib_item_i = 1;
 $music_item = 0;
@@ -34,6 +35,7 @@ class orgile {
   function orgileThis($text) {
     $text = $this->orgilise($text);
     $text = $this->orgilise_music($text);
+    $text = card($text);
     $text = $this->orgilise_links($text);
     $text = $this->orgilise_links_external($text);
     $text = $this->tidy_lists($text);
