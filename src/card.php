@@ -52,10 +52,12 @@ function getSiteOG( $url, $specificTags=0 ){
         $replace = <<<EOT
 <div class='card'>
 <a href='$link'>
-<img src='$image'>
-<span class='author'>$author</span><span class='page'>$page</span>
-<h3>$title</h3>
-<div>$description</div>
+    <div>
+        <img src='$image'>
+        <span class='author'>$author</span><span class='page'>$page</span>
+        <h3>$title</h3>
+        <div>$description</div>
+    </div>
 </a>
 </div>
 EOT;

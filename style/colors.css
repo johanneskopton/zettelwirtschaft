@@ -34,6 +34,12 @@ body.light {
       background-color: #93a1a1; }
   body.light .autocomplete-active {
     background-color: #93a1a1 !important; }
+  body.light .card h3 {
+    color: #ffffff; }
+  body.light .card .author, body.light .card .page {
+    background-color: #dcdacb; }
+  body.light .card:hover {
+    background-color: #e5e1d0; }
 
 body.dark {
   color: #839496;
@@ -71,11 +77,21 @@ body.dark {
       background-color: #586e75; }
   body.dark .autocomplete-active {
     background-color: #586e75 !important; }
+  body.dark .card h3 {
+    color: #ffffff; }
+  body.dark .card .author, body.dark .card .page {
+    background-color: #17414c; }
+  body.dark .card:hover {
+    background-color: #0f3c47; }
 
 body.solarized a:not(.button), body.solarized a:not(.button):visited {
   color: #6c71c4; }
 body.solarized h1, body.solarized h2, body.solarized h3, body.solarized h4, body.solarized h5, body.solarized h6 {
   color: #2aa198; }
+body.solarized .card h3 {
+  background-color: #2aa198; }
+body.solarized .card h3:after {
+  border-bottom-color: #1f7972; }
 
 /*
 html * {

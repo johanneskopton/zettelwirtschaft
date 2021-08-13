@@ -15,4 +15,5 @@
 <link rel="stylesheet" type="text/css" href="style/zettel.css"/>
 <link rel="stylesheet" type="text/css" href="style/colors.css"/>
 <link rel="stylesheet" type="text/css" href="style/prettify-solarized/light.css">
+<link rel="stylesheet" type="text/css" href="style/fontawesome.min.css">
 

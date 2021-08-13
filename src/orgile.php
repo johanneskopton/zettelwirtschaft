@@ -35,10 +35,10 @@ class orgile {
   function orgileThis($text) {
     $text = $this->orgilise($text);
     $text = $this->orgilise_music($text);
-    $text = card($text);
     $text = $this->orgilise_links($text);
     $text = $this->orgilise_links_external($text);
     $text = $this->tidy_lists($text);
+    $text = card($text);
     $text = $this->codeReplace($text);
     $text = $this->footnotes($text);
     $text = $this->citation($text);

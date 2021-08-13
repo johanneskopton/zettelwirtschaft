@@ -80,6 +80,18 @@ $green: #859900;
     .autocomplete-active {
         background-color: $rebase01 !important;
     }
+
+    .card h3 {
+        color: #ffffff;
+    }
+
+    .card .author, .card .page {
+        background-color: mix($rebase02, $rebase01, 80%);
+    }
+
+    .card:hover {
+        background-color: mix($rebase02, $rebase01, 90%);
+    }
 }
 
 @mixin accentize($accent1, $accent2) {
@@ -89,6 +101,14 @@ $green: #859900;
 
     h1, h2, h3, h4, h5, h6 {
         color: $accent2;
+    }
+
+    .card h3 {
+        background-color: $accent2;
+    }
+
+    .card h3:after {
+        border-bottom-color: darken($accent2, 10%);
     }
 }
 
