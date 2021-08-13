@@ -1,7 +1,7 @@
 --
 -- Tabellenstruktur für Tabelle `user`
 --
-DROP TABLE `user`;
+DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `id` smallint(6) UNSIGNED NOT NULL,
