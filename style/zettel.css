@@ -169,6 +169,8 @@ div.music{
     background-color: #f0e9fb;
     padding: 10px;
     min-height: 100px;
+    display: block;
+    text-decoration: none;
 }
 
 .card a {
