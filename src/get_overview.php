@@ -48,7 +48,7 @@
         $sql = "SELECT * FROM zettel WHERE `user`='$overviewuser'$public_filter ORDER BY $type DESC";
         $result = $mysqli->query($sql);
 
-        if ($result->num_rows > 0) {
+        if ($result && $result->num_rows > 0) {
             $date = NULL;
             while($row = $result->fetch_assoc()) {
                 if ($date != $row["$type"]){
@@ -69,7 +69,7 @@
         $sql = "SELECT * FROM zettel WHERE `user`='$overviewuser'$public_filter ORDER BY tag, title ASC";
         $result = $mysqli->query($sql);
 
-        if ($result->num_rows > 0) {
+        if ($result && $result->num_rows > 0) {
             $tag = NULL;
             while($row = $result->fetch_assoc()) {
                 if ($tag != $row["tag"]){
@@ -90,7 +90,7 @@
         $sql = "SELECT * FROM zettel WHERE `user`='$overviewuser'$public_filter ORDER BY title ASC";
         $result = $mysqli->query($sql);
 
-        if ($result->num_rows > 0) {
+        if ($result && $result->num_rows > 0) {
             echo "<ul>";
             while($row = $result->fetch_assoc()) {
                 print_link($row["name"], $row["title"]);
