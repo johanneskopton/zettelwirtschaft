@@ -44,7 +44,7 @@
         if ($handle = opendir("zettel/$username")) {
             while (false !== ($filename = readdir($handle))) {
                 if (substr($filename, 0, 1) != "."){
-                    $access_filter = ($verified_name == $username)?"":" AND `access`=1";
+                    $access_filter = (($verified_name == $username) && isset($_POST["access_all"]))?"":" AND `access`=1";
                     $file_id = explode(".org", $filename)[0];
                     $sql = "SELECT * FROM zettel WHERE `user`='$username' AND `name`='$file_id'" . $access_filter;
                     $result = $mysqli->query($sql);

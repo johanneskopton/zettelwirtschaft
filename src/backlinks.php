@@ -4,7 +4,7 @@
     $sql = "SELECT origin_name, origin_user FROM connections WHERE target_name='$filename' AND target_user='$zetteluser'";
     $result = $mysqli->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         echo "<div class='incoming'>";
         echo $l["Links to this zettel"].":";
         echo "<ul>";

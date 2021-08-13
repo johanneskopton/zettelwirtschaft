@@ -29,14 +29,12 @@
 
         $name = explode(".org", $filename)[0];
         if ($name == ""){
-            return;
+            return 0;
         }
-
-        echo "$name<br>";
 
         $content = get_content($user, $name);
         if ($content == $l["Access denied"]){
-            return;
+            return 0;
         }
 
         $title = get_title($content);
@@ -57,6 +55,7 @@
         }
         if (!$mysqli->query($sql) === TRUE) {
             echo "Error: " . $sql . "<br>" . $mysqli->error;
+            return 0;
         }
 
         $connections = find_connections($content);
@@ -81,6 +80,7 @@
                 //echo "Error: " . $sql . "<br>" . $mysqli->error;
             }
         }
+        return 1;
     }
 
     
@@ -106,19 +106,21 @@
         while($row = $result->fetch_assoc()) {
             $user = $row["name"];
             echo "<h2>$user</h2>";
+            $sum = 0;
             if (array_key_exists($user, $external_paths)){
                 $list = get_external_list($user);
                 foreach($list as $filename){
-                    update_db_zettel($user, $filename, True);
+                    $sum += update_db_zettel($user, $filename, True);
                 }
             } elseif ($handle = opendir("zettel/$user")) {
                 while (false !== ($filename = readdir($handle))) {
                     if (substr($filename, 0, 1) != "."){
-                        update_db_zettel($user, $filename, False);
+                        $sum += update_db_zettel($user, $filename, False);
                     }
                 }
                 closedir($handle);
             }
+            echo $sum;
         }
         $mysqli->close();
     }
