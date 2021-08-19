@@ -12,7 +12,7 @@
         include_once("src/header.php");
 
         if(isset($_SESSION["user"])){
-        require_once("src/get_zettel.php");
+        include_once("src/get_zettel.php");
         require_once("src/orgile.php");
         require_once("src/update_db.php");
         include_once("src/bibupload_action.php");

@@ -39,9 +39,9 @@
             } else {
                 if (isset($_GET["create"])){
                     $content = "#+TITLE: " . explode(".", $filename)[0] . "\n";
-                    $content = "#+ROAM_TAGS: ". $l["Default tag"] ."\n";
-                    $content = "#+CREATED: " . date("Y-m-d") . "\n";
-                    $content = "#+LAST_MODIFIED: " . date("Y-m-d") . "\n";
+                    $content .= "#+ROAM_TAGS: ". $l["Default tag"] ."\n";
+                    $content .= "#+CREATED: " . date("Y-m-d") . "\n";
+                    $content .= "#+LAST_MODIFIED: " . date("Y-m-d") . "\n";
 
                     $file = fopen($path, "w");
                     fwrite($file, $content);
