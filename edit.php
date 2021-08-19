@@ -2,7 +2,6 @@
     <head>
     <script src="src/codemirror/lib/codemirror.js"></script>
     <script src="src/codemirror/addon/hint/show-hint.js"></script>
-<!--    <script src="src/codemirror/keymap/vim.js"></script> -->
     <link rel="stylesheet" href="src/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="src/codemirror/addon/hint/show-hint.css">
     <link rel="stylesheet" href="src/codemirror/theme/solarized.css">
@@ -10,8 +9,7 @@
     <script src="src/codemirror/mode/markdown/markdown.js"></script>
 
     <?php
-        session_start();
-        require_once("lang/language.php");
+        include_once("src/header.php");
 
         if(isset($_SESSION["user"])){
         require_once("src/get_zettel.php");
@@ -28,7 +26,7 @@
                 $content = preg_replace('/^(\#\+last_modified:){1}\s+?(.+)/im', "$1 ". date("Y-m-d"), $content);
 
 
-                file_put_contents("zettel/$username/$filename.org", $content);            
+                file_put_contents("zettel/$username/$filename.org", $content);
                 update_db($filename, $content);
             } else {
                 echo "Can not write on external zettelkasten!";
@@ -37,8 +35,6 @@
         if ($namespace != ""){
             echo "<script>window.location.replace('view.php?link=". $file_id ."');</script>";
         }
-
-        include_once("src/header.php");
     ?>
 
     <link rel="stylesheet" type="text/css" href="style/edit.css"/>
@@ -68,7 +64,7 @@
                 ?>
             </div>
         </div>
-        <?php 
+        <?php
             // if not logged in
             }else{
         ?>

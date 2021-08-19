@@ -1,5 +1,10 @@
 <?php
     require_once("config/design.php");
+    require_once(__DIR__."/../config/external.php");
+    require_once(__DIR__."/../config/db_connect.php");
+    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+    session_start();
+    require_once("lang/language.php");
 ?>
 
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>

@@ -4,14 +4,16 @@
     <link rel="shortcut icon" type="image/png" href="style/favicon.png">
     <link rel="stylesheet" type="text/css" href="style/common.css"/>
     <link rel="stylesheet" type="text/css" href="style/manual.css"/>
-
+    <?php
+            include_once("src/header.php");
+            require_once("lang/language.php");
+    ?>
     <title>
     <?php
-            require_once("lang/language.php");
             echo $l["Manual"];
     ?></title>
     </head>
-    <body class="home">
+    <body class="home <?php echo $theme;?>">
         <div class="box alone">
             <div class="wrapper">
                 <h1 style="margin-top: 0px;"><?php echo $l["Manual"];?></h1>
@@ -29,12 +31,12 @@
                     <li>Dein neuer Zettel sollte ungefähr so aussehen: <br>
                     <pre>
     #+TITLE: barack_obama
-    #+ROAM_TAGS: 
+    #+ROAM_TAGS: Idee
     #+CREATED: 2021-05-19
     #+LAST_MODIFIED: 2021-05-19
                     </pre></li>
-                    <li>Ändere den Titel wie du möchtest.</li>
-                    <li>Füge hinter <code>#+ROAM_TAGS:</code> mindestens ein Schlagwort hinzu, z. B. "Person".</li>
+                    <li>Ändere den Titel wie du möchtest, z. B. "Barack Obama".</li>
+                    <li>Ändere den Tag hinter <code>#+ROAM_TAGS:</code> wie du möchtest, z. B. "Person".</li>
                     <li>Um die Datumseigenschaften brauchst du dich nicht zu kümmern. Das erledigt Zettelwirtschaft für dich.</li>
                     <li>Tada! Fertig ist dein erster neuer Zettel. Unter die 4 Zeilen, die von Anfang an da sind,
                         kannst du jetzt deine Notizen schreiben.</li>

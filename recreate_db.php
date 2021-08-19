@@ -7,6 +7,8 @@
     require_once("config/external.php");
     require_once("lang/language.php");
 
+    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
     function get_external_list($external_user){
         global $external_paths, $username;
 

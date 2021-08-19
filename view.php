@@ -1,8 +1,8 @@
 <html>
     <head>
     <?php
-        session_start();
         require_once("lang/language.php");
+        include_once("src/header.php");
 
 
         include_once("src/register_action.php");
@@ -17,7 +17,6 @@
         include_once("src/bibupload_action.php");
 
         echo "<title>" . $title . "</title>";
-        include_once("src/header.php");
     ?>
     </head>
     <body class="<?php echo $theme;?>">
@@ -26,7 +25,7 @@
             require("src/zettel.php");
         ?>
     </div>
-    <?php 
+    <?php
         // if not logged in
         }else{
     ?>

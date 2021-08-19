@@ -1,7 +1,6 @@
 <html>
     <head>
     <?php
-        session_start();
         require_once("lang/language.php");
         include_once("src/header.php");
     ?>

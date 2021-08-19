@@ -1,8 +1,4 @@
 <?php
-    require_once(__DIR__."/../config/external.php");
-    require_once(__DIR__."/../config/db_connect.php");
-    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
     $access = True;
 
     function get_content($namespace, $filename){
@@ -42,10 +38,10 @@
                 $content = file_get_contents ($path);
             } else {
                 if (isset($_GET["create"])){
-                    $content  = "#+TITLE: " . explode(".", $filename)[0] . "\n";
-                    $content .= "#+ROAM_TAGS: ". $l["Default tag"] ."\n";
-                    $content .= "#+CREATED: " . date("Y-m-d") . "\n";
-                    $content .= "#+LAST_MODIFIED: " . date("Y-m-d") . "\n";
+                    $content = "#+TITLE: " . explode(".", $filename)[0] . "\n";
+                    $content = "#+ROAM_TAGS: ". $l["Default tag"] ."\n";
+                    $content = "#+CREATED: " . date("Y-m-d") . "\n";
+                    $content = "#+LAST_MODIFIED: " . date("Y-m-d") . "\n";
 
                     $file = fopen($path, "w");
                     fwrite($file, $content);
@@ -55,7 +51,6 @@
                 }
             }
         }
-        
         return $content;
     }
     function get_title($content){
@@ -76,7 +71,6 @@
         $sep1 = explode("#+CREATED: ", $content, 2);
         if (sizeof($sep1) > 1){
             $datestr = trim(explode(PHP_EOL, $sep1[1], 2)[0]);
-            //return date_create_from_format ("Y-m-d", $datestr);
             return $datestr;
         } else {
             return "no date";
@@ -87,7 +81,6 @@
         $sep1 = explode("#+LAST_MODIFIED: ", $content, 2);
         if (sizeof($sep1) > 1){
             $datestr = trim(explode(PHP_EOL, $sep1[1], 2)[0]);
-            //return date_create_from_format ("Y-m-d", $datestr);
             return $datestr;
         } else {
             return "no date";
