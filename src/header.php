@@ -3,6 +3,9 @@
     require_once(__DIR__."/../config/external.php");
     require_once(__DIR__."/../config/db_connect.php");
     $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+    if ($mysqli->connect_error) {
+        echo "</head><body>Connection failed: " . $mysqli->connect_error;
+    }
     session_start();
     require_once("lang/language.php");
 ?>

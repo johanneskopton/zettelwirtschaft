@@ -1,8 +1,4 @@
 <?php
-    require_once(__DIR__."/../config/db_connect.php");
-    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-
     if(isset($_POST["login"])){
         $name = $_POST["uname"];
         $pass = $_POST["psw"];

@@ -12,14 +12,12 @@
             $namespace = "";
             $zetteluser = $username;
         }
-        
     } else {
         $file_id = "start";
         $filename = "start";
         $namespace = "";
         $zetteluser = $username;
     }
-    //$path = $base_path . $filename;
 
     $content = get_content($namespace, $filename);
     $title = get_title($content);
