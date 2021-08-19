@@ -200,6 +200,7 @@ class orgile {
 
   function orgilise_music($text){
     $regex = '/#\+begin_music (\S+) (\S+)\s([\s\S]*?)\s#\+end_music/mi';
+    if (!function_exists('callback_music')) {
     function callback_music($pattern){
         global $music_item, $theme;
         $notes = $pattern[3];
@@ -233,6 +234,7 @@ EOT;
         $music_item += 1;
         return $replace;
     }
+    }
     return preg_replace_callback($regex,'callback_music',$text);
   }
 
@@ -240,12 +242,14 @@ EOT;
     $script_name = $_SERVER['PHP_SELF'];
     $regex = '/\[ztl\:(.+?)\]/m';
 
+    if (!function_exists('callback')) {
     function callback($pattern){
       global $namespace, $script_name;
       $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
       $linktitle = get_title_from_name($namespace, explode("#",$pattern[1])[0]);
       $section = mb_strpos($pattern[1], "#") !== false?"#".explode("#",$pattern[1])[1]:"";
       return '<a href="'.$script_name.'?link='.$namespace_prefix.$pattern[1].'" name="zettelkasten_link" class="internal" title="'.$linktitle.'">'.$linktitle.$section.'</a>';
+    }
     }
     return preg_replace_callback($regex,"callback",$text);
   }
@@ -255,6 +259,7 @@ EOT;
     $script_name = $_SERVER['PHP_SELF'];
     $regex = '/\[ext\:(.+?)\]/m';
 
+    if (!function_exists('callback_ext')) {
     function callback_ext($pattern){
       global $script_name, $username;
       $filename = explode(":", $pattern[1])[1];
@@ -263,6 +268,7 @@ EOT;
       $linktitle = get_title_from_name($namespace, $filename);
       $namespace_prefix = ($namespace == "") ? $namespace:$namespace.":";
       return '<a href="'.$script_name.'?link='.$namespace_prefix.$filename.'" name="zettelkasten_link" class="external_zettelkasten" title="'.$linktitle.'">'.$linktitle.'</a>';
+    }
     }
     return preg_replace_callback($regex,"callback_ext",$text);
   }
@@ -276,6 +282,7 @@ EOT;
 
   function citation($text) {
     $regex = '/\[(cite|rcite)\:(.+?)\]/m';
+    if (!function_exists('callback_citation')) {
     $callback_citation = function ($pattern){
         global $bib_item_i;
         $title = ($pattern[1] == "cite") ? get_citation_title($pattern[2]) . " ":"";
@@ -283,6 +290,7 @@ EOT;
         $bib_item_i = $bib_item_i + 1;
         return $res;
     };
+    }
     $text = preg_replace_callback($regex, $callback_citation, $text);
 
     return $text;

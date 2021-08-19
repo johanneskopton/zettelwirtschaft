@@ -32,6 +32,7 @@ function getSiteOG( $url, $specificTags=0 ){
 
   function card($text){
     $regex = '/^\#\+card:{1}\s+?(.+)/im';
+    if (!function_exists('callback_card')) {
     function callback_card($pattern){
         $link = trim($pattern[1]);
         $result = getSiteOG($link);
@@ -60,6 +61,7 @@ function getSiteOG( $url, $specificTags=0 ){
 </div>
 EOT;
         return $replace;
+    }
     }
     return preg_replace_callback($regex,'callback_card',$text);
   }

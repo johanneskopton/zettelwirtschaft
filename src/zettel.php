@@ -15,6 +15,10 @@
         }else{
             echo $l["Access denied"];
         }
+
+        if (get_tag($content) == $l["Presentation"] && $namespace == ""){
+            echo "<a class='button' href='presentation.php?link=$filename' target='_blank'>".$l['Presentation']."</a>";
+        }
         ?>
     </div>
     <script>
