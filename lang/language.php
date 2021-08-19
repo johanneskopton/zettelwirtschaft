@@ -38,7 +38,9 @@
         "Manual" => "Manual",
         "Open" => "Open",
         "Example" => "Example (German)",
-        "Default tag" => "Idea"
+        "Default tag" => "Idea",
+        "Graph" => "Graph",
+        "Presentation" => "Presentation"
     ];
 
     $german = [
@@ -80,7 +82,9 @@
         "Manual" => "Anleitung",
         "Open" => "Öffnen",
         "Example" => "Beispiel",
-        "Default tag" => "Idee"
+        "Default tag" => "Idee",
+        "Graph" => "Graph",
+        "Presentation" => "Präsentation"
     ];
 
     $l = $german;

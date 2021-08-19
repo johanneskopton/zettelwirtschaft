@@ -1,10 +1,10 @@
 <html>
     <head>
-        <title>Network</title>
         <?php
             include_once("src/header.php");
             require_once("lang/language.php");
         ?>
+            <title><?php echo $l["Graph"];?></title>
         <script
           type="text/javascript"
           src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
